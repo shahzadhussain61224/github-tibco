@@ -1,0 +1,131 @@
+!SESSION 2018-08-18 18:14:32.339 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.tibco.bw.core.design.project.BwDesignApplication export -ear C:\Users\mohammhu\Documents\myGitHub\github-tibco\BW6_Sample\EAR
+Command-line arguments:  -application com.tibco.bw.core.design.project.BwDesignApplication -ws win32 -data C:\Users\mohammhu\Documents\myGitHub\github-tibco\BW6_Sample\Project\sample.module export -ear C:\Users\mohammhu\Documents\myGitHub\github-tibco\BW6_Sample\EAR
+
+!ENTRY org.eclipse.emf.ecore 2 0 2018-08-18 18:14:33.870
+!MESSAGE Both 'com.tibco.amf.sharedresource.model.transport.eclipse' and 'com.tibco.amf.sharedresource.model.transport.eclipse' register a package for 'http://xsd.tns.tibco.com/amf/models/sharedresource/httpconnector'
+
+!ENTRY org.eclipse.emf.ecore 2 0 2018-08-18 18:14:33.870
+!MESSAGE Both 'com.tibco.bw.sharedresource.http.model' and 'com.tibco.bw.sharedresource.http.model' register a package for 'http://xsd.tns.tibco.com/bw/models/sharedresource/httpclient'
+
+!ENTRY org.eclipse.emf.ecore 2 0 2018-08-18 18:14:33.870
+!MESSAGE Both 'com.tibco.amf.sharedresource.model.data.eclipse' and 'com.tibco.bw.sharedresource.jdbc.model' register a package for 'http://xsd.tns.tibco.com/amf/models/sharedresource/jdbc'
+
+!ENTRY org.eclipse.emf.ecore 2 0 2018-08-18 18:14:33.886
+!MESSAGE Both 'com.tibco.amf.sca.model.eclipse' and 'com.tibco.bw.sharedresource.ws.policy.model' register a package for 'http://schemas.xmlsoap.org/ws/2004/09/policy'
+
+!ENTRY org.eclipse.emf.ecore 2 0 2018-08-18 18:14:33.886
+!MESSAGE Both 'com.tibco.amf.wsdl.extensions.eclipse' and 'com.tibco.bw.wsdl.extensions' register a package for 'http://xsd.tns.tibco.com/wsdl/models/extensions/soap/tibcojms'
+
+!ENTRY org.eclipse.emf.ecore 2 0 2018-08-18 18:14:33.886
+!MESSAGE Both 'com.tibco.amf.wsdl.extensions.eclipse' and 'com.tibco.bw.wsdl.extensions' register a package for 'http://xsd.tns.tibco.com/wsdl/models/soap12'
+
+!ENTRY org.eclipse.emf.ecore 2 0 2018-08-18 18:14:33.886
+!MESSAGE Both 'com.tibco.bw.sharedresource.identity.model' and 'com.tibco.bw.sharedresource.ws.policy.model' register an extension parser for 'policy'
+
+!ENTRY org.eclipse.emf.ecore 2 0 2018-08-18 18:14:33.886
+!MESSAGE Both 'com.tibco.bw.sharedresource.trinity.securityprovider.model' and 'com.tibco.trinity.securityprovider.model.eclipse' register an extension parser for 'auth'
+
+!ENTRY org.eclipse.emf.ecore 2 0 2018-08-18 18:14:33.901
+!MESSAGE Both 'com.tibco.bw.sharedresource.trinity.securityprovider.model' and 'com.tibco.trinity.securityprovider.model.eclipse' register an extension parser for 'identity'
+
+!ENTRY org.eclipse.emf.ecore 2 0 2018-08-18 18:14:33.901
+!MESSAGE Both 'com.tibco.bw.sharedresource.trinity.securityprovider.model' and 'com.tibco.trinity.securityprovider.model.eclipse' register an extension parser for 'userid'
+
+!ENTRY com.tibco.bw.core.design.process.editor 1 0 2018-08-18 18:14:38.610
+!MESSAGE ".com.tibco.bw.rad/BWApplication.launch" file is synchronized.
+
+!ENTRY com.tibco.bw.core.design.process.editor 1 0 2018-08-18 18:14:38.641
+!MESSAGE ".com.tibco.bw.rad/runtime.target" file is synchronized.
+
+!ENTRY org.eclipse.emf.validation 2 70 2018-08-18 18:14:38.875
+!MESSAGE Constraint "com.tibco.amf.design.sr.core.internal.validation.constraints.SharedResourceNotInWorkspace" could not find target EMF type "Property."
+
+!ENTRY org.eclipse.emf.validation 2 70 2018-08-18 18:14:38.891
+!MESSAGE Constraint "com.tibco.bw.sharedresource.http.design.com.tibco.amf.design.sr.transport.http.ssl.namedResourceReferenceValueNotEmpty" could not find target EMF type "NamedResourceReference."
+
+!ENTRY org.eclipse.emf.validation 2 70 2018-08-18 18:14:38.922
+!MESSAGE Constraint "com.tibco.bw.sharedresource.trinity.identity.subject.editor.com.tibco.trinity.identity.subject.editor.validation.HasOneStoreConstraint" could not find target EMF type "SubjectConfiguration."
+
+!ENTRY org.eclipse.emf.validation 2 70 2018-08-18 18:14:38.922
+!MESSAGE Constraint "com.tibco.bw.sharedresource.trinity.identity.subject.editor.com.tibco.trinity.identity.subject.editor.validation.KeyAliasNotNullConstraint" could not find target EMF type "SubjectConfiguration."
+
+!ENTRY org.eclipse.emf.validation 2 70 2018-08-18 18:14:38.938
+!MESSAGE Constraint "com.tibco.bw.sharedresource.trinity.identity.subject.editor.com.tibco.trinity.identity.subject.editor.validation.KeyPasswordNotNullConstraint" could not find target EMF type "SubjectConfiguration."
+
+!ENTRY org.eclipse.emf.validation 2 70 2018-08-18 18:14:38.938
+!MESSAGE Constraint "com.tibco.bw.sharedresource.trinity.identity.trust.editor.constraint" could not find target EMF type "TrustConfiguration."
+
+!ENTRY org.eclipse.emf.validation 2 70 2018-08-18 18:14:38.954
+!MESSAGE Constraint "com.tibco.bw.sharedresource.trinity.ssl.editor.com.tibco.trinity.ssl.editor.invalid.remote.host.constraint" could not find target EMF type "SSLServerConfiguration."
+
+!ENTRY org.eclipse.emf.validation 2 70 2018-08-18 18:14:38.954
+!MESSAGE Constraint "com.tibco.bw.sharedresource.trinity.ssl.editor.com.tibco.bw.sharedresource.trinity.ssl.client.editor.trust.namedResourceReferenceValueNotEmpty" could not find target EMF type "NamedResourceReference."
+
+!ENTRY org.eclipse.emf.validation 2 70 2018-08-18 18:14:38.954
+!MESSAGE Constraint "com.tibco.bw.sharedresource.trinity.ssl.editor.com.tibco.bw.sharedresource.trinity.ssl.client.editor.subject.namedResourceReferenceValueNotEmpty" could not find target EMF type "NamedResourceReference."
+
+!ENTRY org.eclipse.emf.validation 2 70 2018-08-18 18:14:38.954
+!MESSAGE Constraint "com.tibco.bw.sharedresource.trinity.ssl.editor.com.tibco.bw.sharedresource.trinity.ssl.server.editor.trust.namedResourceReferenceValueNotEmpty" could not find target EMF type "NamedResourceReference."
+
+!ENTRY org.eclipse.emf.validation 2 70 2018-08-18 18:14:38.969
+!MESSAGE Constraint "com.tibco.bw.sharedresource.trinity.ssl.editor.com.tibco.bw.sharedresource.trinity.ssl.server.editor.subject.namedResourceReferenceValueNotEmpty" could not find target EMF type "NamedResourceReference."
+
+!ENTRY org.eclipse.core.runtime 4 2 2018-08-18 18:14:39.438
+!MESSAGE Problems encountered starting up plug-in: "org.osgi.framework.BundleException: Cannot transiently start a module whose start level is not met.".
+!STACK 0
+org.osgi.framework.BundleException: Cannot transiently start a module whose start level is not met.
+	at org.eclipse.osgi.container.Module.start(Module.java:401)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.start(EquinoxBundle.java:393)
+	at org.eclipse.core.internal.runtime.InternalPlatform.start(InternalPlatform.java:919)
+	at org.eclipse.core.internal.plugins.PluginDescriptor.doPluginActivation(PluginDescriptor.java:360)
+	at org.eclipse.core.internal.plugins.PluginDescriptor.getPlugin(PluginDescriptor.java:340)
+	at org.eclipse.core.runtime.Platform.getPlugin(Platform.java:743)
+	at org.eclipse.core.internal.preferences.legacy.InitLegacyPreferences.init(InitLegacyPreferences.java:44)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper.applyRuntimeDefaults(PreferenceServiceRegistryHelper.java:147)
+	at org.eclipse.core.internal.preferences.PreferencesService.applyRuntimeDefaults(PreferencesService.java:368)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.applyRuntimeDefaults(DefaultPreferences.java:221)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.load(DefaultPreferences.java:274)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.create(EclipsePreferences.java:409)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalNode(EclipsePreferences.java:670)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.node(EclipsePreferences.java:812)
+	at org.eclipse.core.internal.preferences.AbstractScope.getNode(AbstractScope.java:38)
+	at org.eclipse.core.runtime.preferences.DefaultScope.getNode(DefaultScope.java:76)
+	at org.eclipse.pde.internal.core.PreferenceInitializer.initializeDefaultPreferences(PreferenceInitializer.java:28)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper$1.run(PreferenceServiceRegistryHelper.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper.runInitializer(PreferenceServiceRegistryHelper.java:303)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper.applyRuntimeDefaults(PreferenceServiceRegistryHelper.java:131)
+	at org.eclipse.core.internal.preferences.PreferencesService.applyRuntimeDefaults(PreferencesService.java:368)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.applyRuntimeDefaults(DefaultPreferences.java:221)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.load(DefaultPreferences.java:274)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.create(EclipsePreferences.java:409)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalNode(EclipsePreferences.java:670)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.node(EclipsePreferences.java:812)
+	at org.eclipse.core.internal.preferences.AbstractScope.getNode(AbstractScope.java:38)
+	at org.eclipse.core.runtime.preferences.DefaultScope.getNode(DefaultScope.java:76)
+	at org.eclipse.pde.internal.core.PDEPreferencesManager.<init>(PDEPreferencesManager.java:34)
+	at org.eclipse.pde.internal.core.PDECore.getPreferencesManager(PDECore.java:86)
+	at org.eclipse.pde.core.target.LoadTargetDefinitionJob.runInWorkspace(LoadTargetDefinitionJob.java:123)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.jobs 4 2 2018-08-18 18:14:39.454
+!MESSAGE An internal error occurred during: "Load Target Platform".
+!STACK 0
+java.lang.IllegalStateException: BundleContext is no longer valid
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.checkValid(BundleContextImpl.java:983)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.getServiceReference(BundleContextImpl.java:559)
+	at org.eclipse.pde.internal.core.PDECore.acquireService(PDECore.java:378)
+	at org.eclipse.pde.internal.core.TargetPlatformHelper.getWorkspaceTargetResolved(TargetPlatformHelper.java:441)
+	at org.eclipse.pde.internal.core.PluginModelManager.getExternalBundles(PluginModelManager.java:591)
+	at org.eclipse.pde.internal.core.PluginModelManager.initializeTable(PluginModelManager.java:525)
+	at org.eclipse.pde.internal.core.PluginModelManager.targetReloaded(PluginModelManager.java:473)
+	at org.eclipse.pde.core.target.LoadTargetDefinitionJob.resetPlatform(LoadTargetDefinitionJob.java:229)
+	at org.eclipse.pde.core.target.LoadTargetDefinitionJob.runInWorkspace(LoadTargetDefinitionJob.java:150)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
