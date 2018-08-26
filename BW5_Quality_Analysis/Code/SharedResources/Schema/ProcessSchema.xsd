@@ -3,90 +3,42 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	 elementFormDefault="qualified"
 	 attributeFormDefault="unqualified">
-	<xs:element name="ProcessDefinition">
+	<xs:element name="pdProcessDefinition">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="name" type="xs:string"/>
-				<xs:element name="startName" type="xs:string"/>
-				<xs:element name="startX" type="xs:string"/>
-				<xs:element name="startY" type="xs:string"/>
-				<xs:element name="returnBindings">
+				<xs:element name="xsdimport" minOccurs="0">
 					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="element" type="xs:anyType" minOccurs="0" maxOccurs="unbounded"/>
-						</xs:sequence>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute name="namespace" type="xs:string"/>
+								<xs:attribute name="schemaLocation" type="xs:string"/>
+							</xs:extension>
+						</xs:simpleContent>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="starter">
+				<xs:element name="pdname" type="xs:string"/>
+				<xs:element name="pdstartName" type="xs:string"/>
+				<xs:element name="pdstarter">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element ref="Common"/>
+							<xs:element name="pdtype" type="xs:string"/>
+							<xs:element name="pdresourceType" type="xs:string"/>
 						</xs:sequence>
 						<xs:attribute name="name" type="xs:string"/>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="endName" type="xs:string"/>
-				<xs:element name="endX" type="xs:string"/>
-				<xs:element name="endY" type="xs:string"/>
-				<xs:element name="errorSchemas">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="element" type="xs:anyType" minOccurs="0" maxOccurs="unbounded"/>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="processVariables">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="element" type="xs:anyType" minOccurs="0" maxOccurs="unbounded"/>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
+				<xs:element name="pdendName" type="xs:string"/>
 				<xs:element name="targetNamespace" type="xs:string"/>
-				<xs:element name="activity" minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="pdactivity" minOccurs="0" maxOccurs="unbounded">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element ref="Common"/>
+							<xs:element name="pdtype" type="xs:string"/>
+							<xs:element name="pdresourceType" type="xs:string"/>
 						</xs:sequence>
 						<xs:attribute name="name" type="xs:string"/>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="transition" minOccurs="0" maxOccurs="unbounded">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="from" type="xs:string"/>
-							<xs:element name="to" type="xs:string"/>
-							<xs:element name="lineType" type="xs:string"/>
-							<xs:element name="lineColor" type="xs:string"/>
-							<xs:element name="conditionType" type="xs:string"/>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="fields" type="xs:anyType" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="Common">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="type" type="xs:string"/>
-				<xs:element name="resourceType" type="xs:string"/>
-				<xs:element name="x" type="xs:string"/>
-				<xs:element name="y" type="xs:string"/>
-				<xs:element name="config">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="element" type="xs:anyType" minOccurs="0" maxOccurs="unbounded"/>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="inputBindings">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="element" type="xs:anyType" minOccurs="0" maxOccurs="unbounded"/>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
+				<xs:element name="pdtransition" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

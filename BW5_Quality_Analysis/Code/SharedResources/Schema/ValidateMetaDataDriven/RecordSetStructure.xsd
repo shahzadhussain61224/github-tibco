@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.hp.com/process/2013-04/MDD/RecordSetStructure"
+	 targetNamespace="http://www.hp.com/process/2013-04/MDD/RecordSetStructure"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="recordSet" type="RecordSetStructure"/>
+	<xs:complexType name="RecordStructure">
+		<xs:sequence>
+			<xs:element name="checkType">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="checkAllPass"/>
+						<xs:enumeration value="checkAnyPass"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="recordType" type="xs:string"/>
+			<xs:element name="field" type="FieldStructure" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FieldStructure">
+		<xs:sequence>
+			<xs:element name="activityType" type="xs:string"/>
+			<xs:element name="activityName" type="xs:string"/>
+			<xs:element name="format" type="FieldFormat"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RecordSetStructure">
+		<xs:sequence>
+			<xs:element name="record" type="RecordStructure" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StringFormat">
+		<xs:sequence>
+			<xs:element name="maxLength" type="xs:int" minOccurs="0"/>
+			<xs:element name="patterns" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="options" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FieldFormat">
+		<xs:sequence>
+			<xs:element name="stringFormat" type="StringFormat" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

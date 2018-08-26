@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://www.hp.com/schemas/ChannelDataCollection/LocalTesting/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx2="http://www.hp.com/schemas/MDD/Schema.xsd" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:ns12="http://www.tibco.com/pe/WriteToLogActivitySchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="pfx12" xmlns:ns1="http://www.tibco.com/namespaces/tnt/plugins/file/v2">
+    <xsd:import namespace="http://www.hp.com/schemas/ChannelDataCollection/LocalTesting/Schema.xsd" schemaLocation="/SharedResources/Schemas/Process/ValidateMetaDataDriven/MDDRulesFiles.xsd"/>
+    <xsd:import namespace="http://www.hp.com/schemas/MDD/Schema.xsd" schemaLocation="/SharedResources/Schemas/ValidateMetaDataDriven/MDDRulesFiles.xsd"/>
+    <pd:name>Read/ReadFilesFromFolder.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType>
+        <xsd:element name="root">
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:element name="folderPath" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:element>
+    </pd:startType>
+    <pd:startX>117</pd:startX>
+    <pd:startY>144</pd:startY>
+    <pd:returnBindings>
+        <root>
+            <pfx2:MDDRuleFilesSet>
+                <xsl:for-each select="$CompleteListOfRulesFiles/AccumulatedOutput/root/pfx2:MDDRuleFilesSet/pfx2:MDDRuleFiles">
+                    <pfx2:MDDRuleFiles>
+                        <pfx2:RuleFileName>
+                            <xsl:value-of select="pfx2:RuleFileName"/>
+                        </pfx2:RuleFileName>
+                        <pfx2:RuleFileContents>
+                            <xsl:value-of select="pfx2:RuleFileContents"/>
+                        </pfx2:RuleFileContents>
+                    </pfx2:MDDRuleFiles>
+                </xsl:for-each>
+            </pfx2:MDDRuleFilesSet>
+        </root>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType>
+        <xsd:element name="root">
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:element ref="pfx2:MDDRuleFilesSet"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:element>
+    </pd:endType>
+    <pd:endX>830</pd:endX>
+    <pd:endY>146</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1386708639949</pd:targetNamespace>
+    <pd:group name="Group">
+        <pd:type>com.tibco.pe.core.LoopGroup</pd:type>
+        <pd:resourceType>ae.process.group</pd:resourceType>
+        <pd:x>319</pd:x>
+        <pd:y>20</pd:y>
+        <pd:width>348</pd:width>
+        <pd:height>239</pd:height>
+        <pd:collapsedWidth>57</pd:collapsedWidth>
+        <pd:collapsedHeight>70</pd:collapsedHeight>
+        <pd:groupVariables/>
+        <pd:joinToggle>inherit</pd:joinToggle>
+        <config>
+            <pd:groupType>inputLoop</pd:groupType>
+            <pd:serializable>false</pd:serializable>
+            <pd:over>$List-Files/ns:ListFilesActivityOutput/files/fileInfo</pd:over>
+            <pd:iterationElementSlot>currentFile</pd:iterationElementSlot>
+            <pd:indexSlot>i</pd:indexSlot>
+            <pd:outSlot>CompleteListOfRulesFiles</pd:outSlot>
+            <pd:activityOutputName>ReadAllRulesFiles</pd:activityOutputName>
+            <pd:accumulateOutput>true</pd:accumulateOutput>
+        </config>
+        <pd:inputBindings/>
+        <pd:expanded>true</pd:expanded>
+        <pd:transition>
+            <pd:from>start</pd:from>
+            <pd:to>IGNORE ..folder  FILES</pd:to>
+            <pd:xpathDescription>NOT A RULES FILE</pd:xpathDescription>
+            <pd:lineType>Multiple Bends</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>xpath</pd:conditionType>
+            <pd:xpath>not(contains($currentFile/fileInfo/fileName, ".xml"))</pd:xpath>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>start</pd:from>
+            <pd:to>ReadEahFileFromRulesDir</pd:to>
+            <pd:xpathDescription>RULES FILE</pd:xpathDescription>
+            <pd:lineType>Multiple Bends</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>otherwise</pd:conditionType>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>IGNORE ..folder  FILES</pd:from>
+            <pd:to>end</pd:to>
+            <pd:lineType>Multiple Bends</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>ReadAllRulesFiles</pd:from>
+            <pd:to>end</pd:to>
+            <pd:lineType>Multiple Bends</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>ReadEahFileFromRulesDir</pd:from>
+            <pd:to>ReadAllRulesFiles</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:activity name="ReadAllRulesFiles">
+            <pd:type>com.tibco.plugin.mapper.MapperActivity</pd:type>
+            <pd:resourceType>ae.activities.MapperActivity</pd:resourceType>
+            <pd:x>569</pd:x>
+            <pd:y>86</pd:y>
+            <config>
+                <x__copyToClipboardReference>
+                    <ref>
+                        <pfx>xsd</pfx>
+                        <type>N</type>
+                        <ns>http://www.w3.org/2001/XMLSchema</ns>
+                    </ref>
+                    <ref>
+                        <loc>/SharedResources/Schemas/Process/ValidateMetaDataDriven/MDDRulesFiles.xsd</loc>
+                        <pfx>pfx12</pfx>
+                        <type>S</type>
+                        <ns>http://www.hp.com/schemas/ChannelDataCollection/LocalTesting/Schema.xsd</ns>
+                    </ref>
+                </x__copyToClipboardReference>
+                <element>
+                    <xsd:element name="root">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element ref="pfx2:MDDRuleFilesSet"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </element>
+            </config>
+            <pd:inputBindings>
+                <root>
+                    <pfx2:MDDRuleFilesSet>
+                        <pfx2:MDDRuleFiles>
+                            <pfx2:RuleFileName>
+                                <xsl:value-of select="substring-before($List-Files/ns:ListFilesActivityOutput/files/fileInfo[$i]/fileName, &quot;.xml&quot;)"/>
+                            </pfx2:RuleFileName>
+                            <pfx2:RuleFileContents>
+                                <xsl:value-of select="$ReadEahFileFromRulesDir/ns:ReadActivityOutputTextClass/fileContent/textContent"/>
+                            </pfx2:RuleFileContents>
+                        </pfx2:MDDRuleFiles>
+                    </pfx2:MDDRuleFilesSet>
+                </root>
+            </pd:inputBindings>
+        </pd:activity>
+        <pd:activity name="ReadEahFileFromRulesDir">
+            <pd:type>com.tibco.plugin.file.FileReadActivity</pd:type>
+            <pd:resourceType>ae.activities.FileReadActivity</pd:resourceType>
+            <pd:x>455</pd:x>
+            <pd:y>84</pd:y>
+            <config>
+                <encoding>text</encoding>
+            </config>
+            <pd:inputBindings>
+                <ns1:ReadActivityInputClass>
+                    <fileName>
+                        <xsl:value-of select="$currentFile/fileInfo/fullName"/>
+                    </fileName>
+                </ns1:ReadActivityInputClass>
+            </pd:inputBindings>
+        </pd:activity>
+        <pd:activity name="IGNORE ..folder  FILES">
+            <pd:type>com.tibco.plugin.timer.NullActivity</pd:type>
+            <pd:resourceType>ae.activities.null</pd:resourceType>
+            <pd:x>513</pd:x>
+            <pd:y>194</pd:y>
+            <config/>
+            <pd:inputBindings/>
+        </pd:activity>
+    </pd:group>
+    <pd:activity name="List Files">
+        <pd:type>com.tibco.plugin.file.ListFilesActivity</pd:type>
+        <pd:resourceType>ae.activities.ListFilesActivity</pd:resourceType>
+        <pd:x>215</pd:x>
+        <pd:y>147</pd:y>
+        <config>
+            <mode>only-files</mode>
+        </config>
+        <pd:inputBindings>
+            <ns:ListFilesActivityConfig>
+                <fileName>
+                    <xsl:value-of select="concat($Start/root/folderPath,&quot;\*&quot;)"/>
+                </fileName>
+            </ns:ListFilesActivityConfig>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Catch">
+        <pd:type>com.tibco.pe.core.CatchActivity</pd:type>
+        <pd:resourceType>ae.activities.catch</pd:resourceType>
+        <pd:x>626</pd:x>
+        <pd:y>281</pd:y>
+        <pd:handler>true</pd:handler>
+        <config>
+            <catchAll>true</catchAll>
+        </config>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="Log">
+        <pd:type>com.tibco.pe.core.WriteToLogActivity</pd:type>
+        <pd:resourceType>ae.activities.log</pd:resourceType>
+        <pd:x>743</pd:x>
+        <pd:y>281</pd:y>
+        <config>
+            <role>User</role>
+        </config>
+        <pd:inputBindings>
+            <ns12:ActivityInput>
+                <message>
+                    <xsl:value-of select="concat(&quot;ERROR OCCURED WHILE LOADING THE MDD XML FILES.      EXCEPTION TRACE::    &quot;,$Catch/exceptiondata/*)"/>
+                </message>
+            </ns12:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Group</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>List Files</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>List Files</pd:from>
+        <pd:to>Group</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Catch</pd:from>
+        <pd:to>Log</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Log</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>One Bend</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:recordSet xmlns:p="http://www.hp.com/process/2013-04/ChannelDataCollection/Validate/MetaDataDriven/RecordSet" xmlns:p1="http://www.hp.com/schema/2013-04/ChannelDataCollection/Common/Types" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hp.com/process/2013-04/ChannelDataCollection/Validate/MetaDataDriven/RecordSet RecordSet.xsd ">
+  <p:record>
+    <p:recordType>p:recordType</p:recordType>
+    <p:field>
+      <p1:key>p1:key</p1:key>
+      <p1:val>p1:val</p1:val>
+    </p:field>
+  </p:record>
+</p:recordSet>

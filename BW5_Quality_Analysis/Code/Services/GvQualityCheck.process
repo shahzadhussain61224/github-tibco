@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:pfx="http://www.tibco.com/ns/no_namespace_schema_location/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/file/v2" xmlns:ns1="http://www.hp.com/process/2013-04/MDD/ValidationLog" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx5="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd2" xmlns:pfx4="http://www.tibco.com/ns/no_namespace_schema_location/SharedResources/Schema/ProcessSchema.xsd" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:pfx3="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd" xmlns:pfx2="http://www.tibco.com/ns/no_namespace_schema_location/ProcessSchema.xsd" xmlns:pfx7="http://www.tibco.com/xmlns/repo/types/2002" xmlns:pfx6="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd3">
+    <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/SharedResources/Schema/ProcessSchema.xsd" schemaLocation="/SharedResources/Schema/ProcessSchema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd" schemaLocation="/SharedResources/Schema/ValidationFields.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd2" schemaLocation="/SharedResources/Schema/ErrorFields.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/xmlns/repo/types/2002" schemaLocation="/SharedResources/Schema/GVSchema.xsd"/>
+    <pd:name>Services/GvQualityCheck.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType>
+        <xsd:element name="root">
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:element name="processList" minOccurs="0" maxOccurs="unbounded">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="processName" type="xsd:string"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:element>
+    </pd:startType>
+    <pd:startX>39</pd:startX>
+    <pd:startY>170</pd:startY>
+    <pd:returnBindings>
+        <pfx5:errorRecord>
+            <xsl:for-each select="$Collect-Gv-Status/pfx7:gvCheck/pfx7:check[pfx7:status='Unused']">
+                <pfx5:fields>
+                    <pfx5:type>
+                        <xsl:value-of select="'Global Variable'"/>
+                    </pfx5:type>
+                    <pfx5:name>
+                        <xsl:value-of select="pfx7:name"/>
+                    </pfx5:name>
+                    <pfx5:subName>
+                        <xsl:value-of select="''"/>
+                    </pfx5:subName>
+                    <pfx5:message>
+                        <xsl:value-of select="&quot;Unused Global Variable&quot;"/>
+                    </pfx5:message>
+                </pfx5:fields>
+            </xsl:for-each>
+        </pfx5:errorRecord>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx5:errorRecord"/>
+    <pd:endX>1266</pd:endX>
+    <pd:endY>196</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1534635312992</pd:targetNamespace>
+    <pd:activity name="List GV Files">
+        <pd:type>com.tibco.plugin.cmdexec.CmdExecActivity</pd:type>
+        <pd:resourceType>ae.activities.CmdExecActivity</pd:resourceType>
+        <pd:x>134</pd:x>
+        <pd:y>169</pd:y>
+        <config>
+            <outputToString>true</outputToString>
+            <lineSplit>None</lineSplit>
+            <command>C:\Users\mohammhu\Documents\myGitHub\github-tibco\BW5_Quality_Analysis\Code\ListGvFileScript.bat</command>
+        </config>
+        <pd:inputBindings>
+            <CmdInput/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Parse GV List">
+        <pd:type>com.tibco.plugin.parse.ParseActivity</pd:type>
+        <pd:resourceType>ae.activities.ParseActivity</pd:resourceType>
+        <pd:x>236</pd:x>
+        <pd:y>168</pd:y>
+        <config>
+            <InputType>File</InputType>
+            <Encoding>UTF8</Encoding>
+            <ParseSharedConfig>/SharedResources/DataFormat/Data Format.sharedparse</ParseSharedConfig>
+            <SkipBlankLines>true</SkipBlankLines>
+            <ContinueonError>true</ContinueonError>
+        </config>
+        <pd:inputBindings>
+            <Input>
+                <fileName>
+                    <xsl:value-of select="&quot;C:\Users\mohammhu\Documents\myGitHub\github-tibco\BW5_Quality_Analysis\Code\myGVList.txt&quot;"/>
+                </fileName>
+                <noOfRecords>
+                    <xsl:value-of select="-1"/>
+                </noOfRecords>
+            </Input>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Collect Gv Status">
+        <pd:type>com.tibco.plugin.mapper.MapperActivity</pd:type>
+        <pd:resourceType>ae.activities.MapperActivity</pd:resourceType>
+        <pd:x>1126</pd:x>
+        <pd:y>194</pd:y>
+        <config>
+            <element ref="pfx7:gvCheck"/>
+        </config>
+        <pd:inputBindings>
+            <pfx7:gvCheck>
+                <xsl:for-each select="$AccumulatedGvs/AccumulatedOutput/root/name">
+                    <pfx7:check>
+                        <pfx7:name>
+                            <xsl:value-of select="."/>
+                        </pfx7:name>
+                        <pfx7:status>
+                            <xsl:value-of select="if (contains(tib:concat-sequence($AccumulateProcessFileData/AccumulatedOutput/root/fileData), .)) &#xA;then 'Used'&#xA;else 'Unused'"/>
+                        </pfx7:status>
+                    </pfx7:check>
+                </xsl:for-each>
+            </pfx7:gvCheck>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:group name="ForEachProcess">
+        <pd:type>com.tibco.pe.core.LoopGroup</pd:type>
+        <pd:resourceType>ae.process.group</pd:resourceType>
+        <pd:x>723</pd:x>
+        <pd:y>103</pd:y>
+        <pd:width>309</pd:width>
+        <pd:height>157</pd:height>
+        <pd:collapsedWidth>57</pd:collapsedWidth>
+        <pd:collapsedHeight>70</pd:collapsedHeight>
+        <pd:groupVariables/>
+        <pd:joinToggle>inherit</pd:joinToggle>
+        <config>
+            <pd:groupType>inputLoop</pd:groupType>
+            <pd:serializable>false</pd:serializable>
+            <pd:over>$Start/root/processList</pd:over>
+            <pd:iterationElementSlot>currentProcess</pd:iterationElementSlot>
+            <pd:indexSlot>j</pd:indexSlot>
+            <pd:outSlot>AccumulateProcessFileData</pd:outSlot>
+            <pd:activityOutputName>Collect Process Files</pd:activityOutputName>
+            <pd:accumulateOutput>true</pd:accumulateOutput>
+        </config>
+        <pd:inputBindings/>
+        <pd:expanded>true</pd:expanded>
+        <pd:transition>
+            <pd:from>start</pd:from>
+            <pd:to>Read Process File</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>Collect Process Files</pd:from>
+            <pd:to>end</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>Read Process File</pd:from>
+            <pd:to>Collect Process Files</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:activity name="Collect Process Files">
+            <pd:type>com.tibco.plugin.mapper.MapperActivity</pd:type>
+            <pd:resourceType>ae.activities.MapperActivity</pd:resourceType>
+            <pd:x>923</pd:x>
+            <pd:y>177</pd:y>
+            <config>
+                <element>
+                    <xsd:element name="root">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="fileData" type="xsd:string"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </element>
+            </config>
+            <pd:inputBindings>
+                <root>
+                    <fileData>
+                        <xsl:value-of select="$Read-Process-File/ns:ReadActivityOutputTextClass/fileContent/textContent"/>
+                    </fileData>
+                </root>
+            </pd:inputBindings>
+        </pd:activity>
+        <pd:activity name="Read Process File">
+            <pd:type>com.tibco.plugin.file.FileReadActivity</pd:type>
+            <pd:resourceType>ae.activities.FileReadActivity</pd:resourceType>
+            <pd:x>805</pd:x>
+            <pd:y>170</pd:y>
+            <config>
+                <encoding>text</encoding>
+            </config>
+            <pd:inputBindings>
+                <ns2:ReadActivityInputClass>
+                    <fileName>
+                        <xsl:value-of select="tib:trim($currentProcess/processList/processName)"/>
+                    </fileName>
+                </ns2:ReadActivityInputClass>
+            </pd:inputBindings>
+        </pd:activity>
+    </pd:group>
+    <pd:group name="ForEachGvFile">
+        <pd:type>com.tibco.pe.core.LoopGroup</pd:type>
+        <pd:resourceType>ae.process.group</pd:resourceType>
+        <pd:x>304</pd:x>
+        <pd:y>103</pd:y>
+        <pd:width>356</pd:width>
+        <pd:height>145</pd:height>
+        <pd:collapsedWidth>52</pd:collapsedWidth>
+        <pd:collapsedHeight>69</pd:collapsedHeight>
+        <pd:groupVariables/>
+        <config>
+            <pd:groupType>inputLoop</pd:groupType>
+            <pd:serializable>false</pd:serializable>
+            <pd:over>$Parse-GV-List/Output/Rows/root/param</pd:over>
+            <pd:iterationElementSlot>currentFile</pd:iterationElementSlot>
+            <pd:indexSlot>i</pd:indexSlot>
+            <pd:outSlot>AccumulatedGvs</pd:outSlot>
+            <pd:activityOutputName>Collect GVs</pd:activityOutputName>
+            <pd:accumulateOutput>true</pd:accumulateOutput>
+        </config>
+        <pd:inputBindings/>
+        <pd:expanded>true</pd:expanded>
+        <pd:transition>
+            <pd:from>start</pd:from>
+            <pd:to>Read GV File</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>Collect GVs</pd:from>
+            <pd:to>end</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>Read GV File</pd:from>
+            <pd:to>Parse GV File</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>Parse GV File</pd:from>
+            <pd:to>Collect GVs</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:activity name="Parse GV File">
+            <pd:type>com.tibco.plugin.xml.XMLParseActivity</pd:type>
+            <pd:resourceType>ae.activities.XMLParseActivity</pd:resourceType>
+            <pd:x>473</pd:x>
+            <pd:y>169</pd:y>
+            <config>
+                <inputStyle>text</inputStyle>
+                <xsdVersion>default</xsdVersion>
+                <validateOutput>false</validateOutput>
+                <term ref="pfx7:repository"/>
+            </config>
+            <pd:inputBindings>
+                <xmlString>
+                    <xsl:value-of select="$Read-GV-File/ns:ReadActivityOutputTextClass/fileContent/textContent"/>
+                </xmlString>
+            </pd:inputBindings>
+        </pd:activity>
+        <pd:activity name="Read GV File">
+            <pd:type>com.tibco.plugin.file.FileReadActivity</pd:type>
+            <pd:resourceType>ae.activities.FileReadActivity</pd:resourceType>
+            <pd:x>365</pd:x>
+            <pd:y>167</pd:y>
+            <config>
+                <encoding>text</encoding>
+            </config>
+            <pd:inputBindings>
+                <ns2:ReadActivityInputClass>
+                    <fileName>
+                        <xsl:value-of select="tib:trim($currentFile/param)"/>
+                    </fileName>
+                </ns2:ReadActivityInputClass>
+            </pd:inputBindings>
+        </pd:activity>
+        <pd:activity name="Collect GVs">
+            <pd:type>com.tibco.plugin.mapper.MapperActivity</pd:type>
+            <pd:resourceType>ae.activities.MapperActivity</pd:resourceType>
+            <pd:x>580</pd:x>
+            <pd:y>172</pd:y>
+            <config>
+                <element>
+                    <xsd:element name="root">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </element>
+            </config>
+            <pd:inputBindings>
+                <root>
+                    <xsl:for-each select="$Parse-GV-File/pfx7:repository/pfx7:globalVariables/pfx7:globalVariable">
+                        <name>
+                            <xsl:value-of select="pfx7:name"/>
+                        </name>
+                    </xsl:for-each>
+                </root>
+            </pd:inputBindings>
+        </pd:activity>
+    </pd:group>
+    <pd:transition>
+        <pd:from>ForEachProcess</pd:from>
+        <pd:to>Collect Gv Status</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>List GV Files</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>List GV Files</pd:from>
+        <pd:to>Parse GV List</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Parse GV List</pd:from>
+        <pd:to>ForEachGvFile</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>ForEachGvFile</pd:from>
+        <pd:to>ForEachProcess</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Collect Gv Status</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

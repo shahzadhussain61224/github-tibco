@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/pe/WriteToLogActivitySchema" xmlns:BW="java://com.tibco.pe.core.JavaCustomXPATHFunctions" xmlns:ns1="http://www.hp.com/schemas/ChannelDataCollection/LocalTesting/Schema.xsd" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns4="http://www.hp.com/schemas/MDD/Schema.xsd" xmlns:ns="http://www.tibco.com/pe/EngineTypes" xmlns:ns3="pfx2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:pfx3="http://www.hp.com/process/2013-04/MDD/RecordSetStructure" xmlns:pfx2="http://www.hp.com/process/2013-04/ChannelDataCollection/Validate/MetaDataDriven/RecordSetStructure" xmlns:pfx="http://www.tibco.com/pe/DeployedVarsType">
+    <xsd:import namespace="http://www.hp.com/process/2013-04/MDD/RecordSetStructure" schemaLocation="/SharedResources/Schema/ValidateMetaDataDriven/RecordSetStructure.xsd"/>
+    <pd:name>Functions/MDDValidation/ValidateMetaDataDriven/GetSharedVariable.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType>
+        <xsd:element name="structureFilename" type="xsd:string"/>
+    </pd:startType>
+    <pd:startX>86</pd:startX>
+    <pd:startY>41</pd:startY>
+    <pd:returnBindings>
+        <pfx3:recordSet>
+            <xsl:for-each select="$Parse-XML/pfx3:recordSet/pfx3:record">
+                <pfx3:record>
+                    <pfx3:checkType>
+                        <xsl:value-of select="pfx3:checkType"/>
+                    </pfx3:checkType>
+                    <pfx3:description>
+                        <xsl:value-of select="pfx3:description"/>
+                    </pfx3:description>
+                    <pfx3:recordType>
+                        <xsl:value-of select="pfx3:recordType"/>
+                    </pfx3:recordType>
+                    <xsl:for-each select="pfx3:field">
+                        <pfx3:field>
+                            <pfx3:activityType>
+                                <xsl:value-of select="pfx3:activityType"/>
+                            </pfx3:activityType>
+                            <pfx3:activityName>
+                                <xsl:value-of select="pfx3:activityName"/>
+                            </pfx3:activityName>
+                            <xsl:for-each select="pfx3:format">
+                                <pfx3:format>
+                                    <xsl:for-each select="pfx3:stringFormat">
+                                        <pfx3:stringFormat>
+                                            <xsl:if test="pfx3:maxLength">
+                                                <pfx3:maxLength>
+                                                    <xsl:value-of select="pfx3:maxLength"/>
+                                                </pfx3:maxLength>
+                                            </xsl:if>
+                                            <xsl:for-each select="pfx3:patterns">
+                                                <pfx3:patterns>
+                                                    <xsl:for-each select="pfx3:options">
+                                                        <pfx3:options>
+                                                            <xsl:value-of select="."/>
+                                                        </pfx3:options>
+                                                    </xsl:for-each>
+                                                </pfx3:patterns>
+                                            </xsl:for-each>
+                                        </pfx3:stringFormat>
+                                    </xsl:for-each>
+                                </pfx3:format>
+                            </xsl:for-each>
+                        </pfx3:field>
+                    </xsl:for-each>
+                </pfx3:record>
+            </xsl:for-each>
+        </pfx3:recordSet>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx3:recordSet"/>
+    <pd:endX>538</pd:endX>
+    <pd:endY>44</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1376506289905</pd:targetNamespace>
+    <pd:activity name="Read MDD Rules Files Global Object">
+        <pd:type>com.tibco.pe.core.GetSharedVariableActivity</pd:type>
+        <pd:resourceType>ae.activities.getSharedVariable</pd:resourceType>
+        <pd:x>188</pd:x>
+        <pd:y>55</pd:y>
+        <config>
+            <variableConfig>/SharedResources/SharedVariables/MDDRules/RulesFilesSharedVar.sharedvariable</variableConfig>
+        </config>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="Parse XML">
+        <pd:type>com.tibco.plugin.xml.XMLParseActivity</pd:type>
+        <pd:resourceType>ae.activities.XMLParseActivity</pd:resourceType>
+        <pd:x>416</pd:x>
+        <pd:y>43</pd:y>
+        <config>
+            <inputStyle>text</inputStyle>
+            <xsdVersion>default</xsdVersion>
+            <validateOutput>true</validateOutput>
+            <term ref="pfx3:recordSet"/>
+        </config>
+        <pd:inputBindings>
+            <xmlString>
+                <xsl:value-of select="$Map-Data/root/fileContents"/>
+            </xmlString>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Map Data">
+        <pd:type>com.tibco.plugin.mapper.MapperActivity</pd:type>
+        <pd:resourceType>ae.activities.MapperActivity</pd:resourceType>
+        <pd:x>307</pd:x>
+        <pd:y>42</pd:y>
+        <config>
+            <element>
+                <xsd:element name="root">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="fileContents" type="xsd:string"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </element>
+        </config>
+        <pd:inputBindings>
+            <root>
+                <xsl:variable name="var" select=" $Start/structureFilename"/>
+                <fileContents>
+                    <xsl:value-of select="$Read-MDD-Rules-Files-Global-Object/root/ns4:MDDRuleFilesSet/ns4:MDDRuleFiles[ns4:RuleFileName=$var]/ns4:RuleFileContents"/>
+                </fileContents>
+            </root>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Read MDD Rules Files Global Object</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Read MDD Rules Files Global Object</pd:from>
+        <pd:to>Map Data</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Parse XML</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Map Data</pd:from>
+        <pd:to>Parse XML</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

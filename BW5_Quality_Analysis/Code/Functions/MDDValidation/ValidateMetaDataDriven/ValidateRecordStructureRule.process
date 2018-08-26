@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.hp.com/partnerdc/schema/Types" xmlns:pfx13="http://www.hp.com/process/2013-04/MDD/ValidationLog" xmlns:pfx12="http://www.hp.com/process/2013-04/MDD/RecordSet" xmlns:pfx11="http://www.hp.com/process/2013-04/MDD/RecordSetStructure" xmlns:pfx10="http://www.hp.com/process/2013-04/ChannelDataCollection/Validate/MetaDataDriven/ValidationLog" xmlns:pfx="http://www.hp.partnerdc/validation/structure" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns1="http://www.hp.com/schema/2013-04/ChannelDataCollection/Common/Types" xmlns:pfx5="http://www.hp.partnerdc/process/validate/structure/format" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:pfx4="http://www.hp.com/partnerdc/schema/validationlog" xmlns:pfx3="http://www.hp.partnerdc/validation/log" xmlns:pfx2="http://www.hp.partnerdc/validation/file" xmlns:pfx9="http://www.hp.com/process/2013-04/ChannelDataCollection/Validate/MetaDataDriven/RecordSet" xmlns:pfx8="http://www.hp.com/process/2013-04/ChannelDataCollection/Validate/MetaDataDriven/RecordSetStructure" xmlns:pfx7="http://www.hp.partnerdc/process/validate/structure/log" xmlns:pfx6="http://www.hp.partnerdc/process/validate/structure/genericfile">
+    <xsd:import namespace="http://www.hp.partnerdc/process/validate/structure/format" schemaLocation="/SharedResources/Schemas/Process/ValidateFileStructure/FileFormatStructure.xsd"/>
+    <xsd:import namespace="http://www.hp.partnerdc/process/validate/structure/genericfile" schemaLocation="/SharedResources/Schemas/Process/ValidateFileStructure/GenericFileStructure.xsd"/>
+    <xsd:import namespace="http://www.hp.partnerdc/process/validate/structure/log" schemaLocation="/SharedResources/Schemas/Process/ValidateFileStructure/ValidationLog.xsd"/>
+    <xsd:import namespace="http://www.hp.com/process/2013-04/MDD/ValidationLog" schemaLocation="/SharedResources/Schemas/ValidateMetaDataDriven/ValidationLog.xsd"/>
+    <xsd:import namespace="http://www.hp.com/process/2013-04/MDD/RecordSetStructure" schemaLocation="/SharedResources/Schema/ValidateMetaDataDriven/RecordSetStructure.xsd"/>
+    <xsd:import namespace="http://www.hp.com/process/2013-04/MDD/RecordSet" schemaLocation="/SharedResources/Schema/ValidateMetaDataDriven/RecordSet.xsd"/>
+    <pd:name>Functions/MDDValidation/ValidateMetaDataDriven/ValidateRecordStructureRule.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType>
+        <xsd:element name="root">
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:element name="structure" type="pfx11:RecordStructure"/>
+                    <xsd:element name="record" type="pfx12:Record"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:element>
+    </pd:startType>
+    <pd:startX>71</pd:startX>
+    <pd:startY>176</pd:startY>
+    <pd:returnBindings>
+        <xsl:for-each select="$Collect-Field-Check-Result/validateRecordResult">
+            <validateRecordResult>
+                <pfx13:status>
+                    <xsl:value-of select="pfx13:status"/>
+                </pfx13:status>
+                <pfx13:name>
+                    <xsl:value-of select="pfx13:name"/>
+                </pfx13:name>
+                <xsl:for-each select="pfx13:message">
+                    <pfx13:message>
+                        <pfx13:messageId>
+                            <xsl:value-of select="pfx13:messageId"/>
+                        </pfx13:messageId>
+                    </pfx13:message>
+                </xsl:for-each>
+                <xsl:for-each select="pfx13:field">
+                    <pfx13:field>
+                        <pfx13:status>
+                            <xsl:value-of select="pfx13:status"/>
+                        </pfx13:status>
+                        <xsl:for-each select="pfx13:outputfield">
+                            <pfx13:outputfield>
+                                <pfx13:type>
+                                    <xsl:value-of select="pfx13:type"/>
+                                </pfx13:type>
+                                <pfx13:name>
+                                    <xsl:value-of select="pfx13:name"/>
+                                </pfx13:name>
+                            </pfx13:outputfield>
+                        </xsl:for-each>
+                        <xsl:for-each select="pfx13:check">
+                            <pfx13:check>
+                                <pfx13:status>
+                                    <xsl:value-of select="pfx13:status"/>
+                                </pfx13:status>
+                                <pfx13:name>
+                                    <xsl:value-of select="pfx13:name"/>
+                                </pfx13:name>
+                                <xsl:for-each select="pfx13:message">
+                                    <pfx13:message>
+                                        <pfx13:messageId>
+                                            <xsl:value-of select="pfx13:messageId"/>
+                                        </pfx13:messageId>
+                                    </pfx13:message>
+                                </xsl:for-each>
+                            </pfx13:check>
+                        </xsl:for-each>
+                    </pfx13:field>
+                </xsl:for-each>
+            </validateRecordResult>
+        </xsl:for-each>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType>
+        <xsd:element name="validateRecordResult" type="pfx13:RecordCheck"/>
+    </pd:endType>
+    <pd:endX>791</pd:endX>
+    <pd:endY>182</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://www.hp.com/process/partnerdc/validation</pd:targetNamespace>
+    <pd:group name="For each Field">
+        <pd:type>com.tibco.pe.core.LoopGroup</pd:type>
+        <pd:resourceType>ae.process.group</pd:resourceType>
+        <pd:x>242</pd:x>
+        <pd:y>43</pd:y>
+        <pd:width>319</pd:width>
+        <pd:height>255</pd:height>
+        <pd:collapsedWidth>57</pd:collapsedWidth>
+        <pd:collapsedHeight>70</pd:collapsedHeight>
+        <pd:groupVariables/>
+        <pd:joinToggle>inherit</pd:joinToggle>
+        <config>
+            <pd:groupType>inputLoop</pd:groupType>
+            <pd:serializable>false</pd:serializable>
+            <pd:over>$Start/root/record/pfx12:field</pd:over>
+            <pd:iterationElementSlot>struct</pd:iterationElementSlot>
+            <pd:indexSlot>struct_index</pd:indexSlot>
+            <pd:outSlot>ForEachField</pd:outSlot>
+            <pd:activityOutputName>Validate Field Structure</pd:activityOutputName>
+            <pd:accumulateOutput>true</pd:accumulateOutput>
+        </config>
+        <pd:inputBindings/>
+        <pd:expanded>true</pd:expanded>
+        <pd:transition>
+            <pd:from>start</pd:from>
+            <pd:to>Validate Field Structure</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>Validate Field Structure</pd:from>
+            <pd:to>end</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:activity name="Validate Field Structure">
+            <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+            <pd:resourceType>ae.process.subprocess</pd:resourceType>
+            <pd:x>399</pd:x>
+            <pd:y>184</pd:y>
+            <config>
+                <processName>/Functions/MDDValidation/ValidateMetaDataDriven/ValidateFieldStructure.process</processName>
+            </config>
+            <pd:inputBindings>
+                <root>
+                    <structure>
+                        <pfx11:activityType>
+                            <xsl:value-of select="$Start/root/structure/pfx11:field[pfx11:activityType=$struct/pfx12:field/pfx12:type]/pfx11:activityType"/>
+                        </pfx11:activityType>
+                        <pfx11:activityName>
+                            <xsl:value-of select="$Start/root/structure/pfx11:field[pfx11:activityType=$struct/pfx12:field/pfx12:type]/pfx11:activityName"/>
+                        </pfx11:activityName>
+                        <xsl:for-each select="$Start/root/structure/pfx11:field[pfx11:activityType=$struct/pfx12:field/pfx12:type][1]/pfx11:format">
+                            <pfx11:format>
+                                <xsl:for-each select="pfx11:stringFormat">
+                                    <pfx11:stringFormat>
+                                        <xsl:if test="pfx11:maxLength">
+                                            <pfx11:maxLength>
+                                                <xsl:value-of select="pfx11:maxLength"/>
+                                            </pfx11:maxLength>
+                                        </xsl:if>
+                                        <xsl:for-each select="pfx11:patterns">
+                                            <pfx11:patterns>
+                                                <xsl:for-each select="pfx11:options">
+                                                    <pfx11:options>
+                                                        <xsl:value-of select="."/>
+                                                    </pfx11:options>
+                                                </xsl:for-each>
+                                            </pfx11:patterns>
+                                        </xsl:for-each>
+                                    </pfx11:stringFormat>
+                                </xsl:for-each>
+                            </pfx11:format>
+                        </xsl:for-each>
+                    </structure>
+                    <field>
+                        <pfx12:type>
+                            <xsl:value-of select="$struct/pfx12:field/pfx12:type"/>
+                        </pfx12:type>
+                        <pfx12:name>
+                            <xsl:value-of select="$struct/pfx12:field/pfx12:name"/>
+                        </pfx12:name>
+                    </field>
+                </root>
+            </pd:inputBindings>
+        </pd:activity>
+    </pd:group>
+    <pd:activity name="Collect Field Check Result">
+        <pd:type>com.tibco.plugin.mapper.MapperActivity</pd:type>
+        <pd:resourceType>ae.activities.MapperActivity</pd:resourceType>
+        <pd:x>663</pd:x>
+        <pd:y>189</pd:y>
+        <config>
+            <element>
+                <xsd:element name="validateRecordResult" type="pfx13:RecordCheck"/>
+            </element>
+        </config>
+        <pd:inputBindings>
+            <validateRecordResult>
+                <xsl:variable name="status-var" select="if ($Start/root/structure/pfx11:checkType=&quot;checkAllPass&quot;) then &#xA;&#x9;if ($ForEachField/AccumulatedOutput/FieldValidationResult[$ForEachField/AccumulatedOutput/FieldValidationResult/pfx13:status=&quot;Fail&quot;]/pfx13:status) then &quot;Fail&quot; &#xA;&#x9;else if ($ForEachField/AccumulatedOutput/FieldValidationResult[$ForEachField/AccumulatedOutput/FieldValidationResult/pfx13:status=&quot;Warning&quot;]/pfx13:status) then &quot;Warning&quot; &#xA;&#x9;&#x9;else &quot;Pass&quot; &#xA;else &#xA;&#x9;if ($ForEachField/AccumulatedOutput/FieldValidationResult[$ForEachField/AccumulatedOutput/FieldValidationResult/pfx13:status=&quot;Pass&quot;]/pfx13:status) then &quot;Pass&quot; &#xA;&#x9;else if ($ForEachField/AccumulatedOutput/FieldValidationResult[$ForEachField/AccumulatedOutput/FieldValidationResult/pfx13:status=&quot;Warning&quot;]/pfx13:status) then &quot;Warning&quot; &#xA;&#x9;&#x9;else  &quot;Fail&quot;"/>
+                <pfx13:status>
+                    <xsl:value-of select="$status-var"/>
+                </pfx13:status>
+                <pfx13:name>
+                    <xsl:value-of select="$Start/root/structure/pfx11:description"/>
+                </pfx13:name>
+                <xsl:choose>
+                    <xsl:when test="$status-var=&quot;Pass&quot;">
+                        <pfx13:message>
+                            <pfx13:messageId>
+                                <xsl:value-of select="&quot;FILE_QUALITY_ACCEPTED&quot;"/>
+                            </pfx13:messageId>
+                        </pfx13:message>
+                    </xsl:when>
+                    <xsl:when test="$status-var=&quot;Warning&quot;">
+                        <pfx13:message>
+                            <pfx13:messageId>
+                                <xsl:value-of select="&quot;FILE_QUALITY_ACCEPTED_WITH_WARNINGS&quot;"/>
+                            </pfx13:messageId>
+                        </pfx13:message>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <pfx13:message>
+                            <pfx13:messageId>
+                                <xsl:value-of select="&quot;FILE_QUALITY_REJECTED&quot;"/>
+                            </pfx13:messageId>
+                        </pfx13:message>
+                    </xsl:otherwise>
+                </xsl:choose>
+                <xsl:for-each select="$ForEachField/AccumulatedOutput/FieldValidationResult">
+                    <pfx13:field>
+                        <pfx13:status>
+                            <xsl:value-of select="pfx13:status"/>
+                        </pfx13:status>
+                        <xsl:for-each select="pfx13:outputfield">
+                            <pfx13:outputfield>
+                                <pfx13:type>
+                                    <xsl:value-of select="pfx13:type"/>
+                                </pfx13:type>
+                                <pfx13:name>
+                                    <xsl:value-of select="pfx13:name"/>
+                                </pfx13:name>
+                            </pfx13:outputfield>
+                        </xsl:for-each>
+                        <xsl:for-each select="pfx13:check">
+                            <pfx13:check>
+                                <pfx13:status>
+                                    <xsl:value-of select="pfx13:status"/>
+                                </pfx13:status>
+                                <pfx13:name>
+                                    <xsl:value-of select="pfx13:name"/>
+                                </pfx13:name>
+                                <xsl:for-each select="pfx13:message">
+                                    <pfx13:message>
+                                        <pfx13:messageId>
+                                            <xsl:value-of select="pfx13:messageId"/>
+                                        </pfx13:messageId>
+                                    </pfx13:message>
+                                </xsl:for-each>
+                            </pfx13:check>
+                        </xsl:for-each>
+                    </pfx13:field>
+                </xsl:for-each>
+            </validateRecordResult>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>For each Field</pd:from>
+        <pd:to>Collect Field Check Result</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Collect Field Check Result</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>For each Field</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

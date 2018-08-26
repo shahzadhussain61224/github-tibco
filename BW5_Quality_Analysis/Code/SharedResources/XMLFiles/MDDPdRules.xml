@@ -1,0 +1,68 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<recordSet xmlns = "http://www.hp.com/process/2013-04/MDD/RecordSetStructure" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation = "http://www.hp.com/process/2013-04/MDD/RecordSetStructure ../../Schemas/ValidateMetaDataDriven/RecordSetStructure.xsd">
+	<record>
+		<checkType>checkAllPass</checkType>
+		<description>Activity Name Validation</description>
+		<recordType>Process Definition</recordType>
+		<field>
+			<activityType>HTTPEventSource</activityType>
+			<activityName>HTTP Receiver</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>10</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>MapperActivity</activityType>
+			<activityName>Map Data</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>10</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>CatchActivity</activityType>
+			<activityName>Catch</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>10</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>WriteToLogActivity</activityType>
+			<activityName>Log</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>1</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>processName</activityType>
+			<activityName>Process Definition</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>10</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*([A-Z][a-z]*)?[1-9]*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+	</record>
+</recordSet>

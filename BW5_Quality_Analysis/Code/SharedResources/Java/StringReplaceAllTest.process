@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:ns2="www.tibco.com/plugin/java/JavaMethodActivityInput" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns1="www.tibco.com/plugin/java/XmlToJavaActivityOutput" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="www.tibco.com/plugin/java/JavaMethodActivityOutput" xmlns:custom-string-functions="java://StringRegexCompareJavaCode" xmlns:StringCustom="java://XpathStringFunctions" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:pfx2="www.tibco.com/plugin/java/xmlSchema/java.lang.String" xmlns:pfx="www.tibco.com/plugin/java/XmlToJavaActivityInput">
+    <pd:name>SharedResources/Java/StringReplaceAllTest.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType>
+        <xsd:element name="root">
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:element name="string" type="xsd:string"/>
+                    <xsd:element name="stringToReplace" type="xsd:string"/>
+                    <xsd:element name="replacementString" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:element>
+    </pd:startType>
+    <pd:startX>36</pd:startX>
+    <pd:startY>62</pd:startY>
+    <pd:returnBindings>
+        <updatedString>
+            <xsl:value-of select="StringCustom:replaceAll($Start/root/string, $Start/root/stringToReplace, $Start/root/replacementString)"/>
+        </updatedString>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType>
+        <xsd:element name="updatedString" type="xsd:string"/>
+    </pd:endType>
+    <pd:endX>215</pd:endX>
+    <pd:endY>65</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1366128014803</pd:targetNamespace>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

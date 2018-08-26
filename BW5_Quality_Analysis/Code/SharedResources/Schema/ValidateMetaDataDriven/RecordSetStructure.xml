@@ -1,0 +1,16 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<p:recordSet xmlns:p = "http://www.hp.com/process/2013-04/ChannelDataCollection/Validate/MetaDataDriven/RecordSetStructure" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation = "http://www.hp.com/process/2013-04/ChannelDataCollection/Validate/MetaDataDriven/RecordSetStructure RecordSetStructure.xsd ">  
+	<p:record>    
+		<p:checkType>checkAllPass</p:checkType>    
+		<p:description>p:description</p:description>    
+		<p:recordType>p:recordType</p:recordType>    
+		<p:field>      
+			<p:label>p:label</p:label>      
+			<p:name>p:name</p:name>      
+			<p:required>true</p:required>      
+			<p:format>        
+				<p:stringFormat/>      
+			</p:format>    
+		</p:field>  
+	</p:record>
+</p:recordSet>
