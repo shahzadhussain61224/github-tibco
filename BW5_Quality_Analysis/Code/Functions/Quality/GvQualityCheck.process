@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:pfx="http://www.tibco.com/ns/no_namespace_schema_location/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/file/v2" xmlns:ns1="http://www.hp.com/process/2013-04/MDD/ValidationLog" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx5="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd2" xmlns:pfx4="http://www.tibco.com/ns/no_namespace_schema_location/SharedResources/Schema/ProcessSchema.xsd" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:pfx3="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd" xmlns:pfx2="http://www.tibco.com/ns/no_namespace_schema_location/ProcessSchema.xsd" xmlns:pfx7="http://www.tibco.com/xmlns/repo/types/2002" xmlns:pfx6="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd3">
+<pd:ProcessDefinition xmlns:pfx6="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd3" xmlns:pfx7="http://www.tibco.com/xmlns/repo/types/2002" xmlns:pfx="http://www.tibco.com/ns/no_namespace_schema_location/Schema.xsd" xmlns:pfx2="http://www.tibco.com/ns/no_namespace_schema_location/ProcessSchema.xsd" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:pfx3="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd" xmlns:pfx4="http://www.tibco.com/ns/no_namespace_schema_location/SharedResources/Schema/ProcessSchema.xsd" xmlns:pfx5="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/file/v2" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:ns1="http://www.hp.com/process/2013-04/MDD/ValidationLog" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pd="http://xmlns.tibco.com/bw/process/2003">
     <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/SharedResources/Schema/ProcessSchema.xsd" schemaLocation="/SharedResources/Schema/ProcessSchema.xsd"/>
     <xsd:import namespace="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd" schemaLocation="/SharedResources/Schema/ValidationFields.xsd"/>
     <xsd:import namespace="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd2" schemaLocation="/SharedResources/Schema/ErrorFields.xsd"/>
     <xsd:import namespace="http://www.tibco.com/xmlns/repo/types/2002" schemaLocation="/SharedResources/Schema/GVSchema.xsd"/>
-    <pd:name>Services/GvQualityCheck.process</pd:name>
+    <pd:name>Functions/Quality/GvQualityCheck.process</pd:name>
     <pd:startName>Start</pd:startName>
     <pd:startType>
         <xsd:element name="root">
@@ -17,6 +17,7 @@
                             </xsd:sequence>
                         </xsd:complexType>
                     </xsd:element>
+                    <xsd:element name="location" type="xsd:string"/>
                 </xsd:sequence>
             </xsd:complexType>
         </xsd:element>
@@ -58,10 +59,14 @@
         <config>
             <outputToString>true</outputToString>
             <lineSplit>None</lineSplit>
-            <command>C:\Users\mohammhu\Documents\myGitHub\github-tibco\BW5_Quality_Analysis\Code\ListGvFileScript.bat</command>
+            <command/>
         </config>
         <pd:inputBindings>
-            <CmdInput/>
+            <CmdInput>
+                <command>
+                    <xsl:value-of select="concat($Start/root/location,&quot;/ListGvFileScript.bat&quot;)"/>
+                </command>
+            </CmdInput>
         </pd:inputBindings>
     </pd:activity>
     <pd:activity name="Parse GV List">
@@ -79,7 +84,7 @@
         <pd:inputBindings>
             <Input>
                 <fileName>
-                    <xsl:value-of select="&quot;C:\Users\mohammhu\Documents\myGitHub\github-tibco\BW5_Quality_Analysis\Code\myGVList.txt&quot;"/>
+                    <xsl:value-of select="concat($Start/root/location,&quot;\myGVList.txt&quot;)"/>
                 </fileName>
                 <noOfRecords>
                     <xsl:value-of select="-1"/>
@@ -202,9 +207,10 @@
         <pd:y>103</pd:y>
         <pd:width>356</pd:width>
         <pd:height>145</pd:height>
-        <pd:collapsedWidth>52</pd:collapsedWidth>
-        <pd:collapsedHeight>69</pd:collapsedHeight>
+        <pd:collapsedWidth>57</pd:collapsedWidth>
+        <pd:collapsedHeight>70</pd:collapsedHeight>
         <pd:groupVariables/>
+        <pd:joinToggle>inherit</pd:joinToggle>
         <config>
             <pd:groupType>inputLoop</pd:groupType>
             <pd:serializable>false</pd:serializable>

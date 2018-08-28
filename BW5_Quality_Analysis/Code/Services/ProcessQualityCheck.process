@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/file/v2" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns1="http://www.hp.com/process/2013-04/MDD/ValidationLog" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:ns0="http://www.hp.com/process/2013-04/MDD/RecordSet" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx5="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd2" xmlns:pfx4="http://www.tibco.com/ns/no_namespace_schema_location/SharedResources/Schema/ProcessSchema.xsd" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:pfx3="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd" xmlns:pfx2="http://www.tibco.com/ns/no_namespace_schema_location/ProcessSchema.xsd" xmlns:pfx="http://www.tibco.com/ns/no_namespace_schema_location/Schema.xsd">
+<pd:ProcessDefinition xmlns:pfx="http://www.tibco.com/ns/no_namespace_schema_location/Schema.xsd" xmlns:pfx2="http://www.tibco.com/ns/no_namespace_schema_location/ProcessSchema.xsd" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:pfx3="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd" xmlns:pfx4="http://www.tibco.com/ns/no_namespace_schema_location/SharedResources/Schema/ProcessSchema.xsd" xmlns:pfx5="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://www.hp.com/process/2013-04/MDD/RecordSet" xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/file/v2" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:ns1="http://www.hp.com/process/2013-04/MDD/ValidationLog" xmlns:ns3="http://www.tibco.com/pe/WriteToLogActivitySchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:StringCustom="java://XpathStringFunctions">
     <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/SharedResources/Schema/ProcessSchema.xsd" schemaLocation="/SharedResources/Schema/ProcessSchema.xsd"/>
     <xsd:import namespace="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd" schemaLocation="/SharedResources/Schema/ValidationFields.xsd"/>
     <xsd:import namespace="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd2" schemaLocation="/SharedResources/Schema/ErrorFields.xsd"/>
@@ -19,6 +19,7 @@
             <inputOutputVersion>5.3.0</inputOutputVersion>
             <newMimeSupport>true</newMimeSupport>
             <sharedChannel>/SharedResources/Connections/HTTP/HTTP Connection.sharedhttp</sharedChannel>
+            <customField/>
             <Headers>
                 <xsd:element name="root">
                     <xsd:complexType>
@@ -52,10 +53,14 @@
         <config>
             <outputToString>true</outputToString>
             <lineSplit>None</lineSplit>
-            <command>C:\Users\mohammhu\Documents\myGitHub\github-tibco\BW5_Quality_Analysis\Code\ListProcessFileScript.bat</command>
+            <command/>
         </config>
         <pd:inputBindings>
-            <CmdInput/>
+            <CmdInput>
+                <command>
+                    <xsl:value-of select="concat($HTTP-Receiver/ProcessStarterOutput/PostData,&quot;/ListProcessFileScript.bat&quot;)"/>
+                </command>
+            </CmdInput>
         </pd:inputBindings>
     </pd:activity>
     <pd:activity name="Parse Process List">
@@ -73,7 +78,7 @@
         <pd:inputBindings>
             <Input>
                 <fileName>
-                    <xsl:value-of select="&quot;C:\Users\mohammhu\Documents\myGitHub\github-tibco\BW5_Quality_Analysis\Code\myProcessList.txt&quot;"/>
+                    <xsl:value-of select="concat($HTTP-Receiver/ProcessStarterOutput/PostData,&quot;\myProcessList.txt&quot;)"/>
                 </fileName>
                 <noOfRecords>
                     <xsl:value-of select="-1"/>
@@ -166,7 +171,7 @@
             </config>
             <pd:inputBindings>
                 <xmlString>
-                    <xsl:value-of select="$Read-Process-File/ns:ReadActivityOutputTextClass/fileContent/textContent"/>
+                    <xsl:value-of select="StringCustom:replaceAll($Read-Process-File/ns:ReadActivityOutputTextClass/fileContent/textContent, ':', '')"/>
                 </xmlString>
             </pd:inputBindings>
         </pd:activity>
@@ -180,15 +185,28 @@
             </config>
             <pd:inputBindings>
                 <pfx3:root>
-                    <pfx3:processName>
-                        <xsl:value-of select="tib:substring-after-last(substring-before($Parse-Process-File/pdProcessDefinition/pdname, '.process'), '/')"/>
-                    </pfx3:processName>
-                    <pfx3:namespace>
-                        <xsl:value-of select="$Parse-Process-File/pdProcessDefinition/xsdimport/@namespace"/>
-                    </pfx3:namespace>
-                    <pfx3:schemaName>
-                        <xsl:value-of select="tib:substring-after-last(substring-before($Parse-Process-File/pdProcessDefinition/xsdimport/@schemaLocation, '.xsd'), '/')"/>
-                    </pfx3:schemaName>
+                    <xsl:choose>
+                        <xsl:when test="contains($Parse-Process-File/pdProcessDefinition/pdname, '/')">
+                            <pfx3:processName>
+                                <xsl:value-of select="tib:substring-after-last(substring-before($Parse-Process-File/pdProcessDefinition/pdname, '.process'), '/')"/>
+                            </pfx3:processName>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <pfx3:processName>
+                                <xsl:value-of select="substring-before($Parse-Process-File/pdProcessDefinition/pdname, '.process')"/>
+                            </pfx3:processName>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:if test="exists($Parse-Process-File/pdProcessDefinition/xsdimport/@namespace)">
+                        <pfx3:namespace>
+                            <xsl:value-of select="$Parse-Process-File/pdProcessDefinition/xsdimport/@namespace"/>
+                        </pfx3:namespace>
+                    </xsl:if>
+                    <xsl:if test="exists($Parse-Process-File/pdProcessDefinition/xsdimport/@schemaLocation)">
+                        <pfx3:schemaName>
+                            <xsl:value-of select="tib:substring-after-last(substring-before($Parse-Process-File/pdProcessDefinition/xsdimport/@schemaLocation, '.xsd'), '/')"/>
+                        </pfx3:schemaName>
+                    </xsl:if>
                     <xsl:for-each select="$Parse-Process-File/pdProcessDefinition/pdstarter">
                         <pfx3:activity>
                             <pfx3:type>
@@ -223,7 +241,7 @@
             <pd:inputBindings>
                 <ns2:ReadActivityInputClass>
                     <fileName>
-                        <xsl:value-of select="&quot;C:\Users\mohammhu\Desktop\new 1.xml&quot;"/>
+                        <xsl:value-of select="tib:trim($currentProcess/param)"/>
                     </fileName>
                 </ns2:ReadActivityInputClass>
             </pd:inputBindings>
@@ -231,7 +249,7 @@
         <pd:activity name="Check File Quality">
             <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
             <pd:resourceType>ae.process.subprocess</pd:resourceType>
-            <pd:x>902</pd:x>
+            <pd:x>903</pd:x>
             <pd:y>145</pd:y>
             <config>
                 <processName>/Functions/MDDValidation/ValidateMetaDataDriven/ValidateRecordStructure.process</processName>
@@ -343,7 +361,7 @@
         <pd:x>285</pd:x>
         <pd:y>284</pd:y>
         <config>
-            <processName>/Services/GvQualityCheck.process</processName>
+            <processName>/Functions/Quality/GvQualityCheck.process</processName>
         </config>
         <pd:inputBindings>
             <root>
@@ -354,6 +372,9 @@
                         </processName>
                     </processList>
                 </xsl:for-each>
+                <location>
+                    <xsl:value-of select="$HTTP-Receiver/ProcessStarterOutput/PostData"/>
+                </location>
             </root>
         </pd:inputBindings>
     </pd:activity>
@@ -409,9 +430,10 @@
         <pd:y>81</pd:y>
         <pd:width>153</pd:width>
         <pd:height>145</pd:height>
-        <pd:collapsedWidth>52</pd:collapsedWidth>
-        <pd:collapsedHeight>69</pd:collapsedHeight>
+        <pd:collapsedWidth>57</pd:collapsedWidth>
+        <pd:collapsedHeight>70</pd:collapsedHeight>
         <pd:groupVariables/>
+        <pd:joinToggle>inherit</pd:joinToggle>
         <config>
             <pd:groupType>while</pd:groupType>
             <pd:serializable>false</pd:serializable>
@@ -449,7 +471,7 @@
             <pd:inputBindings>
                 <ns:WriteActivityInputTextClass>
                     <fileName>
-                        <xsl:value-of select="&quot;C:\Users\mohammhu\Desktop\Error_Report.csv&quot;"/>
+                        <xsl:value-of select="concat($HTTP-Receiver/ProcessStarterOutput/PostData,&quot;/&quot;,&quot;Error_Report.csv&quot;)"/>
                     </fileName>
                     <xsl:choose>
                         <xsl:when test="$l=1">
@@ -495,6 +517,63 @@
                     <xsl:value-of select="&quot;Success&quot;"/>
                 </asciiContent>
             </ResponseActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Send HTTP Error Response">
+        <pd:type>com.tibco.plugin.http.HTTPResponseActivity</pd:type>
+        <pd:resourceType>httppalette.httpWebResponse</pd:resourceType>
+        <pd:x>1513</pd:x>
+        <pd:y>312</pd:y>
+        <config>
+            <closeConnection>true</closeConnection>
+            <eventSource>HTTP Receiver</eventSource>
+            <Headers>
+                <xsd:element name="root">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="StatusLine" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="Content-Type" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="Set-Cookie" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="Pragma" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="Location" type="xsd:string" minOccurs="0"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </Headers>
+        </config>
+        <pd:inputBindings>
+            <ResponseActivityInput>
+                <asciiContent>
+                    <xsl:value-of select="&quot;Error encountered in Code Quality Service&quot;"/>
+                </asciiContent>
+            </ResponseActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Catch">
+        <pd:type>com.tibco.pe.core.CatchActivity</pd:type>
+        <pd:resourceType>ae.activities.catch</pd:resourceType>
+        <pd:x>1394</pd:x>
+        <pd:y>303</pd:y>
+        <pd:handler>true</pd:handler>
+        <config>
+            <catchAll>true</catchAll>
+        </config>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="Log">
+        <pd:type>com.tibco.pe.core.WriteToLogActivity</pd:type>
+        <pd:resourceType>ae.activities.log</pd:resourceType>
+        <pd:x>1634</pd:x>
+        <pd:y>305</pd:y>
+        <config>
+            <role>User</role>
+        </config>
+        <pd:inputBindings>
+            <ns3:ActivityInput>
+                <message>
+                    <xsl:value-of select="&quot;Error encountered in Code Quality Service&quot;"/>
+                </message>
+            </ns3:ActivityInput>
         </pd:inputBindings>
     </pd:activity>
     <pd:transition>
@@ -555,6 +634,27 @@
     </pd:transition>
     <pd:transition>
         <pd:from>Send HTTP Response</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Catch</pd:from>
+        <pd:to>Send HTTP Error Response</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Send HTTP Error Response</pd:from>
+        <pd:to>Log</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Log</pd:from>
         <pd:to>End</pd:to>
         <pd:lineType>Default</pd:lineType>
         <pd:lineColor>-16777216</pd:lineColor>

@@ -9,7 +9,1315 @@
 			<activityName>HTTP Receiver</activityName>
 			<format>
 				<stringFormat>
-					<maxLength>10</maxLength>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>TimerEventSource</activityType>
+			<activityName>Timer</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SendHTTPRequestActivity</activityType>
+			<activityName>Send HTTP Request</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SendHTTPResponseActivity</activityType>
+			<activityName>Send HTTP Response</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>WaitforHTTPRequestActivity</activityType>
+			<activityName>Wait for HTTP Request</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JDBCCallProcedureActivity</activityType>
+			<activityName>JDBC Call Procedure</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JDBCGetConnectionActivity</activityType>
+			<activityName>JDBC Get Connection</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JDBCQueryActivity</activityType>
+			<activityName>JDBC Query</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JDBCUpdateActivity</activityType>
+			<activityName>JDBC Update</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SQLDirectActivity</activityType>
+			<activityName>SQL Direct</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>GetJMSQueueMessageActivity</activityType>
+			<activityName>Get JMS Queue Message</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JMSQueueReceiverActivity</activityType>
+			<activityName>JMS Queue Receiver</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JMSQueueRequestorActivity</activityType>
+			<activityName>JMS Queue Requestor</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JMSQueueSenderActivity</activityType>
+			<activityName>JMS Queue Sender</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JMSTopicPublisherActivity</activityType>
+			<activityName>JMS Topic Publisher</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JMSTopicRequestorActivity</activityType>
+			<activityName>JMS Topic Requestor</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JMSTopicSubscriberActivity</activityType>
+			<activityName>JMS Topic Subscriber</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>ReplytoJMSMessageActivity</activityType>
+			<activityName>Reply to JMS Message</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>WaitforJMSQueueMessageActivity</activityType>
+			<activityName>Wait for JMS Queue Message</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>WaitforJMSTopicMessageActivity</activityType>
+			<activityName>Wait for JMS Topic Message</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>PublishRendezvousMessageActivity</activityType>
+			<activityName>Publish Rendezvous Message</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>RendezvousSubscriberActivity</activityType>
+			<activityName>Rendezvous Subscriber</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>ReplytoRendezvousRequestActivity</activityType>
+			<activityName>Reply to Rendezvous Request</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SendRendezvousRequestActivity</activityType>
+			<activityName>Send Rendezvous Request</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>WaitforRendezvousMessageActivity</activityType>
+			<activityName>Wait for Rendezvous Message</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>MimeParserActivity</activityType>
+			<activityName>MimeParser</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>RetrieveResourcesActivity</activityType>
+			<activityName>RetrieveResources</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SOAPEventSourceActivity</activityType>
+			<activityName>SOAPEventSource</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SOAPRequestReplyActivity</activityType>
+			<activityName>SOAPRequestReply</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SOAPSendFaultActivity</activityType>
+			<activityName>SOAPSendFault</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SOAPSendReplyActivity</activityType>
+			<activityName>SOAPSendReply</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>CopyFileActivity</activityType>
+			<activityName>Copy File</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>CreateFileActivity</activityType>
+			<activityName>Create File</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>FilePollerActivity</activityType>
+			<activityName>File Poller</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>ListFilesActivity</activityType>
+			<activityName>List Files</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>ReadFileActivity</activityType>
+			<activityName>Read File</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>RemoveFileActivity</activityType>
+			<activityName>Remove File</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>RenameFileActivity</activityType>
+			<activityName>Rename File</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>WaitforFileChangeActivity</activityType>
+			<activityName>Wait for File Change</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>WriteFileActivity</activityType>
+			<activityName>Write File</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>GetContextActivity</activityType>
+			<activityName>GetContext</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>InvokePartnerActivity</activityType>
+			<activityName>Invoke Partner</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>ReceivePartnerNotificationActivity</activityType>
+			<activityName>Receive Partner Notification</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SetContextActivity</activityType>
+			<activityName>SetContext</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SetContextActivity</activityType>
+			<activityName>SetContext</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>AdapterRequest-ResponseServerActivity</activityType>
+			<activityName>Adapter Request-Response Server</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>AdapterSubscriberActivity</activityType>
+			<activityName>Adapter Subscriber</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>InvokeanAdapterRequest-ResponseServiceActivity</activityType>
+			<activityName>Invoke an Adapter Request-Response Service</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>PublishtoAdapterActivity</activityType>
+			<activityName>Publish to Adapter</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>RespondtoAdapterRequestActivity</activityType>
+			<activityName>Respond to Adapter Request</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SendExceptiontoAdapterRequestActivity</activityType>
+			<activityName>Send Exception to Adapter Request</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>WaitforAdapterMessageActivity</activityType>
+			<activityName>Wait for Adapter Message</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>WaitforAdapterRequestActivity</activityType>
+			<activityName>Wait for Adapter Request</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>ParseXMLActivity</activityType>
+			<activityName>Parse XML</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>RenderXMLActivity</activityType>
+			<activityName>Render XML</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>TransformXMLActivity</activityType>
+			<activityName>Transform XML</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>ParseDataActivity</activityType>
+			<activityName>Parse Data</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>RenderDataActivity</activityType>
+			<activityName>Render Data</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>RenderDataActivity</activityType>
+			<activityName>Render Data</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>ReceiveMailActivity</activityType>
+			<activityName>Receive Mail</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SendMailActivity</activityType>
+			<activityName>Send Mail</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>FTPChangeDefaultDirectoryActivity</activityType>
+			<activityName>FTP Change Default Directory</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>FTPDeleteFileActivity</activityType>
+			<activityName>FTP Delete File</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>FTPDirActivity</activityType>
+			<activityName>FTP Dir</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>FTPGetDefaultDirectoryActivity</activityType>
+			<activityName>FTP Get Default Directory</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>FTPGetActivity</activityType>
+			<activityName>FTP Get</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>FTPMakeRemoteDirectoryActivity</activityType>
+			<activityName>FTP Make Remote Directory</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>FTPPutActivity</activityType>
+			<activityName>FTP Put</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>FTPQuoteActivity</activityType>
+			<activityName>FTP Quote</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>FTPRemoveRemoteDirectoryActivity</activityType>
+			<activityName>FTP Remove Remote Directory</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>FTPRenameFileActivity</activityType>
+			<activityName>FTP Rename File</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>FTPSYSTypeActivity</activityType>
+			<activityName>FTP SYS Type</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>InvokeRESTAPIActivity</activityType>
+			<activityName>Invoke REST API</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>ParseJSONActivity</activityType>
+			<activityName>Parse JSON</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>RESTDispatchandReplyActivity</activityType>
+			<activityName>REST Dispatch and Reply</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>RenderJSONActivity</activityType>
+			<activityName>Render JSON</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SalesforceCreateAllActivity</activityType>
+			<activityName>Salesforce Create All</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SalesforceDeleteAllActivity</activityType>
+			<activityName>Salesforce Delete All</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SalesforceGetSessionActivity</activityType>
+			<activityName>Salesforce Get Session</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SalesforceOutboundMessageListenerActivity</activityType>
+			<activityName>Salesforce Outbound Message Listener</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SalesforceQueryAllActivity</activityType>
+			<activityName>Salesforce Query All</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SalesforceRetrieveAllActivity</activityType>
+			<activityName>Salesforce Retrieve All</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SalesforceUpdateAllActivity</activityType>
+			<activityName>Salesforce Update All</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SalesforceUpsertAllActivity</activityType>
+			<activityName>Salesforce Upsert All</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JavaCodeActivity</activityType>
+			<activityName>Java Code</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JavaEventSourceActivity</activityType>
+			<activityName>Java Event Source</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JavaMethodActivity</activityType>
+			<activityName>Java Method</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JavaToXMLActivity</activityType>
+			<activityName>Java To XML</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>XMLToJavaActivity</activityType>
+			<activityName>XML To Java</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>AssignActivity</activityType>
+			<activityName>Assign</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>AssignActivity</activityType>
+			<activityName>Assign</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>CallProcessActivity</activityType>
+			<activityName>Call Process</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>CheckpointActivity</activityType>
+			<activityName>Checkpoint</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>ConfirmActivity</activityType>
+			<activityName>Confirm</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>EngineCommandActivity</activityType>
+			<activityName>Engine Command</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>ExternalCommandActivity</activityType>
+			<activityName>External Command</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>GenerateErrorActivity</activityType>
+			<activityName>Generate Error</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>GetVariableActivity</activityType>
+			<activityName>GetVariable</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>InspectorActivity</activityType>
+			<activityName>Inspector</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>NotifyActivity</activityType>
+			<activityName>Notify</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>onErrorActivity</activityType>
+			<activityName>onError</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>onNotificationTimeoutActivity</activityType>
+			<activityName>onNotificationTimeout</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>onShutdownActivity</activityType>
+			<activityName>onShutdown</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>onStartupActivity</activityType>
+			<activityName>onStartup</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>ReceiveNotificationActivity</activityType>
+			<activityName>Receive Notification</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>RethrowActivity</activityType>
+			<activityName>Rethrow</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SetVariableActivity</activityType>
+			<activityName>SetVariable</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SleepActivity</activityType>
+			<activityName>Sleep</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>TimerActivity</activityType>
+			<activityName>Timer</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>WaitActivity</activityType>
+			<activityName>Wait</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
 					<patterns>
 							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
 					</patterns>
@@ -21,7 +1329,7 @@
 			<activityName>Map Data</activityName>
 			<format>
 				<stringFormat>
-					<maxLength>10</maxLength>
+					<maxLength>50</maxLength>
 					<patterns>
 							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
 					</patterns>
@@ -33,7 +1341,7 @@
 			<activityName>Catch</activityName>
 			<format>
 				<stringFormat>
-					<maxLength>10</maxLength>
+					<maxLength>50</maxLength>
 					<patterns>
 							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
 					</patterns>
@@ -45,7 +1353,7 @@
 			<activityName>Log</activityName>
 			<format>
 				<stringFormat>
-					<maxLength>1</maxLength>
+					<maxLength>50</maxLength>
 					<patterns>
 							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
 					</patterns>
@@ -57,7 +1365,7 @@
 			<activityName>Process Definition</activityName>
 			<format>
 				<stringFormat>
-					<maxLength>10</maxLength>
+					<maxLength>50</maxLength>
 					<patterns>
 							<options>^[A-Z][a-z]*([A-Z][a-z]*)?[1-9]*$</options>
 					</patterns>

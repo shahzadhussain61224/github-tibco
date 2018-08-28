@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pd:ProcessDefinition xmlns:BW="java://com.tibco.pe.core.JavaCustomXPATHFunctions" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:pfx13="http://www.hp.com/schemas/MDD/Schema.xsd" xmlns:pfx12="http://www.hp.com/schemas/ChannelDataCollection/LocalTesting/Schema.xsd" xmlns:pfx11="http://www.hp.com/process/2013-04/ChannelDataCollection/Validate/MetaDataDriven/ValidationLog" xmlns:pfx10="http://www.hp.com/process/2013-04/ChannelDataCollection/Validate/MetaDataDriven/RecordSetStructure" xmlns:ns5="http://www.tibco.com/pe/EngineTypes" xmlns:ns6="pfx" xmlns:ns7="http://www.tibco.com/pe/WriteToLogActivitySchema" xmlns:pfx="http://www.hp.partnerdc/validation/file" xmlns:ns8="pfx2" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.hp.com/partnerdc/schema/Types" xmlns:ns1="http://www.tibco.com/namespaces/tnt/plugins/file/v2" xmlns:ns4="http://www.tibco.com/pe/DeployedVarsType" xmlns:ns3="http://www.hp.com/schema/2013-04/ChannelDataCollection/Common/Types" xmlns:pfx5="http://www.hp.com/schema/2013-04/ChannelDataCollection/File" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx4="http://www.hp.com/partnerdc/schema/validationlog" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:pfx3="http://www.hp.partnerdc/validation/log" xmlns:pfx2="http://www.hp.partnerdc/validation/structure" xmlns:pfx9="http://www.hp.com/process/2013-04/ChannelDataCollection/Validate/MetaDataDriven/RecordSet" xmlns:pfx8="http://www.hp.partnerdc/process/validate/structure/log" xmlns:pfx7="http://www.hp.partnerdc/process/validate/structure/genericfile" xmlns:pfx6="http://www.hp.partnerdc/process/validate/structure/format">
+<pd:ProcessDefinition xmlns:pfx6="http://www.hp.partnerdc/process/validate/structure/format" xmlns:pfx7="http://www.hp.partnerdc/process/validate/structure/genericfile" xmlns:pfx8="http://www.hp.partnerdc/process/validate/structure/log" xmlns:pfx="http://www.hp.partnerdc/validation/file" xmlns:pfx9="http://www.hp.com/process/2013-04/ChannelDataCollection/Validate/MetaDataDriven/RecordSet" xmlns:pfx2="http://www.hp.partnerdc/validation/structure" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:pfx3="http://www.hp.partnerdc/validation/log" xmlns:pfx4="http://www.hp.com/partnerdc/schema/validationlog" xmlns:pfx5="http://www.hp.com/schema/2013-04/ChannelDataCollection/File" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.hp.com/partnerdc/schema/Types" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:ns1="http://www.tibco.com/namespaces/tnt/plugins/file/v2" xmlns:ns4="http://www.tibco.com/pe/DeployedVarsType" xmlns:ns3="http://www.hp.com/schema/2013-04/ChannelDataCollection/Common/Types" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns6="pfx" xmlns:ns5="http://www.tibco.com/pe/EngineTypes" xmlns:ns8="pfx2" xmlns:ns7="http://www.tibco.com/pe/WriteToLogActivitySchema" xmlns:BW="java://com.tibco.pe.core.JavaCustomXPATHFunctions" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx11="http://www.hp.com/process/2013-04/ChannelDataCollection/Validate/MetaDataDriven/ValidationLog" xmlns:pfx12="http://www.hp.com/schemas/ChannelDataCollection/LocalTesting/Schema.xsd" xmlns:pfx10="http://www.hp.com/process/2013-04/ChannelDataCollection/Validate/MetaDataDriven/RecordSetStructure" xmlns:pfx13="http://www.hp.com/schemas/MDD/Schema.xsd">
     <xsd:import namespace="http://www.hp.com/schema/2013-04/ChannelDataCollection/File" schemaLocation="/SharedResources/Schemas/Domain/File.xsd"/>
     <xsd:import namespace="http://www.hp.partnerdc/process/validate/structure/genericfile" schemaLocation="/SharedResources/Schemas/Process/ValidateFileStructure/GenericFileStructure.xsd"/>
     <xsd:import namespace="http://www.hp.partnerdc/process/validate/structure/log" schemaLocation="/SharedResources/Schemas/Process/ValidateFileStructure/ValidationLog.xsd"/>
@@ -9,11 +9,10 @@
     <xsd:import namespace="http://www.hp.com/process/2013-04/ChannelDataCollection/Validate/MetaDataDriven/ValidationLog" schemaLocation="/SharedResources/Schemas/Process/ValidateMetaDataDriven/ValidationLog.xsd"/>
     <xsd:import namespace="http://www.hp.com/schemas/ChannelDataCollection/LocalTesting/Schema.xsd" schemaLocation="/SharedResources/Schemas/Process/ValidateMetaDataDriven/MDDRulesFiles.xsd"/>
     <xsd:import namespace="http://www.hp.com/schemas/MDD/Schema.xsd" schemaLocation="/SharedResources/Schema/ValidateMetaDataDriven/MDDRulesFiles.xsd"/>
-    <pd:name>Functions/MDDValidation/Read/SetMDDXMLRulesGlobalObject.process</pd:name>
-    <pd:startName>Start</pd:startName>
-    <pd:startType/>
-    <pd:startX>46</pd:startX>
-    <pd:startY>157</pd:startY>
+    <pd:name>Services/SetMDDXMLRulesGlobalObject.process</pd:name>
+    <pd:startName>onStartup</pd:startName>
+    <pd:startX>0</pd:startX>
+    <pd:startY>0</pd:startY>
     <pd:returnBindings>
         <RecordValidationResult>
             <xsl:copy-of select="$Collect-Record-Validation-Results/root/ancestor-or-self::*/namespace::node()"/>
@@ -21,6 +20,14 @@
             <xsl:copy-of select="$Collect-Record-Validation-Results/root/node()"/>
         </RecordValidationResult>
     </pd:returnBindings>
+    <pd:starter name="onStartup">
+        <pd:type>com.tibco.pe.core.OnStartupEventSource</pd:type>
+        <pd:resourceType>ae.activities.onStartup</pd:resourceType>
+        <pd:x>56</pd:x>
+        <pd:y>155</pd:y>
+        <config/>
+        <pd:inputBindings/>
+    </pd:starter>
     <pd:endName>End</pd:endName>
     <pd:endX>918</pd:endX>
     <pd:endY>157</pd:endY>
@@ -38,7 +45,7 @@
         <pd:inputBindings>
             <ns:ListFilesActivityConfig>
                 <fileName>
-                    <xsl:value-of select="&quot;C:\Users\mohammhu\Documents\myGitHub\github-tibco\BW5_Quality_Analysis\Code\SharedResources\XMLFiles\*&quot;"/>
+                    <xsl:value-of select="&quot;C:\Users\shahz\Documents\myGitHub\github-tibco\BW5_Quality_Analysis\Code\SharedResources\XMLFiles\MDDPdRules.xml&quot;"/>
                 </fileName>
             </ns:ListFilesActivityConfig>
         </pd:inputBindings>
@@ -207,7 +214,7 @@
         <pd:conditionType>always</pd:conditionType>
     </pd:transition>
     <pd:transition>
-        <pd:from>Start</pd:from>
+        <pd:from>onStartup</pd:from>
         <pd:to>List Files</pd:to>
         <pd:lineType>Default</pd:lineType>
         <pd:lineColor>-16777216</pd:lineColor>
