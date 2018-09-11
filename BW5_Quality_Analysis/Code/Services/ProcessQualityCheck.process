@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pd:ProcessDefinition xmlns:pfx="http://www.tibco.com/ns/no_namespace_schema_location/Schema.xsd" xmlns:pfx2="http://www.tibco.com/ns/no_namespace_schema_location/ProcessSchema.xsd" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:pfx3="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd" xmlns:pfx4="http://www.tibco.com/ns/no_namespace_schema_location/SharedResources/Schema/ProcessSchema.xsd" xmlns:pfx5="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://www.hp.com/process/2013-04/MDD/RecordSet" xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/file/v2" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:ns1="http://www.hp.com/process/2013-04/MDD/ValidationLog" xmlns:ns3="http://www.tibco.com/pe/WriteToLogActivitySchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:StringCustom="java://XpathStringFunctions">
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:StringCustom="java://XpathStringFunctions" xmlns:pfx="http://www.tibco.com/ns/no_namespace_schema_location/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/file/v2" xmlns:ns1="http://www.hp.com/process/2013-04/MDD/ValidationLog" xmlns:ns3="http://www.tibco.com/pe/WriteToLogActivitySchema" xmlns:ns0="http://www.hp.com/process/2013-04/MDD/RecordSet" xmlns:pfx5="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx4="http://www.tibco.com/ns/no_namespace_schema_location/SharedResources/Schema/ProcessSchema.xsd" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:pfx3="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd" xmlns:pfx2="http://www.tibco.com/ns/no_namespace_schema_location/ProcessSchema.xsd">
     <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/SharedResources/Schema/ProcessSchema.xsd" schemaLocation="/SharedResources/Schema/ProcessSchema.xsd"/>
     <xsd:import namespace="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd" schemaLocation="/SharedResources/Schema/ValidationFields.xsd"/>
     <xsd:import namespace="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd2" schemaLocation="/SharedResources/Schema/ErrorFields.xsd"/>
@@ -328,7 +328,7 @@
         <pd:activity name="Collect Errors">
             <pd:type>com.tibco.plugin.mapper.MapperActivity</pd:type>
             <pd:resourceType>ae.activities.MapperActivity</pd:resourceType>
-            <pd:x>1012</pd:x>
+            <pd:x>1015</pd:x>
             <pd:y>146</pd:y>
             <config>
                 <element ref="pfx5:errorRecord"/>
@@ -351,6 +351,22 @@
                             </pfx5:message>
                         </pfx5:fields>
                     </xsl:for-each>
+                    <xsl:if test="count($Collect-Quality-Attributes/pfx3:root/pfx3:activity)>20">
+                        <pfx5:fields>
+                            <pfx5:type>
+                                <xsl:value-of select="'Process'"/>
+                            </pfx5:type>
+                            <pfx5:name>
+                                <xsl:value-of select="$Read-Process-File/ns:ReadActivityOutputTextClass/fileInfo/fileName"/>
+                            </pfx5:name>
+                            <pfx5:subName>
+                                <xsl:value-of select="'Total Activities'"/>
+                            </pfx5:subName>
+                            <pfx5:message>
+                                <xsl:value-of select="&quot;Number of Activities in the process are more than 20&quot;"/>
+                            </pfx5:message>
+                        </pfx5:fields>
+                    </xsl:if>
                 </pfx5:errorRecord>
             </pd:inputBindings>
         </pd:activity>
