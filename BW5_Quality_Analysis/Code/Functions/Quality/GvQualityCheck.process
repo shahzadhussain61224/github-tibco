@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pd:ProcessDefinition xmlns:pfx6="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd3" xmlns:pfx7="http://www.tibco.com/xmlns/repo/types/2002" xmlns:pfx="http://www.tibco.com/ns/no_namespace_schema_location/Schema.xsd" xmlns:pfx2="http://www.tibco.com/ns/no_namespace_schema_location/ProcessSchema.xsd" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:pfx3="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd" xmlns:pfx4="http://www.tibco.com/ns/no_namespace_schema_location/SharedResources/Schema/ProcessSchema.xsd" xmlns:pfx5="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/file/v2" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:ns1="http://www.hp.com/process/2013-04/MDD/ValidationLog" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pd="http://xmlns.tibco.com/bw/process/2003">
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:pfx="http://www.tibco.com/ns/no_namespace_schema_location/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/file/v2" xmlns:ns1="http://www.hp.com/process/2013-04/MDD/ValidationLog" xmlns:pfx5="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx4="http://www.tibco.com/ns/no_namespace_schema_location/SharedResources/Schema/ProcessSchema.xsd" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:pfx3="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd" xmlns:pfx2="http://www.tibco.com/ns/no_namespace_schema_location/ProcessSchema.xsd" xmlns:pfx7="http://www.tibco.com/xmlns/repo/types/2002" xmlns:pfx6="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd3">
     <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/SharedResources/Schema/ProcessSchema.xsd" schemaLocation="/SharedResources/Schema/ProcessSchema.xsd"/>
     <xsd:import namespace="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd" schemaLocation="/SharedResources/Schema/ValidationFields.xsd"/>
     <xsd:import namespace="http://www.tibco.com/schemas/Code/SharedResources/Schema/Schema.xsd2" schemaLocation="/SharedResources/Schema/ErrorFields.xsd"/>
@@ -254,7 +254,7 @@
         <pd:activity name="Parse GV File">
             <pd:type>com.tibco.plugin.xml.XMLParseActivity</pd:type>
             <pd:resourceType>ae.activities.XMLParseActivity</pd:resourceType>
-            <pd:x>473</pd:x>
+            <pd:x>474</pd:x>
             <pd:y>169</pd:y>
             <config>
                 <inputStyle>text</inputStyle>
@@ -288,7 +288,7 @@
             <pd:type>com.tibco.plugin.mapper.MapperActivity</pd:type>
             <pd:resourceType>ae.activities.MapperActivity</pd:resourceType>
             <pd:x>580</pd:x>
-            <pd:y>172</pd:y>
+            <pd:y>171</pd:y>
             <config>
                 <element>
                     <xsd:element name="root">
@@ -302,7 +302,7 @@
             </config>
             <pd:inputBindings>
                 <root>
-                    <xsl:for-each select="$Parse-GV-File/pfx7:repository/pfx7:globalVariables/pfx7:globalVariable">
+                    <xsl:for-each select="$Parse-GV-File/pfx7:repository/pfx7:globalVariables/pfx7:globalVariable[pfx7:name!=&quot;BW_GLOBAL_TRUSTED_CA_STORE&quot; and pfx7:name!=&quot;Deployment&quot; and pfx7:name!=&quot;Domain&quot;]">
                         <name>
                             <xsl:value-of select="pfx7:name"/>
                         </name>

@@ -11,19 +11,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
-					</patterns>
-				</stringFormat>
-			</format>
-		</field>
-		<field>
-			<activityType>TimerEventSource</activityType>
-			<activityName>Timer</activityName>
-			<format>
-				<stringFormat>
-					<maxLength>50</maxLength>
-					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -35,7 +23,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -47,7 +35,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -59,7 +47,31 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>HTTPConnectionActivity</activityType>
+			<activityName>HTTP Connection</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>ProxyConfigurationActivity</activityType>
+			<activityName>Proxy Configuration</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -71,7 +83,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -83,7 +95,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -95,7 +107,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -107,7 +119,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -119,7 +131,19 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JDBCConnectionActivity</activityType>
+			<activityName>JDBC Connection</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -131,7 +155,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -143,7 +167,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -155,7 +179,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -167,7 +191,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -179,7 +203,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -191,7 +215,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -203,7 +227,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -215,7 +239,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -227,7 +251,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -239,7 +263,31 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JMSConnectionActivity</activityType>
+			<activityName>JMS Connection</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JMSApplicationPropertiesActivity</activityType>
+			<activityName>JMS Application Properties</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -251,7 +299,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -263,7 +311,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -275,7 +323,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -287,7 +335,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -299,7 +347,19 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>RendezvousTransportActivity</activityType>
+			<activityName>Rendezvous Transport</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -311,7 +371,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -323,19 +383,19 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
 		</field>
 		<field>
-			<activityType>SOAPEventSourceActivity</activityType>
+			<activityType>SOAPEventSource</activityType>
 			<activityName>SOAPEventSource</activityName>
 			<format>
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -347,7 +407,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -359,7 +419,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -371,7 +431,103 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SecurityPolicyAssociationActivity</activityType>
+			<activityName>Security Policy Association</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SecurityPolicyActivity</activityType>
+			<activityName>Security Policy</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>WSDLActivity</activityType>
+			<activityName>WSDL</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JTAUserTransactionConfigurationActivity</activityType>
+			<activityName>JTA UserTransaction Configuration</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>XATransactionManagerConfigurationActivity</activityType>
+			<activityName>XA TransactionManager Configuration</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>DTDActivity</activityType>
+			<activityName>DTD</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>InstanceActivity</activityType>
+			<activityName>Instance</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SchemaActivity</activityType>
+			<activityName>Schema</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -383,7 +539,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -395,7 +551,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -407,7 +563,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -419,7 +575,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -431,7 +587,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -443,7 +599,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -455,7 +611,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -467,7 +623,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -479,7 +635,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -491,7 +647,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -503,7 +659,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -515,7 +671,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -527,7 +683,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -539,7 +695,43 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>ContextResourceActivity</activityType>
+			<activityName>Context Resource</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>PartnerLinkConfigurationActivity</activityType>
+			<activityName>Partner Link Configuration</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>ServiceActivity</activityType>
+			<activityName>Service</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -551,7 +743,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -563,7 +755,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -575,7 +767,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -587,7 +779,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -599,7 +791,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -611,7 +803,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -623,7 +815,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -635,7 +827,31 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>GenericAdapterConfigurationActivity</activityType>
+			<activityName>GenericAdapterConfiguration</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>MessageFilterActivity</activityType>
+			<activityName>MessageFilter</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -647,7 +863,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -659,7 +875,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -671,7 +887,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -683,7 +899,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -695,7 +911,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -707,7 +923,19 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>DataFormatActivity</activityType>
+			<activityName>Data Format</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -719,7 +947,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -731,7 +959,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -743,7 +971,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -755,7 +983,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -767,7 +995,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -779,7 +1007,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -791,7 +1019,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -803,7 +1031,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -815,7 +1043,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -827,7 +1055,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -839,7 +1067,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -851,7 +1079,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -863,7 +1091,19 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>FTPConnectionActivity</activityType>
+			<activityName>FTP Connection</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -875,7 +1115,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -887,7 +1127,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -899,7 +1139,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -911,7 +1151,19 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>OAuth1.0Activity</activityType>
+			<activityName>OAuth1.0</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -923,7 +1175,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -935,7 +1187,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -947,7 +1199,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -959,7 +1211,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -971,7 +1223,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -983,7 +1235,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -995,7 +1247,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1007,7 +1259,19 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SalesforceConnectionActivity</activityType>
+			<activityName>Salesforce Connection</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1019,7 +1283,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1031,7 +1295,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1043,7 +1307,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1055,7 +1319,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1067,7 +1331,43 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JavaCustomFunctionActivity</activityType>
+			<activityName>JavaCustomFunction</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JavaGlobalInstanceActivity</activityType>
+			<activityName>Java Global Instance</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JavaSchemaActivity</activityType>
+			<activityName>Java Schema</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1079,19 +1379,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
-					</patterns>
-				</stringFormat>
-			</format>
-		</field>
-		<field>
-			<activityType>AssignActivity</activityType>
-			<activityName>Assign</activityName>
-			<format>
-				<stringFormat>
-					<maxLength>50</maxLength>
-					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1103,7 +1391,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1115,7 +1403,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1127,7 +1415,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1139,7 +1427,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1151,7 +1439,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1163,7 +1451,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1175,7 +1463,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1187,7 +1475,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1199,7 +1487,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1211,7 +1499,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1223,7 +1511,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1235,7 +1523,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1247,7 +1535,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1259,7 +1547,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1271,7 +1559,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1283,7 +1571,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1295,7 +1583,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1307,7 +1595,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1319,7 +1607,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1331,7 +1619,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1343,7 +1631,79 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>CustomActivityActivity</activityType>
+			<activityName>Custom Activity</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JNDIConfigurationActivity</activityType>
+			<activityName>JNDI Configuration</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JobSharedVariableActivity</activityType>
+			<activityName>Job Shared Variable</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>LockActivity</activityType>
+			<activityName>Lock</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>NotifyConfigurationActivity</activityType>
+			<activityName>Notify Configuration</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SharedVariableActivity</activityType>
+			<activityName>Shared Variable</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1355,7 +1715,67 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*( [A-Z][a-z]*)?( [1-9]*)?$</options>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>NullActivity</activityType>
+			<activityName>null</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>JSONParserActivity</activityType>
+			<activityName>JSONParserActivity</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>FileReadActivity</activityType>
+			<activityName>FileReadActivity</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>SOAPSendReceiveActivity</activityType>
+			<activityName>SOAPSendReceiveActivity</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
+					</patterns>
+				</stringFormat>
+			</format>
+		</field>
+		<field>
+			<activityType>FileWriteActivity</activityType>
+			<activityName>FileWriteActivity</activityName>
+			<format>
+				<stringFormat>
+					<maxLength>50</maxLength>
+					<patterns>
+							<options>^[A-Z][a-z]*( [A-Z][a-z]*)*( [1-9]*)*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
@@ -1367,7 +1787,7 @@
 				<stringFormat>
 					<maxLength>50</maxLength>
 					<patterns>
-							<options>^[A-Z][a-z]*([A-Z][a-z]*)?[1-9]*$</options>
+							<options>^[A-Z][a-z]*([A-Z][a-z]*)*[1-9]*$</options>
 					</patterns>
 				</stringFormat>
 			</format>
