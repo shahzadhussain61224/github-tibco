@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BWSharedResource xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <name>COMPRESSED DATA FORMAT</name>
+    <resourceType>ae.shared.ParseSharedResource</resourceType>
+    <config xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <FormatType>Delimiter separated</FormatType>
+        <ColumnSeparator>,</ColumnSeparator>
+        <ColSeparatorRule>Treat all characters as entered as a single column separator string</ColSeparatorRule>
+        <LineSeparator>
+</LineSeparator>
+        <FillCharacter>Space</FillCharacter>
+        <LineLength>1</LineLength>
+        <DataFormat>
+            <xsd:element name="root">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="SL_NO" type="xsd:double"/>
+                        <xsd:element name="NAME" type="xsd:string"/>
+                        <xsd:element name="ACCOUNT_NO" type="xsd:double"/>
+                        <xsd:element name="ACCOUNT_TYPE" type="xsd:string"/>
+                        <xsd:element name="CREDIT_AMOUNT" type="xsd:double"/>
+                        <xsd:element name="DEBIT_AMOUNT" type="xsd:double"/>
+                        <xsd:element name="TOTAL_BALANCE" type="xsd:double"/>
+                        <xsd:element name="ADDRESS" type="xsd:string"/>
+                        <xsd:element name="SSN_NO" type="xsd:double"/>
+                        <xsd:element name="AADHAR_NO" type="xsd:double"/>
+                        <xsd:element name="PAN_NO" type="xsd:double"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </DataFormat>
+    </config>
+</BWSharedResource>

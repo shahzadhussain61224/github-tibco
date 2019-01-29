@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://xmlns.example.com/1541446260400" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns="http://xmlns.tibco.com/encodings/mime" xmlns:ns2="http://www.tibco.com/schemas/RETAIL/Schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <wsdl:import namespace="http://xmlns.example.com/1541446260400" location="/Retail SOAP Service/WSDL.wsdl"/>
+    <pd:name>Retail SOAP Service/SOAP RESPONSE.process</pd:name>
+    <pd:startName>SOAPEventSource</pd:startName>
+    <pd:startX>0</pd:startX>
+    <pd:startY>0</pd:startY>
+    <pd:returnBindings/>
+    <pd:starter name="SOAPEventSource">
+        <pd:type>com.tibco.plugin.soap.SOAPEventSource</pd:type>
+        <pd:resourceType>ae.activities.SOAPEventSourceUI</pd:resourceType>
+        <pd:x>94</pd:x>
+        <pd:y>93</pd:y>
+        <config>
+            <service>pfx:PortType</service>
+            <wsdlNamespaceRoot>http://xmlns.example.com/1541446260400/OperationImpl</wsdlNamespaceRoot>
+            <operation>Operation</operation>
+            <portAddressPrefix/>
+            <operationStyle>rpc</operationStyle>
+            <soapUse>literal</soapUse>
+            <inputNamespace>http://InputMessageNamespace</inputNamespace>
+            <outputNamespace>http://OutputMessageNamespace</outputNamespace>
+            <faultNamespace>http://FaultMessageNamespace</faultNamespace>
+            <embedWsdlComponents>true</embedWsdlComponents>
+            <embedSchemaComponents>true</embedSchemaComponents>
+            <soapAction>/SOAP/SOAP%20RESPONSE</soapAction>
+            <sharedChannel>/HTTP Connection.sharedhttp</sharedChannel>
+            <soapVersion>SOAP 1.2</soapVersion>
+            <httpURI>/test</httpURI>
+            <soapAttachmentStyle>SwA</soapAttachmentStyle>
+        </config>
+        <pd:inputBindings/>
+    </pd:starter>
+    <pd:endName>End</pd:endName>
+    <pd:endX>602</pd:endX>
+    <pd:endY>91</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1541446237496</pd:targetNamespace>
+    <pd:activity name="SOAPSendReply">
+        <pd:type>com.tibco.plugin.soap.SOAPSendReplyActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendReplyUI</pd:resourceType>
+        <pd:x>450</pd:x>
+        <pd:y>94</pd:y>
+        <config>
+            <eventSource>SOAPEventSource</eventSource>
+            <sharedChannels>
+                <jmsChannel>
+                    <JMSDeliveryMode>2</JMSDeliveryMode>
+                </jmsChannel>
+            </sharedChannels>
+        </config>
+        <pd:inputBindings>
+            <OperationResponse>
+                <OUTPUT>
+                    <ns2:RETAIL>
+                        <ns2:RANK>
+                            <xsl:value-of select="round($JDBC-Query/resultSet/Record[1]/RANK)"/>
+                        </ns2:RANK>
+                        <ns2:COMPANY>
+                            <xsl:value-of select="$JDBC-Query/resultSet/Record[1]/COMPANY"/>
+                        </ns2:COMPANY>
+                        <ns2:SALES_2017>
+                            <xsl:value-of select="$JDBC-Query/resultSet/Record[1]/SALES_2017"/>
+                        </ns2:SALES_2017>
+                        <ns2:HQ_CITY>
+                            <xsl:value-of select="$JDBC-Query/resultSet/Record[1]/HQ_CITY"/>
+                        </ns2:HQ_CITY>
+                        <ns2:HQ_STATE>
+                            <xsl:value-of select="$JDBC-Query/resultSet/Record[1]/HQ_STATE"/>
+                        </ns2:HQ_STATE>
+                        <ns2:STORE>
+                            <xsl:value-of select="$JDBC-Query/resultSet/Record[1]/STORE"/>
+                        </ns2:STORE>
+                    </ns2:RETAIL>
+                </OUTPUT>
+            </OperationResponse>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="JDBC Query">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>278</pd:x>
+        <pd:y>90</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>true</emptyStrAsNil>
+            <jdbcSharedConfig>/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>Select * from RETAIL where COMPANY=?</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>COMPANY</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+            <oraObjects/>
+            <oraTables/>
+            <QueryOutputCachedSchemaColumns>RANK</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>2</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>NUMBER</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>COMPANY</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>SALES_2017</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>HQ_CITY</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>HQ_STATE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>STORE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput>
+                <COMPANY>
+                    <xsl:copy-of select="$SOAPEventSource/Operation/COMPANY/@xsi:nil"/>
+                    <xsl:value-of select="$SOAPEventSource/Operation/COMPANY"/>
+                </COMPANY>
+            </jdbcQueryActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SOAPSendReply-1">
+        <pd:type>com.tibco.plugin.soap.SOAPSendReplyActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendReplyUI</pd:resourceType>
+        <pd:x>436</pd:x>
+        <pd:y>235</pd:y>
+        <config>
+            <eventSource>SOAPEventSource</eventSource>
+            <sharedChannels>
+                <jmsChannel>
+                    <JMSDeliveryMode>2</JMSDeliveryMode>
+                </jmsChannel>
+            </sharedChannels>
+        </config>
+        <pd:inputBindings>
+            <OperationResponse>
+                <OUTPUT>
+                    <ns2:RETAIL>
+                        <ns2:RANK>
+                            <xsl:value-of select="0"/>
+                        </ns2:RANK>
+                        <ns2:COMPANY>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:COMPANY>
+                        <ns2:SALES_2017>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:SALES_2017>
+                        <ns2:HQ_CITY>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:HQ_CITY>
+                        <ns2:HQ_STATE>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:HQ_STATE>
+                        <ns2:STORE>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:STORE>
+                    </ns2:RETAIL>
+                </OUTPUT>
+            </OperationResponse>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SOAPSendFault">
+        <pd:type>com.tibco.plugin.soap.SOAPSendFaultActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendFaultUI</pd:resourceType>
+        <pd:x>735</pd:x>
+        <pd:y>88</pd:y>
+        <config>
+            <faultMessage>ERROR</faultMessage>
+            <eventSource>SOAPEventSource</eventSource>
+            <sharedChannels>
+                <jmsChannel>
+                    <JMSDeliveryMode>2</JMSDeliveryMode>
+                </jmsChannel>
+            </sharedChannels>
+        </config>
+        <pd:inputBindings>
+            <FaultMessage>
+                <faultcode>
+                    <xsl:value-of select="1234"/>
+                </faultcode>
+                <faultstring>
+                    <xsl:value-of select="&quot;Error Received&quot;"/>
+                </faultstring>
+            </FaultMessage>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Catch">
+        <pd:type>com.tibco.pe.core.CatchActivity</pd:type>
+        <pd:resourceType>ae.activities.catch</pd:resourceType>
+        <pd:x>893</pd:x>
+        <pd:y>88</pd:y>
+        <pd:handler>true</pd:handler>
+        <config>
+            <catchAll>true</catchAll>
+        </config>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>JDBC Query</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JDBC Query</pd:from>
+        <pd:to>SOAPSendReply</pd:to>
+        <pd:xpathDescription>Data Exists</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendReply</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Catch</pd:from>
+        <pd:to>SOAPSendFault</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendFault</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JDBC Query</pd:from>
+        <pd:to>SOAPSendReply-1</pd:to>
+        <pd:xpathDescription>No Data</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendReply-1</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

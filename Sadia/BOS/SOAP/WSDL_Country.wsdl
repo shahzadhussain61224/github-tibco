@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://www.tibco.com/schemas/BOS/Schemas/Schema1.xsd" xmlns:tns="http://xmlns.example.com/1547969443094" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xmlns.example.com/1547969443094">
+    <import namespace="http://www.tibco.com/schemas/BOS/Schemas/Schema1.xsd" location="../Schemas/COUNTRY.xsd"/>
+    <message name="INPUT">
+        <part name="COUNTRY" type="xsd:string"/>
+    </message>
+    <message name="OUTPUT">
+        <part name="COUNTRY" element="ns:Response"/>
+    </message>
+    <message name="FAULT">
+        <part name="ERROR" type="xsd:string"/>
+    </message>
+    <portType name="PortType">
+        <operation name="Operation">
+            <input message="tns:INPUT"/>
+            <output message="tns:OUTPUT"/>
+            <fault name="fault1" message="tns:FAULT"/>
+        </operation>
+    </portType>
+</definitions>

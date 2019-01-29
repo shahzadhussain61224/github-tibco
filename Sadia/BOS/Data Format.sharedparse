@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BWSharedResource xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <name>Data Format</name>
+    <resourceType>ae.shared.ParseSharedResource</resourceType>
+    <config xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <FormatType>Delimiter separated</FormatType>
+        <ColumnSeparator>,</ColumnSeparator>
+        <ColSeparatorRule>Treat all characters as entered as a single column separator string</ColSeparatorRule>
+        <LineSeparator>
+</LineSeparator>
+        <FillCharacter>Space</FillCharacter>
+        <DataFormat>
+            <xsd:element name="BOS_root">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="SL.No" type="xsd:integer"/>
+                        <xsd:element name="First_Name" type="xsd:string"/>
+                        <xsd:element name="Middle_Name" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="Last_Name" type="xsd:string"/>
+                        <xsd:element name="Account_No" type="xsd:long"/>
+                        <xsd:element name="Account_Type" type="xsd:string"/>
+                        <xsd:element name="Credit_Amount" type="xsd:long" minOccurs="0"/>
+                        <xsd:element name="Debit_Amount" type="xsd:long" minOccurs="0"/>
+                        <xsd:element name="Total_Balance" type="xsd:long" minOccurs="0"/>
+                        <xsd:element name="Street" type="xsd:string"/>
+                        <xsd:element name="City" type="xsd:string"/>
+                        <xsd:element name="State" type="xsd:string"/>
+                        <xsd:element name="Country" type="xsd:string"/>
+                        <xsd:element name="Postal_Code" type="xsd:long"/>
+                        <xsd:element name="SSN" type="xsd:long"/>
+                        <xsd:element name="Adhar_No" type="xsd:long"/>
+                        <xsd:element name="Pan_No" type="xsd:long"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </DataFormat>
+    </config>
+</BWSharedResource>

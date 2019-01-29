@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/RETAIL/Schema.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/RETAIL/Schema.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="RETAIL">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="RANK" type="xs:int"/>
+				<xs:element name="COMPANY" type="xs:string"/>
+				<xs:element name="SALES_2017" type="xs:string"/>
+				<xs:element name="HQ_CITY" type="xs:string"/>
+				<xs:element name="HQ_STATE" type="xs:string"/>
+				<xs:element name="STORE" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

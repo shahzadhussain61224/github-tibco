@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.example.com/1543713627892/OperationImpl/HP_sp_Retailers_sp_SOAP_sp_Service" xmlns:ns0="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" name="Untitled" targetNamespace="http://xmlns.example.com/1543713627892/OperationImpl/HP_sp_Retailers_sp_SOAP_sp_Service">
+    <wsdl:types>
+        <xs:schema xmlns="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd" targetNamespace="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="Retail">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="STORE_NAME" type="xs:string" minOccurs="0"/>
+                        <xs:element name="STORE_LOCATION" type="xs:string" minOccurs="0"/>
+                        <xs:element name="STORE_CODE" type="xs:string" minOccurs="0"/>
+                        <xs:element name="CATEGORY" type="xs:string" minOccurs="0"/>
+                        <xs:element name="ITEM" type="xs:string" minOccurs="0"/>
+                        <xs:element name="QUANTITY" type="xs:string" minOccurs="0"/>
+                        <xs:element name="SALES_PERSON" type="xs:string" minOccurs="0"/>
+                        <xs:element name="SALES_PERSON_ID" type="xs:string" minOccurs="0"/>
+                        <xs:element name="CUSTOMER_NAME" type="xs:string" minOccurs="0"/>
+                        <xs:element name="PAYMENT_TYPE" type="xs:string" minOccurs="0"/>
+                        <xs:element name="PAYMENT_METHOD" type="xs:string" minOccurs="0"/>
+                        <xs:element name="CUSTOMER_CARD_NO" type="xs:string" minOccurs="0"/>
+                        <xs:element name="CUSTOMER_SSN" type="xs:string" minOccurs="0"/>
+                        <xs:element name="CUSTOMER_ADDRESS" type="xs:string" minOccurs="0"/>
+                        <xs:element name="CUSTOMER_POSTAL_CODE" type="xs:string" minOccurs="0"/>
+                        <xs:element name="CUSTOMER_EMAIL" type="xs:string" minOccurs="0"/>
+                        <xs:element name="CUSTOMER_PHONE" type="xs:string" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="Response">
+        <wsdl:port name="SOAPEventSource" binding="tns:SOAPEventSourceBinding">
+            <soap:address location="http://localhost:2020/test1"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="PortType">
+        <wsdl:operation name="Operation">
+            <wsdl:input message="tns:INPUT"/>
+            <wsdl:output message="tns:OUTPUT"/>
+            <wsdl:fault name="fault1" message="tns:ERROR"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPEventSourceBinding" type="tns:PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Operation">
+            <soap:operation style="rpc" soapAction="/HP%20Retailers%20SOAP%20Service/Response" soapActionRequired="true"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://InputMessageNamespace" parts="STORE_NAME"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="http://OutputMessageNamespace" parts="OUTPUT"/>
+            </wsdl:output>
+            <wsdl:fault name="fault1">
+                <soap:fault use="literal" namespace="http://FaultMessageNamespace" name="fault1"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="INPUT">
+        <wsdl:part name="STORE_NAME" type="xs:string"/>
+    </wsdl:message>
+    <wsdl:message name="OUTPUT">
+        <wsdl:part name="OUTPUT" element="ns0:Retail"/>
+    </wsdl:message>
+    <wsdl:message name="ERROR">
+        <wsdl:part name="ERROR" type="xs:string"/>
+    </wsdl:message>
+</wsdl:definitions>

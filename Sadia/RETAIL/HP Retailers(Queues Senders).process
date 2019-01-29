@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://www.tibco.com/schemas/File/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx2="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd" xmlns:BW="java://com.tibco.pe.core.JavaCustomXPATHFunctions" xmlns:ns="http://www.tibco.com/pe/EngineTypes" xmlns:pfx3="http://www.tibco.com/schemas/File/Schemas/Schema.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/jms" xmlns:ns1="http://www.tibco.com/namespaces/tnt/plugins/file">
+    <xsd:import namespace="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd" schemaLocation="/SCHEMAS/HP Retailers.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/File/Schema.xsd" schemaLocation="/SCHEMAS/LOG_SCHEMA.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/File/Schemas/Schema.xsd" schemaLocation="/SCHEMAS/EXCEPTION_SCHEMA.xsd"/>
+    <pd:name>HP Retailers(Queues Senders).process</pd:name>
+    <pd:startName>File Poller</pd:startName>
+    <pd:startX>0</pd:startX>
+    <pd:startY>0</pd:startY>
+    <pd:returnBindings/>
+    <pd:starter name="File Poller">
+        <pd:type>com.tibco.plugin.file.FileEventSource</pd:type>
+        <pd:resourceType>ae.activities.FileEventSourceResource</pd:resourceType>
+        <pd:x>51</pd:x>
+        <pd:y>119</pd:y>
+        <config>
+            <pollInterval>3</pollInterval>
+            <createEvent>true</createEvent>
+            <modifyEvent>true</modifyEvent>
+            <deleteEvent>true</deleteEvent>
+            <mode>only-files</mode>
+            <encoding>text</encoding>
+            <sortby>File Name</sortby>
+            <sortorder>descending</sortorder>
+            <fileName>C:\Users\shahz\Desktop\Sadia\*</fileName>
+            <encodingUsed>ASCII</encodingUsed>
+            <includeCurrent>true</includeCurrent>
+        </config>
+        <pd:inputBindings/>
+    </pd:starter>
+    <pd:endName>End</pd:endName>
+    <pd:endX>847</pd:endX>
+    <pd:endY>119</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables>
+        <Root>
+            <xsd:element name="root" type="xsd:string"/>
+        </Root>
+        <TimeDuration>
+            <xsd:element name="TimeDuration" type="xsd:double"/>
+        </TimeDuration>
+    </pd:processVariables>
+    <pd:targetNamespace>http://xmlns.example.com/1543431121852</pd:targetNamespace>
+    <pd:activity name="End Log Queue Sender">
+        <pd:type>com.tibco.plugin.jms.JMSQueueSendActivity</pd:type>
+        <pd:resourceType>ae.activities.JMSQueueSendActivity</pd:resourceType>
+        <pd:x>753</pd:x>
+        <pd:y>126</pd:y>
+        <config>
+            <PermittedMessageType>XML Text</PermittedMessageType>
+            <SessionAttributes>
+                <transacted>false</transacted>
+                <acknowledgeMode>1</acknowledgeMode>
+                <maxSessions>1</maxSessions>
+                <destination>%%Destination_Queues/Log%%</destination>
+            </SessionAttributes>
+            <ConfigurableHeaders>
+                <JMSDeliveryMode>PERSISTENT</JMSDeliveryMode>
+                <JMSExpiration>0</JMSExpiration>
+                <JMSPriority>4</JMSPriority>
+            </ConfigurableHeaders>
+            <ConnectionReference>/JMS Connection.sharedjmscon</ConnectionReference>
+            <InDataxsdString ref="pfx:LOG"/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInput>
+                <Body>
+                    <pfx:LOG>
+                        <pfx:APPLICATION_ID>
+                            <xsl:value-of select="&quot;HPRetail&quot;"/>
+                        </pfx:APPLICATION_ID>
+                        <pfx:LOG_ID>
+                            <xsl:value-of select="concat('END', $_processContext/ns:ProcessContext/ProcessId)"/>
+                        </pfx:LOG_ID>
+                        <pfx:COMPONENT_NAME>
+                            <xsl:value-of select="BW:getCurrentProcessName($_processContext/ns:ProcessContext/ProcessId)"/>
+                        </pfx:COMPONENT_NAME>
+                        <pfx:HOST_NAME>
+                            <xsl:value-of select="BW:getHostName()"/>
+                        </pfx:HOST_NAME>
+                        <pfx:TRANSACTION_DOMAIN>
+                            <xsl:value-of select="&quot;FLAT FILE PROCESS&quot;"/>
+                        </pfx:TRANSACTION_DOMAIN>
+                        <pfx:TRANSACTION_ID>
+                            <xsl:value-of select="$File-Poller/ns1:EventSourceOuputTextClass/fileInfo/fileName"/>
+                        </pfx:TRANSACTION_ID>
+                        <pfx:TRANSACTION_TYPE>
+                            <xsl:value-of select="&quot;XML&quot;"/>
+                        </pfx:TRANSACTION_TYPE>
+                        <pfx:TIME_STAMP>
+                            <xsl:value-of select="current-dateTime()"/>
+                        </pfx:TIME_STAMP>
+                        <pfx:TIME_DURATION>
+                            <xsl:value-of select="tib:round-fraction(tib:get-seconds-from-dateTime(current-dateTime())-$TimeDuration/TimeDuration,2)"/>
+                        </pfx:TIME_DURATION>
+                        <pfx:CATEGORY>
+                            <xsl:value-of select="&quot;LOG&quot;"/>
+                        </pfx:CATEGORY>
+                        <pfx:MESSAGE>
+                            <xsl:value-of select="&quot;Process End&quot;"/>
+                        </pfx:MESSAGE>
+                        <pfx:STATUS>
+                            <xsl:value-of select="&quot;END&quot;"/>
+                        </pfx:STATUS>
+                        <pfx:TRANSACTION_DATA>
+                            <xsl:value-of select="$HP_Retail-Queue-Sender/ns2:aEmptyOutputClass/ns2:MessageID"/>
+                        </pfx:TRANSACTION_DATA>
+                        <pfx:FILE_NAME>
+                            <xsl:value-of select="$File-Poller/ns1:EventSourceOuputTextClass/fileInfo/fileName"/>
+                        </pfx:FILE_NAME>
+                        <pfx:LOG_AUDIT>
+                            <xsl:value-of select="&quot;0&quot;"/>
+                        </pfx:LOG_AUDIT>
+                        <pfx:INTERFACE_ID>
+                            <xsl:value-of select="&quot;123&quot;"/>
+                        </pfx:INTERFACE_ID>
+                        <pfx:TRANSACTION_SIZE>
+                            <xsl:value-of select="&quot;0&quot;"/>
+                        </pfx:TRANSACTION_SIZE>
+                    </pfx:LOG>
+                </Body>
+            </ns2:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Catch">
+        <pd:type>com.tibco.pe.core.CatchActivity</pd:type>
+        <pd:resourceType>ae.activities.catch</pd:resourceType>
+        <pd:x>1063</pd:x>
+        <pd:y>116</pd:y>
+        <pd:handler>true</pd:handler>
+        <config>
+            <catchAll>true</catchAll>
+        </config>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="Exception-Queue Sender">
+        <pd:type>com.tibco.plugin.jms.JMSQueueSendActivity</pd:type>
+        <pd:resourceType>ae.activities.JMSQueueSendActivity</pd:resourceType>
+        <pd:x>960</pd:x>
+        <pd:y>119</pd:y>
+        <config>
+            <PermittedMessageType>XML Text</PermittedMessageType>
+            <SessionAttributes>
+                <transacted>false</transacted>
+                <acknowledgeMode>1</acknowledgeMode>
+                <maxSessions>1</maxSessions>
+                <destination>cle.exception</destination>
+            </SessionAttributes>
+            <ConfigurableHeaders>
+                <JMSDeliveryMode>PERSISTENT</JMSDeliveryMode>
+                <JMSExpiration>0</JMSExpiration>
+                <JMSPriority>4</JMSPriority>
+            </ConfigurableHeaders>
+            <ConnectionReference>/JMS Connection.sharedjmscon</ConnectionReference>
+            <InDataxsdString ref="pfx3:EXCEPTIION"/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInput>
+                <Body>
+                    <pfx3:EXCEPTIION>
+                        <pfx3:APPLICATION_ID>
+                            <xsl:value-of select="&quot;HPRetail&quot;"/>
+                        </pfx3:APPLICATION_ID>
+                        <pfx3:EXCEPTION_ID>
+                            <xsl:value-of select="concat('Exception', $_processContext/ns:ProcessContext/ProcessId)"/>
+                        </pfx3:EXCEPTION_ID>
+                        <xsl:if test="$_error/ns:ErrorReport/MsgCode">
+                            <pfx3:EXCEPTION_CODE>
+                                <xsl:value-of select="$_error/ns:ErrorReport/MsgCode"/>
+                            </pfx3:EXCEPTION_CODE>
+                        </xsl:if>
+                        <pfx3:COMPONENT_NAME>
+                            <xsl:value-of select="BW:getCurrentProcessName($_processContext/ns:ProcessContext/ProcessId)"/>
+                        </pfx3:COMPONENT_NAME>
+                        <pfx3:HOST_NAME>
+                            <xsl:value-of select="BW:getHostName()"/>
+                        </pfx3:HOST_NAME>
+                        <pfx3:TRANSACTION_DOMAIN>
+                            <xsl:value-of select="&quot;FLAT FILE PROCESS&quot;"/>
+                        </pfx3:TRANSACTION_DOMAIN>
+                        <pfx3:TRANSACTION_ID>
+                            <xsl:value-of select="$File-Poller/ns1:EventSourceOuputTextClass/fileInfo/fileName"/>
+                        </pfx3:TRANSACTION_ID>
+                        <pfx3:TRANSACTION_TYPE>
+                            <xsl:value-of select="&quot;XML&quot;"/>
+                        </pfx3:TRANSACTION_TYPE>
+                        <pfx3:FILE_NAME>
+                            <xsl:value-of select="$File-Poller/ns1:EventSourceOuputTextClass/fileInfo/fileName"/>
+                        </pfx3:FILE_NAME>
+                        <pfx3:INTERFACE_ID>
+                            <xsl:value-of select="&quot;123&quot;"/>
+                        </pfx3:INTERFACE_ID>
+                        <pfx3:TIME_STAMP>
+                            <xsl:value-of select="current-dateTime()"/>
+                        </pfx3:TIME_STAMP>
+                        <pfx3:MESSAGE>
+                            <xsl:value-of select="$_error/ns:ErrorReport/Msg"/>
+                        </pfx3:MESSAGE>
+                        <pfx3:TRANSACTION_DATA>
+                            <xsl:value-of select="$HP_Retail-Queue-Sender/ns2:aEmptyOutputClass/ns2:MessageID"/>
+                        </pfx3:TRANSACTION_DATA>
+                        <xsl:if test="$_error/ns:ErrorReport/StackTrace">
+                            <pfx3:STACK_TRACE>
+                                <xsl:value-of select="$_error/ns:ErrorReport/StackTrace"/>
+                            </pfx3:STACK_TRACE>
+                        </xsl:if>
+                        <pfx3:STATUS>
+                            <xsl:value-of select="'EXCEPTION'"/>
+                        </pfx3:STATUS>
+                    </pfx3:EXCEPTIION>
+                </Body>
+            </ns2:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Start Log Queue Sender">
+        <pd:type>com.tibco.plugin.jms.JMSQueueSendActivity</pd:type>
+        <pd:resourceType>ae.activities.JMSQueueSendActivity</pd:resourceType>
+        <pd:x>307</pd:x>
+        <pd:y>129</pd:y>
+        <config>
+            <PermittedMessageType>XML Text</PermittedMessageType>
+            <SessionAttributes>
+                <transacted>false</transacted>
+                <acknowledgeMode>1</acknowledgeMode>
+                <maxSessions>1</maxSessions>
+                <destination>%%Destination_Queues/Log%%</destination>
+            </SessionAttributes>
+            <ConfigurableHeaders>
+                <JMSDeliveryMode>PERSISTENT</JMSDeliveryMode>
+                <JMSExpiration>0</JMSExpiration>
+                <JMSPriority>4</JMSPriority>
+            </ConfigurableHeaders>
+            <ConnectionReference>/JMS Connection.sharedjmscon</ConnectionReference>
+            <InDataxsdString ref="pfx:LOG"/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInput>
+                <Body>
+                    <pfx:LOG>
+                        <pfx:APPLICATION_ID>
+                            <xsl:value-of select="&quot;HPRetail&quot;"/>
+                        </pfx:APPLICATION_ID>
+                        <pfx:LOG_ID>
+                            <xsl:value-of select="concat('START', $_processContext/ns:ProcessContext/ProcessId)"/>
+                        </pfx:LOG_ID>
+                        <pfx:COMPONENT_NAME>
+                            <xsl:value-of select="BW:getCurrentProcessName($_processContext/ns:ProcessContext/ProcessId)"/>
+                        </pfx:COMPONENT_NAME>
+                        <pfx:HOST_NAME>
+                            <xsl:value-of select="BW:getHostName()"/>
+                        </pfx:HOST_NAME>
+                        <pfx:TRANSACTION_DOMAIN>
+                            <xsl:value-of select="&quot;FLAT FILE PROCESS&quot;"/>
+                        </pfx:TRANSACTION_DOMAIN>
+                        <pfx:TRANSACTION_ID>
+                            <xsl:value-of select="$File-Poller/ns1:EventSourceOuputTextClass/fileInfo/fileName"/>
+                        </pfx:TRANSACTION_ID>
+                        <pfx:TRANSACTION_TYPE>
+                            <xsl:value-of select="&quot;XML&quot;"/>
+                        </pfx:TRANSACTION_TYPE>
+                        <pfx:TIME_STAMP>
+                            <xsl:value-of select="current-dateTime()"/>
+                        </pfx:TIME_STAMP>
+                        <pfx:TIME_DURATION>
+                            <xsl:value-of select="&quot;0&quot;"/>
+                        </pfx:TIME_DURATION>
+                        <pfx:CATEGORY>
+                            <xsl:value-of select="&quot;LOG&quot;"/>
+                        </pfx:CATEGORY>
+                        <pfx:MESSAGE>
+                            <xsl:value-of select="&quot;START PROCESS&quot;"/>
+                        </pfx:MESSAGE>
+                        <pfx:STATUS>
+                            <xsl:value-of select="&quot;START&quot;"/>
+                        </pfx:STATUS>
+                        <pfx:TRANSACTION_DATA>
+                            <xsl:value-of select="tib:render-xml($File-Poller/ns1:EventSourceOuputTextClass)"/>
+                        </pfx:TRANSACTION_DATA>
+                        <pfx:FILE_NAME>
+                            <xsl:value-of select="$File-Poller/ns1:EventSourceOuputTextClass/fileInfo/fileName"/>
+                        </pfx:FILE_NAME>
+                        <pfx:LOG_AUDIT>
+                            <xsl:value-of select="&quot;0&quot;"/>
+                        </pfx:LOG_AUDIT>
+                        <pfx:INTERFACE_ID>
+                            <xsl:value-of select="&quot;123&quot;"/>
+                        </pfx:INTERFACE_ID>
+                        <pfx:TRANSACTION_SIZE>
+                            <xsl:value-of select="&quot;0&quot;"/>
+                        </pfx:TRANSACTION_SIZE>
+                    </pfx:LOG>
+                </Body>
+            </ns2:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Parse Data">
+        <pd:type>com.tibco.plugin.parse.ParseActivity</pd:type>
+        <pd:resourceType>ae.activities.ParseActivity</pd:resourceType>
+        <pd:x>418</pd:x>
+        <pd:y>120</pd:y>
+        <config>
+            <InputType>String</InputType>
+            <Encoding>ASCII</Encoding>
+            <ParseSharedConfig>/Hp Retailers Format.sharedparse</ParseSharedConfig>
+            <SkipBlankLines>true</SkipBlankLines>
+        </config>
+        <pd:inputBindings>
+            <Input>
+                <text>
+                    <xsl:value-of select="$File-Poller/ns1:EventSourceOuputTextClass/fileContent/textContent"/>
+                </text>
+                <noOfRecords>
+                    <xsl:value-of select="-1"/>
+                </noOfRecords>
+            </Input>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:group name="Group">
+        <pd:type>com.tibco.pe.core.LoopGroup</pd:type>
+        <pd:resourceType>ae.process.group</pd:resourceType>
+        <pd:x>495</pd:x>
+        <pd:y>28</pd:y>
+        <pd:width>193</pd:width>
+        <pd:height>169</pd:height>
+        <pd:collapsedWidth>57</pd:collapsedWidth>
+        <pd:collapsedHeight>70</pd:collapsedHeight>
+        <pd:groupVariables/>
+        <pd:joinToggle>inherit</pd:joinToggle>
+        <config>
+            <pd:groupType>inputLoop</pd:groupType>
+            <pd:serializable>false</pd:serializable>
+            <pd:over>$Parse-Data/Output/Rows/HP-Retail</pd:over>
+            <pd:iterationElementSlot>current</pd:iterationElementSlot>
+            <pd:indexSlot>i</pd:indexSlot>
+            <pd:activityOutputName/>
+            <pd:accumulateOutput>false</pd:accumulateOutput>
+        </config>
+        <pd:inputBindings/>
+        <pd:expanded>true</pd:expanded>
+        <pd:transition>
+            <pd:from>start</pd:from>
+            <pd:to>HP_Retail Queue Sender</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>HP_Retail Queue Sender</pd:from>
+            <pd:to>end</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:activity name="HP_Retail Queue Sender">
+            <pd:type>com.tibco.plugin.jms.JMSQueueSendActivity</pd:type>
+            <pd:resourceType>ae.activities.JMSQueueSendActivity</pd:resourceType>
+            <pd:x>590</pd:x>
+            <pd:y>127</pd:y>
+            <config>
+                <PermittedMessageType>XML Text</PermittedMessageType>
+                <SessionAttributes>
+                    <transacted>false</transacted>
+                    <acknowledgeMode>1</acknowledgeMode>
+                    <maxSessions>1</maxSessions>
+                    <destination>RETAIL.QUEUE</destination>
+                </SessionAttributes>
+                <ConfigurableHeaders>
+                    <JMSDeliveryMode>PERSISTENT</JMSDeliveryMode>
+                    <JMSExpiration>0</JMSExpiration>
+                    <JMSPriority>4</JMSPriority>
+                </ConfigurableHeaders>
+                <ConnectionReference>/JMS Connection.sharedjmscon</ConnectionReference>
+                <InDataxsdString ref="pfx2:Retail"/>
+            </config>
+            <pd:inputBindings>
+                <ns2:ActivityInput>
+                    <Body>
+                        <xsl:for-each select="$current/HP-Retail">
+                            <pfx2:Retail>
+                                <pfx2:STORE_NAME>
+                                    <xsl:value-of select="STORE_NAME"/>
+                                </pfx2:STORE_NAME>
+                                <pfx2:STORE_LOCATION>
+                                    <xsl:value-of select="STORE_LOCATION"/>
+                                </pfx2:STORE_LOCATION>
+                                <pfx2:STORE_CODE>
+                                    <xsl:value-of select="STORE_CODE"/>
+                                </pfx2:STORE_CODE>
+                                <pfx2:CATEGORY>
+                                    <xsl:value-of select="CATEGORY"/>
+                                </pfx2:CATEGORY>
+                                <pfx2:ITEM>
+                                    <xsl:value-of select="ITEM"/>
+                                </pfx2:ITEM>
+                                <pfx2:QUANTITY>
+                                    <xsl:value-of select="QUANTITY"/>
+                                </pfx2:QUANTITY>
+                                <pfx2:SALES_PERSON>
+                                    <xsl:value-of select="SALES_PERSON"/>
+                                </pfx2:SALES_PERSON>
+                                <pfx2:SALES_PERSON_ID>
+                                    <xsl:value-of select="SALES_PERSON_ID"/>
+                                </pfx2:SALES_PERSON_ID>
+                                <pfx2:CUSTOMER_NAME>
+                                    <xsl:value-of select="CUSTOMER_NAME"/>
+                                </pfx2:CUSTOMER_NAME>
+                                <pfx2:PAYMENT_TYPE>
+                                    <xsl:value-of select="PAYMENT_TYPE"/>
+                                </pfx2:PAYMENT_TYPE>
+                                <pfx2:PAYMENT_METHOD>
+                                    <xsl:value-of select="PAYMENT_METHOD"/>
+                                </pfx2:PAYMENT_METHOD>
+                                <pfx2:CUSTOMER_CARD_NO>
+                                    <xsl:value-of select="CUSTOMER_CARD_NO"/>
+                                </pfx2:CUSTOMER_CARD_NO>
+                                <pfx2:CUSTOMER_SSN>
+                                    <xsl:value-of select="CUSTOMER_SSN"/>
+                                </pfx2:CUSTOMER_SSN>
+                                <pfx2:CUSTOMER_ADDRESS>
+                                    <xsl:value-of select="CUSTOMER_ADDRESS"/>
+                                </pfx2:CUSTOMER_ADDRESS>
+                                <pfx2:CUSTOMER_POSTAL_CODE>
+                                    <xsl:value-of select="CUSTOMER_POSTAL_CODE"/>
+                                </pfx2:CUSTOMER_POSTAL_CODE>
+                                <pfx2:CUSTOMER_EMAIL>
+                                    <xsl:value-of select="CUSTOMER_EMAIL"/>
+                                </pfx2:CUSTOMER_EMAIL>
+                                <pfx2:CUSTOMER_PHONE>
+                                    <xsl:value-of select="CUSTOMER_PHONE"/>
+                                </pfx2:CUSTOMER_PHONE>
+                            </pfx2:Retail>
+                        </xsl:for-each>
+                    </Body>
+                </ns2:ActivityInput>
+            </pd:inputBindings>
+        </pd:activity>
+    </pd:group>
+    <pd:activity name="Assign">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>176</pd:x>
+        <pd:y>120</pd:y>
+        <config>
+            <variableName>TimeDuration</variableName>
+        </config>
+        <pd:inputBindings>
+            <TimeDuration>
+                <xsl:value-of select="tib:get-seconds-from-time(current-dateTime())"/>
+            </TimeDuration>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>File Poller</pd:from>
+        <pd:to>Assign</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>End Log Queue Sender</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Catch</pd:from>
+        <pd:to>Exception-Queue Sender</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Exception-Queue Sender</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start Log Queue Sender</pd:from>
+        <pd:to>Parse Data</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Group</pd:from>
+        <pd:to>End Log Queue Sender</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Parse Data</pd:from>
+        <pd:to>Group</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Assign</pd:from>
+        <pd:to>Start Log Queue Sender</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

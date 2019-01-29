@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Medicine" xmlns:tns="http://www.example.org/Medicine" elementFormDefault="qualified">
+
+    <element name="Root" type="tns:Root"></element>
+    
+    <complexType name="Root">
+    	<sequence>
+    		<element name="SL_NO" type="int"></element>
+    		<element name="MEDICINE" type="string"></element>
+    		<element name="USES" type="string"></element>
+    		<element name="DOSAGE_CHILDREN" type="string"></element>
+    		<element name="DOSAGE_ADULT" type="string"></element>
+    		<element name="TIME_INTERVAL" type="string"></element>
+    		<element name="SIDE_EFFECTS" type="string"></element>
+    		<element name="PRECAUTIONS" type="string"></element>
+    	</sequence>
+    </complexType>
+</schema>

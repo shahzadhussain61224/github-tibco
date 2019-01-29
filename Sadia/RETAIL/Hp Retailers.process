@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/jms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd" schemaLocation="/SCHEMAS/HP Retailers.xsd"/>
+    <pd:name>Hp Retailers.process</pd:name>
+    <pd:description>flat file processing such as coma,pipe,tab seperated values(csv,psv,tsv files) using parse
+and then updating it in the jdbc.
+If you want to process an excel file then have to first convert the file into flat file using " Poor Obfuscation Implementation(POI JAR)".</pd:description>
+    <pd:startName>JMS Queue Receiver</pd:startName>
+    <pd:startX>0</pd:startX>
+    <pd:startY>0</pd:startY>
+    <pd:returnBindings/>
+    <pd:starter name="JMS Queue Receiver">
+        <pd:type>com.tibco.plugin.jms.JMSQueueEventSource</pd:type>
+        <pd:resourceType>ae.activities.JMSQueueEventSource</pd:resourceType>
+        <pd:x>65</pd:x>
+        <pd:y>83</pd:y>
+        <config>
+            <PermittedMessageType>XML Text</PermittedMessageType>
+            <SessionAttributes>
+                <transacted>false</transacted>
+                <acknowledgeMode>1</acknowledgeMode>
+                <maxSessions>1</maxSessions>
+                <destination>RETAIL.QUEUE</destination>
+            </SessionAttributes>
+            <ConfigurableHeaders>
+                <JMSDeliveryMode>PERSISTENT</JMSDeliveryMode>
+                <JMSExpiration>0</JMSExpiration>
+                <JMSPriority>4</JMSPriority>
+            </ConfigurableHeaders>
+            <ConnectionReference>/JMS Connection.sharedjmscon</ConnectionReference>
+            <OutDataxsdString ref="pfx:Retail"/>
+        </config>
+        <pd:inputBindings/>
+    </pd:starter>
+    <pd:endName>End</pd:endName>
+    <pd:endX>622</pd:endX>
+    <pd:endY>81</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1543298421913</pd:targetNamespace>
+    <pd:activity name="SQL Direct">
+        <pd:type>com.tibco.plugin.jdbc.JDBCGeneralActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCGeneralActivity</pd:resourceType>
+        <pd:x>227</pd:x>
+        <pd:y>81</pd:y>
+        <config>
+            <timeout>20</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <jdbcSharedConfig>/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+        </config>
+        <pd:inputBindings>
+            <jdbcGeneralActivityInput>
+                <statement>
+                    <xsl:value-of select="&quot;CREATE TABLE HP_RETAILERS(STORE_NAME VARCHAR(50),STORE_LOCATION VARCHAR(100),STORE_CODE VARCHAR(50),CATEGORY VARCHAR(50),ITEM VARCHAR(100),QUANTITY VARCHAR(50),SALES_PERSON VARCHAR(100),SALES_PERSON_ID VARCHAR(150),CUSTOMER_NAME VARCHAR(100),PAYMENT_TYPE VARCHAR(50),PAYMENT_METHOD VARCHAR(50),CUSTOMER_CARD_NO VARCHAR(100),CUSTOMER_SSN VARCHAR(150),CUSTOMER_ADDRESS VARCHAR(250),CUSTOMER_POSTAL_CODE VARCHAR(100),CUSTOMER_EMAIL VARCHAR(200),CUSTOMER_PHONE VARCHAR(100))&quot;"/>
+                </statement>
+            </jdbcGeneralActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Null">
+        <pd:type>com.tibco.plugin.timer.NullActivity</pd:type>
+        <pd:resourceType>ae.activities.null</pd:resourceType>
+        <pd:x>397</pd:x>
+        <pd:y>223</pd:y>
+        <config/>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="JDBC Update">
+        <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+        <pd:x>398</pd:x>
+        <pd:y>81</pd:y>
+        <config>
+            <timeout>20</timeout>
+            <commit>false</commit>
+            <emptyStrAsNil>true</emptyStrAsNil>
+            <jdbcSharedConfig>/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>INSERT INTO HP_RETAILERS(STORE_NAME,STORE_LOCATION,STORE_CODE,CATEGORY,ITEM,QUANTITY,SALES_PERSON,SALES_PERSON_ID,CUSTOMER_NAME,PAYMENT_TYPE,PAYMENT_METHOD,CUSTOMER_CARD_NO,CUSTOMER_SSN,CUSTOMER_ADDRESS,CUSTOMER_POSTAL_CODE,CUSTOMER_EMAIL,CUSTOMER_PHONE) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>STORE_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>STORE_LOCATION</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>STORE_CODE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CATEGORY</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>ITEM</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>QUANTITY</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>SALES_PERSON</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>SALES_PERSON_ID</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CUSTOMER_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PAYMENT_TYPE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>PAYMENT_METHOD</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CUSTOMER_CARD_NO</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CUSTOMER_SSN</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CUSTOMER_ADDRESS</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CUSTOMER_POSTAL_CODE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CUSTOMER_EMAIL</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>CUSTOMER_PHONE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+        </config>
+        <pd:inputBindings>
+            <xsl:for-each select="$JMS-Queue-Receiver/ns:ActivityOutput/Body/pfx:Retail">
+                <jdbcUpdateActivityInput>
+                    <STORE_NAME>
+                        <xsl:value-of select="pfx:STORE_NAME"/>
+                    </STORE_NAME>
+                    <STORE_LOCATION>
+                        <xsl:value-of select="pfx:STORE_LOCATION"/>
+                    </STORE_LOCATION>
+                    <STORE_CODE>
+                        <xsl:value-of select="pfx:STORE_CODE"/>
+                    </STORE_CODE>
+                    <CATEGORY>
+                        <xsl:value-of select="pfx:CATEGORY"/>
+                    </CATEGORY>
+                    <ITEM>
+                        <xsl:value-of select="pfx:ITEM"/>
+                    </ITEM>
+                    <QUANTITY>
+                        <xsl:value-of select="pfx:QUANTITY"/>
+                    </QUANTITY>
+                    <SALES_PERSON>
+                        <xsl:value-of select="pfx:SALES_PERSON"/>
+                    </SALES_PERSON>
+                    <SALES_PERSON_ID>
+                        <xsl:value-of select="pfx:SALES_PERSON_ID"/>
+                    </SALES_PERSON_ID>
+                    <CUSTOMER_NAME>
+                        <xsl:value-of select="pfx:CUSTOMER_NAME"/>
+                    </CUSTOMER_NAME>
+                    <PAYMENT_TYPE>
+                        <xsl:value-of select="pfx:PAYMENT_TYPE"/>
+                    </PAYMENT_TYPE>
+                    <PAYMENT_METHOD>
+                        <xsl:value-of select="pfx:PAYMENT_METHOD"/>
+                    </PAYMENT_METHOD>
+                    <CUSTOMER_CARD_NO>
+                        <xsl:value-of select="pfx:CUSTOMER_CARD_NO"/>
+                    </CUSTOMER_CARD_NO>
+                    <CUSTOMER_SSN>
+                        <xsl:value-of select="pfx:CUSTOMER_SSN"/>
+                    </CUSTOMER_SSN>
+                    <CUSTOMER_ADDRESS>
+                        <xsl:value-of select="pfx:CUSTOMER_ADDRESS"/>
+                    </CUSTOMER_ADDRESS>
+                    <CUSTOMER_POSTAL_CODE>
+                        <xsl:value-of select="pfx:CUSTOMER_POSTAL_CODE"/>
+                    </CUSTOMER_POSTAL_CODE>
+                    <CUSTOMER_EMAIL>
+                        <xsl:value-of select="pfx:CUSTOMER_EMAIL"/>
+                    </CUSTOMER_EMAIL>
+                    <CUSTOMER_PHONE>
+                        <xsl:value-of select="pfx:CUSTOMER_PHONE"/>
+                    </CUSTOMER_PHONE>
+                </jdbcUpdateActivityInput>
+            </xsl:for-each>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>SQL Direct</pd:from>
+        <pd:to>Null</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-65536</pd:lineColor>
+        <pd:conditionType>error</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JMS Queue Receiver</pd:from>
+        <pd:to>SQL Direct</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SQL Direct</pd:from>
+        <pd:to>JDBC Update</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Null</pd:from>
+        <pd:to>JDBC Update</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JDBC Update</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

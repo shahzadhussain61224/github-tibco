@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="0c25f0dd-6ccf-493e-b2c3-8caf4d04d3a9" activeEnvironment="Default" name="HP_Retailers" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="88cf911b-e679-4973-825a-795e1037c7ec" wsaVersion="NONE" name="SOAPEventSourceBinding" type="wsdl" bindingName="{http://xmlns.example.com/1543713627892/OperationImpl/HP_sp_Retailers_sp_SOAP_sp_Service}SOAPEventSourceBinding" soapVersion="1_2" anonymous="optional" definition="file:/C:/Users/shahz/Documents/myGitHub/github-tibco/Sadia/RETAIL/HP%20Retailers%20SOAP%20Service/Concrete%20WSDL.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\shahz\Documents\myGitHub\github-tibco\Sadia\RETAIL\HP%20Retailers%20SOAP%20Service\Concrete%20WSDL.wsdl"><con:part><con:url>file:\C:\Users\shahz\Documents\myGitHub\github-tibco\Sadia\RETAIL\HP%20Retailers%20SOAP%20Service\Concrete%20WSDL.wsdl</con:url><con:content><![CDATA[<!--Created by TIBCO WSDL-->
+<wsdl:definitions name="Untitled" targetNamespace="http://xmlns.example.com/1543713627892/OperationImpl/HP_sp_Retailers_sp_SOAP_sp_Service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.example.com/1543713627892/OperationImpl/HP_sp_Retailers_sp_SOAP_sp_Service" xmlns:ns0="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd">
+      <xs:element name="Retail">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="STORE_NAME" type="xs:string" minOccurs="0"/>
+            <xs:element name="STORE_LOCATION" type="xs:string" minOccurs="0"/>
+            <xs:element name="STORE_CODE" type="xs:string" minOccurs="0"/>
+            <xs:element name="CATEGORY" type="xs:string" minOccurs="0"/>
+            <xs:element name="ITEM" type="xs:string" minOccurs="0"/>
+            <xs:element name="QUANTITY" type="xs:string" minOccurs="0"/>
+            <xs:element name="SALES_PERSON" type="xs:string" minOccurs="0"/>
+            <xs:element name="SALES_PERSON_ID" type="xs:string" minOccurs="0"/>
+            <xs:element name="CUSTOMER_NAME" type="xs:string" minOccurs="0"/>
+            <xs:element name="PAYMENT_TYPE" type="xs:string" minOccurs="0"/>
+            <xs:element name="PAYMENT_METHOD" type="xs:string" minOccurs="0"/>
+            <xs:element name="CUSTOMER_CARD_NO" type="xs:string" minOccurs="0"/>
+            <xs:element name="CUSTOMER_SSN" type="xs:string" minOccurs="0"/>
+            <xs:element name="CUSTOMER_ADDRESS" type="xs:string" minOccurs="0"/>
+            <xs:element name="CUSTOMER_POSTAL_CODE" type="xs:string" minOccurs="0"/>
+            <xs:element name="CUSTOMER_EMAIL" type="xs:string" minOccurs="0"/>
+            <xs:element name="CUSTOMER_PHONE" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:service name="Response">
+    <wsdl:port name="SOAPEventSource" binding="tns:SOAPEventSourceBinding">
+      <soap:address location="http://localhost:2020/test1"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:portType name="PortType">
+    <wsdl:operation name="Operation">
+      <wsdl:input message="tns:INPUT"/>
+      <wsdl:output message="tns:OUTPUT"/>
+      <wsdl:fault name="fault1" message="tns:ERROR"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SOAPEventSourceBinding" type="tns:PortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Operation">
+      <soap:operation style="rpc" soapAction="/HP%20Retailers%20SOAP%20Service/Response" soapActionRequired="true"/>
+      <wsdl:input>
+        <soap:body use="literal" namespace="http://InputMessageNamespace" parts="STORE_NAME"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://OutputMessageNamespace" parts="OUTPUT"/>
+      </wsdl:output>
+      <wsdl:fault name="fault1">
+        <soap:fault use="literal" namespace="http://FaultMessageNamespace" name="fault1"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:message name="INPUT">
+    <wsdl:part name="STORE_NAME" type="xs:string"/>
+  </wsdl:message>
+  <wsdl:message name="OUTPUT">
+    <wsdl:part name="OUTPUT" element="ns0:Retail"/>
+  </wsdl:message>
+  <wsdl:message name="ERROR">
+    <wsdl:part name="ERROR" type="xs:string"/>
+  </wsdl:message>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:2020/test1</con:endpoint></con:endpoints><con:operation id="9e414293-e22f-4348-8345-1f88edcc0d2c" isOneWay="false" action="/HP%20Retailers%20SOAP%20Service/Response" name="Operation" bindingOperationName="Operation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="690fff68-a98b-47de-ab6e-630da59e2c76" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:2020/test1</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:inp="http://InputMessageNamespace">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <inp:Operation>\r
+         <STORE_NAME>Walmrt</STORE_NAME>\r
+      </inp:Operation>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://xmlns.example.com/1543713627892/OperationImpl/HP_sp_Retailers_sp_SOAP_sp_Service/PortType/OperationRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

@@ -1,0 +1,37 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<repository xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://www.tibco.com/xmlns/repo/types/2002">
+	<globalVariables>
+		<globalVariable>
+			<name>APPLICATION_ID</name>
+			<value>'SHAZULLU'</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1542742249929</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>INTERFACE_ID</name>
+			<value>'HAWLU'</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1542742249959</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>TRANSACTION_DOMAIN</name>
+			<value>'WEB SERVICE'</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1542742249848</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>TRANSACTION_TYPE</name>
+			<value>'ABCD'</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1542742249887</modTime>
+		</globalVariable>
+	</globalVariables>
+</repository>

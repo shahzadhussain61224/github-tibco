@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.example.com/1541446260400/OperationImpl/SOAP" xmlns:ns0="http://www.tibco.com/schemas/RETAIL/Schema.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" name="Untitled" targetNamespace="http://xmlns.example.com/1541446260400/OperationImpl/SOAP">
+    <wsdl:types>
+        <xs:schema xmlns="http://www.tibco.com/schemas/RETAIL/Schema.xsd" targetNamespace="http://www.tibco.com/schemas/RETAIL/Schema.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="RETAIL">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="RANK" type="xs:int"/>
+                        <xs:element name="COMPANY" type="xs:string"/>
+                        <xs:element name="SALES_2017" type="xs:string"/>
+                        <xs:element name="HQ_CITY" type="xs:string"/>
+                        <xs:element name="HQ_STATE" type="xs:string"/>
+                        <xs:element name="STORE" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="SOAP_sp_RESPONSE">
+        <wsdl:port name="SOAPEventSource" binding="tns:SOAPEventSourceBinding">
+            <soap:address location="http://localhost:2020/test"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="PortType">
+        <wsdl:operation name="Operation">
+            <wsdl:input message="tns:INPUT"/>
+            <wsdl:output message="tns:OUTPUT"/>
+            <wsdl:fault name="fault1" message="tns:ERROR"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPEventSourceBinding" type="tns:PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Operation">
+            <soap:operation style="rpc" soapAction="/SOAP/SOAP%20RESPONSE" soapActionRequired="true"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://InputMessageNamespace" parts="COMPANY"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="http://OutputMessageNamespace" parts="OUTPUT"/>
+            </wsdl:output>
+            <wsdl:fault name="fault1">
+                <soap:fault use="literal" namespace="http://FaultMessageNamespace" name="fault1"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="INPUT">
+        <wsdl:part name="COMPANY" type="xs:string"/>
+    </wsdl:message>
+    <wsdl:message name="OUTPUT">
+        <wsdl:part name="OUTPUT" element="ns0:RETAIL"/>
+    </wsdl:message>
+    <wsdl:message name="ERROR">
+        <wsdl:part name="ERROR" type="xs:string"/>
+    </wsdl:message>
+</wsdl:definitions>

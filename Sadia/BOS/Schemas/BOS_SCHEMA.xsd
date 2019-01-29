@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/BOS/Schemas/Schema.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/BOS/Schemas/Schema.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="BOS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SL_NO" type="xs:string"/>
+				<xs:element name="FIRST_NAME" type="xs:string"/>
+				<xs:element name="MIDDLE_NAME" type="xs:string" minOccurs="0"/>
+				<xs:element name="LAST_NAME" type="xs:string"/>
+				<xs:element name="ACCOUNT_NO" type="xs:string"/>
+				<xs:element name="ACCOUNT_TYPE" type="xs:string"/>
+				<xs:element name="CREDIT_AMOUNT" type="xs:string"/>
+				<xs:element name="DEBIT_AMOUNT" type="xs:string"/>
+				<xs:element name="TOTAL_BALANCE" type="xs:string"/>
+				<xs:element name="STREET" type="xs:string"/>
+				<xs:element name="CITY" type="xs:string"/>
+				<xs:element name="STATE" type="xs:string"/>
+				<xs:element name="COUNTRY" type="xs:string"/>
+				<xs:element name="POSTAL_CODE" type="xs:string"/>
+				<xs:element name="SSN_NO" type="xs:string"/>
+				<xs:element name="AADHAR_NO" type="xs:string"/>
+				<xs:element name="PAN_NO" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

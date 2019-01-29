@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/NewXMLSchema"
+	xmlns:tns="http://www.example.org/NewXMLSchema"
+	elementFormDefault="qualified">
+
+
+
+
+
+    
+
+    <element name="Root" type="tns:Root"></element>
+    
+    <complexType name="Root">
+    	<sequence>
+    		<element name="SL_NO" type="int"></element>
+    		<element name="FIRST_NAME" type="string"></element>
+    		<element name="MIDDLE_NAME" type="string"></element>
+    		<element name="LAST_NAME" type="string"></element>
+    		<element name="DISEASE" type="string"></element>
+    		<element name="MEDICINE" type="string"></element>
+    		<element name="AGE" type="int"></element>
+    		<element name="AGE_TYPE" type="string"></element>
+    		<element name="ADDRESS" type="string"></element>
+    		<element name="CONTACT_NO" type="string"></element>
+    	</sequence>
+    </complexType>
+</schema>

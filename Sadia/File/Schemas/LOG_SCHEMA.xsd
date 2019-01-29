@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/File/Schema.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/File/Schema.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="LOG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="APPLICATION_ID" type="xs:string"/>
+				<xs:element name="LOG_ID" type="xs:string"/>
+				<xs:element name="COMPONENT_NAME" type="xs:string" minOccurs="0"/>
+				<xs:element name="HOST_NAME" type="xs:string" minOccurs="0"/>
+				<xs:element name="TRANSACTION_DOMAIN" type="xs:string" minOccurs="0"/>
+				<xs:element name="TRANSACTION_ID" type="xs:string" minOccurs="0"/>
+				<xs:element name="TRANSACTION_TYPE" type="xs:string" minOccurs="0"/>
+				<xs:element name="TIME_STAMP" type="xs:string" minOccurs="0"/>
+				<xs:element name="TIME_DURATION" type="xs:string" minOccurs="0"/>
+				<xs:element name="CATEGORY" type="xs:string" minOccurs="0"/>
+				<xs:element name="MESSAGE" type="xs:string" minOccurs="0"/>
+				<xs:element name="STATUS" type="xs:string" minOccurs="0"/>
+				<xs:element name="TRANSACTION_DATA" type="xs:string" minOccurs="0"/>
+				<xs:element name="FILE_NAME" type="xs:string" minOccurs="0"/>
+				<xs:element name="LOG_AUDIT" type="xs:string" minOccurs="0"/>
+				<xs:element name="INTERFACE_ID" type="xs:string" minOccurs="0"/>
+				<xs:element name="TRANSACTION_SIZE" type="xs:string" minOccurs="0"/>
+				<xs:element name="DATA_ENCODING" type="xs:string" minOccurs="0"/>
+				<xs:element name="CORRELATION_ID" type="xs:string" minOccurs="0"/>
+				<xs:element name="RENDER_ID" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

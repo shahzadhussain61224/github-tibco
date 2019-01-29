@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.example.com/1541298402201/OperationImpl" xmlns:ns0="http://www.tibco.com/schemas/BOS/Schemas/Schema.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" name="Untitled" targetNamespace="http://xmlns.example.com/1541298402201/OperationImpl">
+    <wsdl:types>
+        <xs:schema xmlns="http://www.tibco.com/schemas/BOS/Schemas/Schema.xsd" targetNamespace="http://www.tibco.com/schemas/BOS/Schemas/Schema.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="BOS">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="SL_NO" type="xs:string"/>
+                        <xs:element name="FIRST_NAME" type="xs:string"/>
+                        <xs:element name="MIDDLE_NAME" type="xs:string" minOccurs="0"/>
+                        <xs:element name="LAST_NAME" type="xs:string"/>
+                        <xs:element name="ACCOUNT_NO" type="xs:string"/>
+                        <xs:element name="ACCOUNT_TYPE" type="xs:string"/>
+                        <xs:element name="CREDIT_AMOUNT" type="xs:string"/>
+                        <xs:element name="DEBIT_AMOUNT" type="xs:string"/>
+                        <xs:element name="TOTAL_BALANCE" type="xs:string"/>
+                        <xs:element name="STREET" type="xs:string"/>
+                        <xs:element name="CITY" type="xs:string"/>
+                        <xs:element name="STATE" type="xs:string"/>
+                        <xs:element name="COUNTRY" type="xs:string"/>
+                        <xs:element name="POSTAL_CODE" type="xs:string"/>
+                        <xs:element name="SSN_NO" type="xs:string"/>
+                        <xs:element name="AADHAR_NO" type="xs:string"/>
+                        <xs:element name="PAN_NO" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="SOAP">
+        <wsdl:port name="SOAPEventSource" binding="tns:SOAPEventSourceBinding">
+            <soap:address location="http://localhost:1000/test"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="PortType">
+        <wsdl:operation name="Operation">
+            <wsdl:input message="tns:Input"/>
+            <wsdl:output message="tns:Output"/>
+            <wsdl:fault name="fault1" message="tns:Error"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPEventSourceBinding" type="tns:PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Operation">
+            <soap:operation style="rpc" soapAction="/SOAP" soapActionRequired="true"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://InputMessageNamespace" parts="Account_No"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="http://OutputMessageNamespace" parts="Output"/>
+            </wsdl:output>
+            <wsdl:fault name="fault1">
+                <soap:fault use="literal" namespace="http://FaultMessageNamespace" name="fault1"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="Input">
+        <wsdl:part name="Account_No" type="xs:string"/>
+    </wsdl:message>
+    <wsdl:message name="Output">
+        <wsdl:part name="Output" element="ns0:BOS"/>
+    </wsdl:message>
+    <wsdl:message name="Error">
+        <wsdl:part name="Error" type="xs:string"/>
+    </wsdl:message>
+</wsdl:definitions>

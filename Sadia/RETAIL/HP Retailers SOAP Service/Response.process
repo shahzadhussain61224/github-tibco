@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pfx="http://xmlns.example.com/1541446260400" xmlns:pfx2="http://xmlns.example.com/1543713627892" xmlns:pfx3="http://www.tibco.com/schemas/File/Schema.xsd" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/jms" xmlns:pfx4="http://www.tibco.com/pe/EngineTypes" xmlns:pfx5="http://www.tibco.com/schemas/File/Schemas/Schema.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:ns2="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:BW="java://com.tibco.pe.core.JavaCustomXPATHFunctions">
+    <xsd:import namespace="http://www.tibco.com/schemas/File/Schema.xsd" schemaLocation="/SCHEMAS/LOG_SCHEMA.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/File/Schemas/Schema.xsd" schemaLocation="/SCHEMAS/EXCEPTION_SCHEMA.xsd"/>
+    <wsdl:import namespace="http://xmlns.example.com/1543713627892" location="/HP Retailers SOAP Service/WSDL.wsdl"/>
+    <pd:name>HP Retailers SOAP Service/Response.process</pd:name>
+    <pd:startName>SOAPEventSource</pd:startName>
+    <pd:startX>0</pd:startX>
+    <pd:startY>0</pd:startY>
+    <pd:returnBindings/>
+    <pd:starter name="SOAPEventSource">
+        <pd:type>com.tibco.plugin.soap.SOAPEventSource</pd:type>
+        <pd:resourceType>ae.activities.SOAPEventSourceUI</pd:resourceType>
+        <pd:x>58</pd:x>
+        <pd:y>105</pd:y>
+        <config>
+            <service>pfx2:PortType</service>
+            <wsdlNamespaceRoot>http://xmlns.example.com/1543713627892/OperationImpl</wsdlNamespaceRoot>
+            <operation>Operation</operation>
+            <portAddressPrefix/>
+            <operationStyle>rpc</operationStyle>
+            <soapUse>literal</soapUse>
+            <inputNamespace>http://InputMessageNamespace</inputNamespace>
+            <outputNamespace>http://OutputMessageNamespace</outputNamespace>
+            <faultNamespace>http://FaultMessageNamespace</faultNamespace>
+            <embedWsdlComponents>true</embedWsdlComponents>
+            <embedSchemaComponents>true</embedSchemaComponents>
+            <soapAction>/HP%20Retailers%20SOAP%20Service/Response</soapAction>
+            <soapAttachmentStyle>SwA</soapAttachmentStyle>
+            <inputAttachmentBindings/>
+            <outputAttachmentBindings/>
+            <soapVersion>SOAP 1.2</soapVersion>
+            <sharedChannel>/HTTP Connection.sharedhttp</sharedChannel>
+            <httpURI>/test1</httpURI>
+        </config>
+        <pd:inputBindings/>
+    </pd:starter>
+    <pd:endName>End</pd:endName>
+    <pd:endX>982</pd:endX>
+    <pd:endY>105</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables>
+        <TIME_DURATION>
+            <xsd:element name="root" type="xsd:double"/>
+        </TIME_DURATION>
+    </pd:processVariables>
+    <pd:targetNamespace>http://xmlns.example.com/1543713616019</pd:targetNamespace>
+    <pd:activity name="JDBC Query">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>463</pd:x>
+        <pd:y>107</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>true</emptyStrAsNil>
+            <jdbcSharedConfig>/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>SELECT * FROM HP_RETAILERS
+WHERE STORE_NAME=?</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>STORE_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+            <oraObjects/>
+            <oraTables/>
+            <QueryOutputCachedSchemaColumns>STORE_NAME</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>STORE_LOCATION</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>STORE_CODE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CATEGORY</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>ITEM</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>QUANTITY</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>SALES_PERSON</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>SALES_PERSON_ID</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CUSTOMER_NAME</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>PAYMENT_TYPE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>PAYMENT_METHOD</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CUSTOMER_CARD_NO</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CUSTOMER_SSN</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CUSTOMER_ADDRESS</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CUSTOMER_POSTAL_CODE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CUSTOMER_EMAIL</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CUSTOMER_PHONE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput>
+                <STORE_NAME>
+                    <xsl:copy-of select="$SOAPEventSource/Operation/STORE_NAME/@xsi:nil"/>
+                    <xsl:value-of select="$SOAPEventSource/Operation/STORE_NAME"/>
+                </STORE_NAME>
+            </jdbcQueryActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SOAPSendReply">
+        <pd:type>com.tibco.plugin.soap.SOAPSendReplyActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendReplyUI</pd:resourceType>
+        <pd:x>645</pd:x>
+        <pd:y>107</pd:y>
+        <config>
+            <eventSource>SOAPEventSource</eventSource>
+            <sharedChannels>
+                <jmsChannel>
+                    <JMSDeliveryMode>2</JMSDeliveryMode>
+                </jmsChannel>
+            </sharedChannels>
+        </config>
+        <pd:inputBindings>
+            <OperationResponse>
+                <OUTPUT>
+                    <xsl:for-each select="$JDBC-Query/resultSet/Record[1]">
+                        <ns2:Retail>
+                            <xsl:if test="STORE_NAME">
+                                <ns2:STORE_NAME>
+                                    <xsl:value-of select="STORE_NAME"/>
+                                </ns2:STORE_NAME>
+                            </xsl:if>
+                            <xsl:if test="STORE_LOCATION">
+                                <ns2:STORE_LOCATION>
+                                    <xsl:value-of select="STORE_LOCATION"/>
+                                </ns2:STORE_LOCATION>
+                            </xsl:if>
+                            <xsl:if test="STORE_CODE">
+                                <ns2:STORE_CODE>
+                                    <xsl:value-of select="STORE_CODE"/>
+                                </ns2:STORE_CODE>
+                            </xsl:if>
+                            <xsl:if test="CATEGORY">
+                                <ns2:CATEGORY>
+                                    <xsl:value-of select="CATEGORY"/>
+                                </ns2:CATEGORY>
+                            </xsl:if>
+                            <xsl:if test="ITEM">
+                                <ns2:ITEM>
+                                    <xsl:value-of select="ITEM"/>
+                                </ns2:ITEM>
+                            </xsl:if>
+                            <xsl:if test="QUANTITY">
+                                <ns2:QUANTITY>
+                                    <xsl:value-of select="QUANTITY"/>
+                                </ns2:QUANTITY>
+                            </xsl:if>
+                            <xsl:if test="SALES_PERSON">
+                                <ns2:SALES_PERSON>
+                                    <xsl:value-of select="SALES_PERSON"/>
+                                </ns2:SALES_PERSON>
+                            </xsl:if>
+                            <xsl:if test="SALES_PERSON_ID">
+                                <ns2:SALES_PERSON_ID>
+                                    <xsl:value-of select="SALES_PERSON_ID"/>
+                                </ns2:SALES_PERSON_ID>
+                            </xsl:if>
+                            <xsl:if test="CUSTOMER_NAME">
+                                <ns2:CUSTOMER_NAME>
+                                    <xsl:value-of select="CUSTOMER_NAME"/>
+                                </ns2:CUSTOMER_NAME>
+                            </xsl:if>
+                            <xsl:if test="PAYMENT_TYPE">
+                                <ns2:PAYMENT_TYPE>
+                                    <xsl:value-of select="PAYMENT_TYPE"/>
+                                </ns2:PAYMENT_TYPE>
+                            </xsl:if>
+                            <xsl:if test="PAYMENT_METHOD">
+                                <ns2:PAYMENT_METHOD>
+                                    <xsl:value-of select="PAYMENT_METHOD"/>
+                                </ns2:PAYMENT_METHOD>
+                            </xsl:if>
+                            <xsl:if test="CUSTOMER_CARD_NO">
+                                <ns2:CUSTOMER_CARD_NO>
+                                    <xsl:value-of select="CUSTOMER_CARD_NO"/>
+                                </ns2:CUSTOMER_CARD_NO>
+                            </xsl:if>
+                            <xsl:if test="CUSTOMER_SSN">
+                                <ns2:CUSTOMER_SSN>
+                                    <xsl:value-of select="CUSTOMER_SSN"/>
+                                </ns2:CUSTOMER_SSN>
+                            </xsl:if>
+                            <xsl:if test="CUSTOMER_ADDRESS">
+                                <ns2:CUSTOMER_ADDRESS>
+                                    <xsl:value-of select="CUSTOMER_ADDRESS"/>
+                                </ns2:CUSTOMER_ADDRESS>
+                            </xsl:if>
+                            <xsl:if test="CUSTOMER_POSTAL_CODE">
+                                <ns2:CUSTOMER_POSTAL_CODE>
+                                    <xsl:value-of select="CUSTOMER_POSTAL_CODE"/>
+                                </ns2:CUSTOMER_POSTAL_CODE>
+                            </xsl:if>
+                            <xsl:if test="CUSTOMER_EMAIL">
+                                <ns2:CUSTOMER_EMAIL>
+                                    <xsl:value-of select="CUSTOMER_EMAIL"/>
+                                </ns2:CUSTOMER_EMAIL>
+                            </xsl:if>
+                            <xsl:if test="CUSTOMER_PHONE">
+                                <ns2:CUSTOMER_PHONE>
+                                    <xsl:value-of select="CUSTOMER_PHONE"/>
+                                </ns2:CUSTOMER_PHONE>
+                            </xsl:if>
+                        </ns2:Retail>
+                    </xsl:for-each>
+                </OUTPUT>
+            </OperationResponse>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="SOAPSendReply-1">
+        <pd:type>com.tibco.plugin.soap.SOAPSendReplyActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendReplyUI</pd:resourceType>
+        <pd:x>639</pd:x>
+        <pd:y>229</pd:y>
+        <config>
+            <eventSource>SOAPEventSource</eventSource>
+            <sharedChannels>
+                <jmsChannel>
+                    <JMSDeliveryMode>2</JMSDeliveryMode>
+                </jmsChannel>
+            </sharedChannels>
+        </config>
+        <pd:inputBindings>
+            <OperationResponse>
+                <OUTPUT>
+                    <ns2:Retail>
+                        <ns2:STORE_NAME>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:STORE_NAME>
+                        <ns2:STORE_LOCATION>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:STORE_LOCATION>
+                        <ns2:STORE_CODE>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:STORE_CODE>
+                        <ns2:CATEGORY>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:CATEGORY>
+                        <ns2:ITEM>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:ITEM>
+                        <ns2:QUANTITY>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:QUANTITY>
+                        <ns2:SALES_PERSON>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:SALES_PERSON>
+                        <ns2:SALES_PERSON_ID>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:SALES_PERSON_ID>
+                        <ns2:CUSTOMER_NAME>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:CUSTOMER_NAME>
+                        <ns2:PAYMENT_TYPE>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:PAYMENT_TYPE>
+                        <ns2:PAYMENT_METHOD>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:PAYMENT_METHOD>
+                        <ns2:CUSTOMER_CARD_NO>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:CUSTOMER_CARD_NO>
+                        <ns2:CUSTOMER_SSN>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:CUSTOMER_SSN>
+                        <ns2:CUSTOMER_ADDRESS>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:CUSTOMER_ADDRESS>
+                        <ns2:CUSTOMER_POSTAL_CODE>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:CUSTOMER_POSTAL_CODE>
+                        <ns2:CUSTOMER_EMAIL>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:CUSTOMER_EMAIL>
+                        <ns2:CUSTOMER_PHONE>
+                            <xsl:value-of select="&quot;&quot;"/>
+                        </ns2:CUSTOMER_PHONE>
+                    </ns2:Retail>
+                </OUTPUT>
+            </OperationResponse>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Catch">
+        <pd:type>com.tibco.pe.core.CatchActivity</pd:type>
+        <pd:resourceType>ae.activities.catch</pd:resourceType>
+        <pd:x>1411</pd:x>
+        <pd:y>105</pd:y>
+        <pd:handler>true</pd:handler>
+        <config>
+            <catchAll>true</catchAll>
+        </config>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="SOAPSendFault">
+        <pd:type>com.tibco.plugin.soap.SOAPSendFaultActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendFaultUI</pd:resourceType>
+        <pd:x>1268</pd:x>
+        <pd:y>107</pd:y>
+        <config>
+            <faultMessage>ERROR</faultMessage>
+            <eventSource>SOAPEventSource</eventSource>
+            <sharedChannels>
+                <jmsChannel>
+                    <JMSDeliveryMode>2</JMSDeliveryMode>
+                </jmsChannel>
+            </sharedChannels>
+        </config>
+        <pd:inputBindings>
+            <FaultMessage>
+                <faultcode>
+                    <xsl:value-of select="1234"/>
+                </faultcode>
+                <faultstring>
+                    <xsl:value-of select="&quot;Error Received&quot;"/>
+                </faultstring>
+            </FaultMessage>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="JMS Queue Sender (END LOG)">
+        <pd:type>com.tibco.plugin.jms.JMSQueueSendActivity</pd:type>
+        <pd:resourceType>ae.activities.JMSQueueSendActivity</pd:resourceType>
+        <pd:x>818</pd:x>
+        <pd:y>113</pd:y>
+        <config>
+            <PermittedMessageType>XML Text</PermittedMessageType>
+            <SessionAttributes>
+                <transacted>false</transacted>
+                <acknowledgeMode>1</acknowledgeMode>
+                <maxSessions>1</maxSessions>
+                <destination>%%Destination_Queues/Exception%%</destination>
+            </SessionAttributes>
+            <ConfigurableHeaders>
+                <JMSDeliveryMode>PERSISTENT</JMSDeliveryMode>
+                <JMSExpiration>0</JMSExpiration>
+                <JMSPriority>4</JMSPriority>
+            </ConfigurableHeaders>
+            <ConnectionReference>/JMS Connection.sharedjmscon</ConnectionReference>
+            <InDataxsdString ref="pfx3:LOG"/>
+        </config>
+        <pd:inputBindings>
+            <ns:ActivityInput>
+                <Body>
+                    <pfx3:LOG>
+                        <pfx3:APPLICATION_ID>
+                            <xsl:value-of select="$GetVariable/SHARED_VARIABLES/APPLICATION_ID"/>
+                        </pfx3:APPLICATION_ID>
+                        <pfx3:LOG_ID>
+                            <xsl:value-of select="concat('END', $_processContext/pfx4:ProcessContext/ProcessId)"/>
+                        </pfx3:LOG_ID>
+                        <pfx3:COMPONENT_NAME>
+                            <xsl:value-of select="BW:getCurrentProcessName($_processContext/pfx4:ProcessContext/ProcessId)"/>
+                        </pfx3:COMPONENT_NAME>
+                        <pfx3:HOST_NAME>
+                            <xsl:value-of select="BW:getHostName()"/>
+                        </pfx3:HOST_NAME>
+                        <xsl:if test="$GetVariable/SHARED_VARIABLES/TRANSACTION_DOMAIN">
+                            <pfx3:TRANSACTION_DOMAIN>
+                                <xsl:value-of select="$GetVariable/SHARED_VARIABLES/TRANSACTION_DOMAIN"/>
+                            </pfx3:TRANSACTION_DOMAIN>
+                        </xsl:if>
+                        <xsl:if test="not(($SOAPEventSource/Operation/STORE_NAME/@xsi:nil=(&quot;true&quot;)) or ($SOAPEventSource/Operation/STORE_NAME/@xsi:nil=(&quot;1&quot;)))">
+                            <pfx3:TRANSACTION_ID>
+                                <xsl:value-of select="$SOAPEventSource/Operation/STORE_NAME"/>
+                            </pfx3:TRANSACTION_ID>
+                        </xsl:if>
+                        <xsl:if test="$GetVariable/SHARED_VARIABLES/TRANSACTION_TYPE">
+                            <pfx3:TRANSACTION_TYPE>
+                                <xsl:value-of select="$GetVariable/SHARED_VARIABLES/TRANSACTION_TYPE"/>
+                            </pfx3:TRANSACTION_TYPE>
+                        </xsl:if>
+                        <pfx3:TIME_STAMP>
+                            <xsl:value-of select="current-dateTime()"/>
+                        </pfx3:TIME_STAMP>
+                        <pfx3:TIME_DURATION>
+                            <xsl:value-of select="tib:round-fraction(tib:get-seconds-from-dateTime(current-dateTime())-$TIME_DURATION/root, 2)"/>
+                        </pfx3:TIME_DURATION>
+                        <pfx3:CATEGORY>
+                            <xsl:value-of select="'LOG'"/>
+                        </pfx3:CATEGORY>
+                        <pfx3:MESSAGE>
+                            <xsl:value-of select="'MESSAGE ENDED'"/>
+                        </pfx3:MESSAGE>
+                        <pfx3:STATUS>
+                            <xsl:value-of select="'END'"/>
+                        </pfx3:STATUS>
+                        <pfx3:TRANSACTION_DATA>
+                            <xsl:value-of select="tib:render-xml($SOAPEventSource/Operation)"/>
+                        </pfx3:TRANSACTION_DATA>
+                        <pfx3:FILE_NAME>
+                            <xsl:value-of select="'HP RETAILERS'"/>
+                        </pfx3:FILE_NAME>
+                        <pfx3:LOG_AUDIT>
+                            <xsl:value-of select="'0'"/>
+                        </pfx3:LOG_AUDIT>
+                        <xsl:if test="$GetVariable/SHARED_VARIABLES/INTERFACE_ID">
+                            <pfx3:INTERFACE_ID>
+                                <xsl:value-of select="$GetVariable/SHARED_VARIABLES/INTERFACE_ID"/>
+                            </pfx3:INTERFACE_ID>
+                        </xsl:if>
+                        <pfx3:TRANSACTION_SIZE>
+                            <xsl:value-of select="'0'"/>
+                        </pfx3:TRANSACTION_SIZE>
+                    </pfx3:LOG>
+                </Body>
+            </ns:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="JMS Queue Sender (EXCEPTION)">
+        <pd:type>com.tibco.plugin.jms.JMSQueueSendActivity</pd:type>
+        <pd:resourceType>ae.activities.JMSQueueSendActivity</pd:resourceType>
+        <pd:x>1117</pd:x>
+        <pd:y>113</pd:y>
+        <config>
+            <PermittedMessageType>XML Text</PermittedMessageType>
+            <SessionAttributes>
+                <transacted>false</transacted>
+                <acknowledgeMode>1</acknowledgeMode>
+                <maxSessions>1</maxSessions>
+                <destination>%%Destination_Queues/Exception%%</destination>
+            </SessionAttributes>
+            <ConfigurableHeaders>
+                <JMSDeliveryMode>PERSISTENT</JMSDeliveryMode>
+                <JMSExpiration>0</JMSExpiration>
+                <JMSPriority>4</JMSPriority>
+            </ConfigurableHeaders>
+            <ConnectionReference>/JMS Connection.sharedjmscon</ConnectionReference>
+            <InDataxsdString ref="pfx5:EXCEPTIION"/>
+        </config>
+        <pd:inputBindings>
+            <ns:ActivityInput>
+                <Body>
+                    <pfx5:EXCEPTIION>
+                        <pfx5:APPLICATION_ID>
+                            <xsl:value-of select="$GetVariable/SHARED_VARIABLES/APPLICATION_ID"/>
+                        </pfx5:APPLICATION_ID>
+                        <pfx5:EXCEPTION_ID>
+                            <xsl:value-of select="concat('EXCEPTION', $_processContext/pfx4:ProcessContext/ProcessId)"/>
+                        </pfx5:EXCEPTION_ID>
+                        <xsl:if test="$_error/pfx4:ErrorReport/MsgCode">
+                            <pfx5:EXCEPTION_CODE>
+                                <xsl:value-of select="$_error/pfx4:ErrorReport/MsgCode"/>
+                            </pfx5:EXCEPTION_CODE>
+                        </xsl:if>
+                        <pfx5:COMPONENT_NAME>
+                            <xsl:value-of select="BW:getCurrentProcessName($_processContext/pfx4:ProcessContext/ProcessId)"/>
+                        </pfx5:COMPONENT_NAME>
+                        <pfx5:HOST_NAME>
+                            <xsl:value-of select="BW:getHostName()"/>
+                        </pfx5:HOST_NAME>
+                        <xsl:if test="$GetVariable/SHARED_VARIABLES/TRANSACTION_DOMAIN">
+                            <pfx5:TRANSACTION_DOMAIN>
+                                <xsl:value-of select="$GetVariable/SHARED_VARIABLES/TRANSACTION_DOMAIN"/>
+                            </pfx5:TRANSACTION_DOMAIN>
+                        </xsl:if>
+                        <xsl:if test="not(($SOAPEventSource/Operation/STORE_NAME/@xsi:nil=(&quot;true&quot;)) or ($SOAPEventSource/Operation/STORE_NAME/@xsi:nil=(&quot;1&quot;)))">
+                            <pfx5:TRANSACTION_ID>
+                                <xsl:value-of select="$SOAPEventSource/Operation/STORE_NAME"/>
+                            </pfx5:TRANSACTION_ID>
+                        </xsl:if>
+                        <xsl:if test="$GetVariable/SHARED_VARIABLES/TRANSACTION_TYPE">
+                            <pfx5:TRANSACTION_TYPE>
+                                <xsl:value-of select="$GetVariable/SHARED_VARIABLES/TRANSACTION_TYPE"/>
+                            </pfx5:TRANSACTION_TYPE>
+                        </xsl:if>
+                        <pfx5:FILE_NAME>
+                            <xsl:value-of select="'HP RETAILERS'"/>
+                        </pfx5:FILE_NAME>
+                        <xsl:if test="$GetVariable/SHARED_VARIABLES/INTERFACE_ID">
+                            <pfx5:INTERFACE_ID>
+                                <xsl:value-of select="$GetVariable/SHARED_VARIABLES/INTERFACE_ID"/>
+                            </pfx5:INTERFACE_ID>
+                        </xsl:if>
+                        <pfx5:TIME_STAMP>
+                            <xsl:value-of select="current-dateTime()"/>
+                        </pfx5:TIME_STAMP>
+                        <xsl:if test="$_error/pfx4:ErrorReport/Msg">
+                            <pfx5:MESSAGE>
+                                <xsl:value-of select="$_error/pfx4:ErrorReport/Msg"/>
+                            </pfx5:MESSAGE>
+                        </xsl:if>
+                        <xsl:if test="not(($SOAPEventSource/Operation/STORE_NAME/@xsi:nil=(&quot;true&quot;)) or ($SOAPEventSource/Operation/STORE_NAME/@xsi:nil=(&quot;1&quot;)))">
+                            <pfx5:TRANSACTION_DATA>
+                                <xsl:value-of select="$SOAPEventSource/Operation/STORE_NAME"/>
+                            </pfx5:TRANSACTION_DATA>
+                        </xsl:if>
+                        <xsl:if test="$_error/pfx4:ErrorReport/StackTrace">
+                            <pfx5:STACK_TRACE>
+                                <xsl:value-of select="$_error/pfx4:ErrorReport/StackTrace"/>
+                            </pfx5:STACK_TRACE>
+                        </xsl:if>
+                        <pfx5:STATUS>
+                            <xsl:value-of select="'EXCEPTION'"/>
+                        </pfx5:STATUS>
+                    </pfx5:EXCEPTIION>
+                </Body>
+            </ns:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="JMS Queue Sender (START LOG)">
+        <pd:type>com.tibco.plugin.jms.JMSQueueSendActivity</pd:type>
+        <pd:resourceType>ae.activities.JMSQueueSendActivity</pd:resourceType>
+        <pd:x>360</pd:x>
+        <pd:y>113</pd:y>
+        <config>
+            <PermittedMessageType>XML Text</PermittedMessageType>
+            <SessionAttributes>
+                <transacted>false</transacted>
+                <acknowledgeMode>1</acknowledgeMode>
+                <maxSessions>1</maxSessions>
+                <destination>%%Destination_Queues/Log%%</destination>
+            </SessionAttributes>
+            <ConfigurableHeaders>
+                <JMSDeliveryMode>PERSISTENT</JMSDeliveryMode>
+                <JMSExpiration>0</JMSExpiration>
+                <JMSPriority>4</JMSPriority>
+            </ConfigurableHeaders>
+            <ConnectionReference>/JMS Connection.sharedjmscon</ConnectionReference>
+            <InDataxsdString ref="pfx3:LOG"/>
+        </config>
+        <pd:inputBindings>
+            <ns:ActivityInput>
+                <Body>
+                    <pfx3:LOG>
+                        <pfx3:APPLICATION_ID>
+                            <xsl:value-of select="$GetVariable/SHARED_VARIABLES/APPLICATION_ID"/>
+                        </pfx3:APPLICATION_ID>
+                        <pfx3:LOG_ID>
+                            <xsl:value-of select="concat('START', $_processContext/pfx4:ProcessContext/ProcessId)"/>
+                        </pfx3:LOG_ID>
+                        <pfx3:COMPONENT_NAME>
+                            <xsl:value-of select="BW:getCurrentProcessName($_processContext/pfx4:ProcessContext/ProcessId)"/>
+                        </pfx3:COMPONENT_NAME>
+                        <pfx3:HOST_NAME>
+                            <xsl:value-of select="BW:getHostName()"/>
+                        </pfx3:HOST_NAME>
+                        <xsl:if test="$GetVariable/SHARED_VARIABLES/TRANSACTION_DOMAIN">
+                            <pfx3:TRANSACTION_DOMAIN>
+                                <xsl:value-of select="$GetVariable/SHARED_VARIABLES/TRANSACTION_DOMAIN"/>
+                            </pfx3:TRANSACTION_DOMAIN>
+                        </xsl:if>
+                        <xsl:if test="not(($SOAPEventSource/Operation/STORE_NAME/@xsi:nil=(&quot;true&quot;)) or ($SOAPEventSource/Operation/STORE_NAME/@xsi:nil=(&quot;1&quot;)))">
+                            <pfx3:TRANSACTION_ID>
+                                <xsl:value-of select="$SOAPEventSource/Operation/STORE_NAME"/>
+                            </pfx3:TRANSACTION_ID>
+                        </xsl:if>
+                        <xsl:if test="$GetVariable/SHARED_VARIABLES/TRANSACTION_TYPE">
+                            <pfx3:TRANSACTION_TYPE>
+                                <xsl:value-of select="$GetVariable/SHARED_VARIABLES/TRANSACTION_TYPE"/>
+                            </pfx3:TRANSACTION_TYPE>
+                        </xsl:if>
+                        <pfx3:TIME_STAMP>
+                            <xsl:value-of select="current-dateTime()"/>
+                        </pfx3:TIME_STAMP>
+                        <pfx3:TIME_DURATION>
+                            <xsl:value-of select="'0'"/>
+                        </pfx3:TIME_DURATION>
+                        <pfx3:CATEGORY>
+                            <xsl:value-of select="'LOG'"/>
+                        </pfx3:CATEGORY>
+                        <pfx3:MESSAGE>
+                            <xsl:value-of select="'SERVICE STARTED'"/>
+                        </pfx3:MESSAGE>
+                        <pfx3:STATUS>
+                            <xsl:value-of select="'START'"/>
+                        </pfx3:STATUS>
+                        <pfx3:TRANSACTION_DATA>
+                            <xsl:value-of select="tib:render-xml($SOAPEventSource/Operation)"/>
+                        </pfx3:TRANSACTION_DATA>
+                        <pfx3:FILE_NAME>
+                            <xsl:value-of select="'HP RETAILERS'"/>
+                        </pfx3:FILE_NAME>
+                        <pfx3:LOG_AUDIT>
+                            <xsl:value-of select="'0'"/>
+                        </pfx3:LOG_AUDIT>
+                        <xsl:if test="$GetVariable/SHARED_VARIABLES/INTERFACE_ID">
+                            <pfx3:INTERFACE_ID>
+                                <xsl:value-of select="$GetVariable/SHARED_VARIABLES/INTERFACE_ID"/>
+                            </pfx3:INTERFACE_ID>
+                        </xsl:if>
+                        <pfx3:TRANSACTION_SIZE>
+                            <xsl:value-of select="'0'"/>
+                        </pfx3:TRANSACTION_SIZE>
+                    </pfx3:LOG>
+                </Body>
+            </ns:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="GetVariable">
+        <pd:type>com.tibco.pe.core.GetSharedVariableActivity</pd:type>
+        <pd:resourceType>ae.activities.getSharedVariable</pd:resourceType>
+        <pd:x>260</pd:x>
+        <pd:y>105</pd:y>
+        <config>
+            <variableConfig>/HP Retailers SOAP Service/Shared Variable.sharedvariable</variableConfig>
+        </config>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="Assign">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>158</pd:x>
+        <pd:y>105</pd:y>
+        <config>
+            <variableName>TIME_DURATION</variableName>
+        </config>
+        <pd:inputBindings>
+            <root>
+                <xsl:value-of select="tib:get-seconds-from-time(current-dateTime())"/>
+            </root>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>SOAPSendReply</pd:from>
+        <pd:to>JMS Queue Sender (END LOG)</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JDBC Query</pd:from>
+        <pd:to>SOAPSendReply-1</pd:to>
+        <pd:xpathDescription>NO DATA</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendReply-1</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Catch</pd:from>
+        <pd:to>SOAPSendFault</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPSendFault</pd:from>
+        <pd:to>JMS Queue Sender (EXCEPTION)</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JMS Queue Sender (END LOG)</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JMS Queue Sender (EXCEPTION)</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JMS Queue Sender (START LOG)</pd:from>
+        <pd:to>JDBC Query</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JDBC Query</pd:from>
+        <pd:to>SOAPSendReply</pd:to>
+        <pd:xpathDescription>DATA EXISTS</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>count($JDBC-Query/resultSet/Record)!=0</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPEventSource</pd:from>
+        <pd:to>Assign</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>GetVariable</pd:from>
+        <pd:to>JMS Queue Sender (START LOG)</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Assign</pd:from>
+        <pd:to>GetVariable</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

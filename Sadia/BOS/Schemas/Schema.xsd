@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/BOS/Schemas/Schema.xsd3"
+	 xmlns:tns="http://www.example.org/Medicine"
+	 xmlns:ns0="http://www.example.org/NewXMLSchema"
+	 targetNamespace="http://www.tibco.com/schemas/BOS/Schemas/Schema.xsd3"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.example.org/Medicine" schemaLocation="Medicine.xsd"/>
+	<xs:import namespace="http://www.example.org/NewXMLSchema" schemaLocation="NewXMLSchema.xsd"/>
+	<xs:element name="patient">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ns0:Root"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="medicine">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:Root"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="main">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="patient"/>
+				<xs:element ref="medicine"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

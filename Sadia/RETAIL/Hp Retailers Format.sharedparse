@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BWSharedResource xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <name>Hp Retailers Format</name>
+    <resourceType>ae.shared.ParseSharedResource</resourceType>
+    <config xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <FormatType>Delimiter separated</FormatType>
+        <ColumnSeparator>,</ColumnSeparator>
+        <ColSeparatorRule>Treat all characters as entered as a single column separator string</ColSeparatorRule>
+        <LineSeparator>
+</LineSeparator>
+        <FillCharacter>Space</FillCharacter>
+        <LineLength>1</LineLength>
+        <DataFormat>
+            <xsd:element name="HP-Retail">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="STORE_NAME" type="xsd:string"/>
+                        <xsd:element name="STORE_LOCATION" type="xsd:string"/>
+                        <xsd:element name="STORE_CODE" type="xsd:string"/>
+                        <xsd:element name="CATEGORY" type="xsd:string"/>
+                        <xsd:element name="ITEM" type="xsd:string"/>
+                        <xsd:element name="QUANTITY" type="xsd:string"/>
+                        <xsd:element name="SALES_PERSON" type="xsd:string"/>
+                        <xsd:element name="SALES_PERSON_ID" type="xsd:string"/>
+                        <xsd:element name="CUSTOMER_NAME" type="xsd:string"/>
+                        <xsd:element name="PAYMENT_TYPE" type="xsd:string"/>
+                        <xsd:element name="PAYMENT_METHOD" type="xsd:string"/>
+                        <xsd:element name="CUSTOMER_CARD_NO" type="xsd:string"/>
+                        <xsd:element name="CUSTOMER_SSN" type="xsd:string"/>
+                        <xsd:element name="CUSTOMER_ADDRESS" type="xsd:string"/>
+                        <xsd:element name="CUSTOMER_POSTAL_CODE" type="xsd:string"/>
+                        <xsd:element name="CUSTOMER_EMAIL" type="xsd:string"/>
+                        <xsd:element name="CUSTOMER_PHONE" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </DataFormat>
+    </config>
+</BWSharedResource>

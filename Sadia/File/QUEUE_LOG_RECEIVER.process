@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://www.tibco.com/schemas/File/Schema.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/jms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="www.tibco.com/plugin/Sleep" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions">
+    <xsd:import namespace="http://www.tibco.com/schemas/File/Schema.xsd" schemaLocation="/Schemas/LOG_SCHEMA.xsd"/>
+    <pd:name>QUEUE_LOG_RECEIVER.process</pd:name>
+    <pd:startName>JMS Queue Receiver</pd:startName>
+    <pd:startX>0</pd:startX>
+    <pd:startY>0</pd:startY>
+    <pd:returnBindings/>
+    <pd:starter name="JMS Queue Receiver">
+        <pd:type>com.tibco.plugin.jms.JMSQueueEventSource</pd:type>
+        <pd:resourceType>ae.activities.JMSQueueEventSource</pd:resourceType>
+        <pd:x>94</pd:x>
+        <pd:y>174</pd:y>
+        <config>
+            <PermittedMessageType>XML Text</PermittedMessageType>
+            <SessionAttributes>
+                <transacted>false</transacted>
+                <acknowledgeMode>1</acknowledgeMode>
+                <maxSessions>1</maxSessions>
+                <destination>%%Destination/LOG%%</destination>
+            </SessionAttributes>
+            <ConfigurableHeaders>
+                <JMSDeliveryMode>PERSISTENT</JMSDeliveryMode>
+                <JMSExpiration>0</JMSExpiration>
+                <JMSPriority>4</JMSPriority>
+            </ConfigurableHeaders>
+            <ConnectionReference>/JMS Connection.sharedjmscon</ConnectionReference>
+            <OutDataxsdString ref="pfx:LOG"/>
+        </config>
+        <pd:inputBindings/>
+    </pd:starter>
+    <pd:endName>End</pd:endName>
+    <pd:endX>626</pd:endX>
+    <pd:endY>144</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1542143373392</pd:targetNamespace>
+    <pd:group name="Group">
+        <pd:type>com.tibco.pe.core.LoopGroup</pd:type>
+        <pd:resourceType>ae.process.group</pd:resourceType>
+        <pd:x>236</pd:x>
+        <pd:y>64</pd:y>
+        <pd:width>250</pd:width>
+        <pd:height>205</pd:height>
+        <pd:collapsedWidth>57</pd:collapsedWidth>
+        <pd:collapsedHeight>70</pd:collapsedHeight>
+        <pd:groupVariables/>
+        <pd:joinToggle>inherit</pd:joinToggle>
+        <config>
+            <pd:groupType>errorLoop</pd:groupType>
+            <pd:serializable>false</pd:serializable>
+            <pd:indexSlot>I</pd:indexSlot>
+            <pd:errorCondition>$I=3</pd:errorCondition>
+            <pd:suspendAfterErrorRetry>true</pd:suspendAfterErrorRetry>
+        </config>
+        <pd:inputBindings/>
+        <pd:expanded>true</pd:expanded>
+        <pd:transition>
+            <pd:from>start</pd:from>
+            <pd:to>Sleep</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>xpath</pd:conditionType>
+            <pd:xpath>$I&gt;1</pd:xpath>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>start</pd:from>
+            <pd:to>JDBC Update</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>JDBC Update</pd:from>
+            <pd:to>end</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>Sleep</pd:from>
+            <pd:to>JDBC Update</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:activity name="JDBC Update">
+            <pd:type>com.tibco.plugin.jdbc.JDBCUpdateActivity</pd:type>
+            <pd:resourceType>ae.activities.JDBCUpdateActivity</pd:resourceType>
+            <pd:x>354</pd:x>
+            <pd:y>122</pd:y>
+            <config>
+                <timeout>10</timeout>
+                <commit>false</commit>
+                <emptyStrAsNil>true</emptyStrAsNil>
+                <jdbcSharedConfig>/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+                <statement>INSERT INTO DBO_LOG (APPLICATION_ID,LOG_ID,COMPONENT_NAME,HOST_NAME,TRANSACTION_DOMAIN,TRANSACTION_ID,TRANSACTION_TYPE,TIME_STAMP,TIME_DURATION,CATEGORY,MESSAGE,STATUS,TRANSACTION_DATA,FILE_NAME,LOG_AUDIT,INTERFACE_ID,TRANSACTION_SIZE,DATA_ENCODING,CORRELATION_ID,RENDER_ID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)</statement>
+                <Prepared_Param_DataType>
+                    <parameter>
+                        <parameterName>APPLICATION_ID</parameterName>
+                        <dataType>VARCHAR</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>LOG_ID</parameterName>
+                        <dataType>VARCHAR</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>COMPONENT_NAME</parameterName>
+                        <dataType>VARCHAR</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>HOST_NAME</parameterName>
+                        <dataType>VARCHAR</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>TRANSACTION_DOMAIN</parameterName>
+                        <dataType>VARCHAR</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>TRANSACTION_ID</parameterName>
+                        <dataType>VARCHAR</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>TRANSACTION_TYPE</parameterName>
+                        <dataType>VARCHAR</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>TIME_STAMP</parameterName>
+                        <dataType>TIMESTAMP</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>TIME_DURATION</parameterName>
+                        <dataType>NUMERIC</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>CATEGORY</parameterName>
+                        <dataType>VARCHAR</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>MESSAGE</parameterName>
+                        <dataType>VARCHAR</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>STATUS</parameterName>
+                        <dataType>VARCHAR</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>TRANSACTION_DATA</parameterName>
+                        <dataType>CLOB</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>FILE_NAME</parameterName>
+                        <dataType>VARCHAR</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>LOG_AUDIT</parameterName>
+                        <dataType>NUMERIC</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>INTERFACE_ID</parameterName>
+                        <dataType>VARCHAR</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>TRANSACTION_SIZE</parameterName>
+                        <dataType>NUMERIC</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>DATA_ENCODING</parameterName>
+                        <dataType>VARCHAR</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>CORRELATION_ID</parameterName>
+                        <dataType>VARCHAR</dataType>
+                    </parameter>
+                    <parameter>
+                        <parameterName>RENDER_ID</parameterName>
+                        <dataType>VARCHAR</dataType>
+                    </parameter>
+                </Prepared_Param_DataType>
+            </config>
+            <pd:inputBindings>
+                <xsl:for-each select="$JMS-Queue-Receiver/ns:ActivityOutput/Body/pfx:LOG">
+                    <jdbcUpdateActivityInput>
+                        <APPLICATION_ID>
+                            <xsl:value-of select="pfx:APPLICATION_ID"/>
+                        </APPLICATION_ID>
+                        <LOG_ID>
+                            <xsl:value-of select="pfx:LOG_ID"/>
+                        </LOG_ID>
+                        <COMPONENT_NAME>
+                            <xsl:value-of select="pfx:COMPONENT_NAME"/>
+                        </COMPONENT_NAME>
+                        <HOST_NAME>
+                            <xsl:value-of select="pfx:HOST_NAME"/>
+                        </HOST_NAME>
+                        <TRANSACTION_DOMAIN>
+                            <xsl:value-of select="pfx:TRANSACTION_DOMAIN"/>
+                        </TRANSACTION_DOMAIN>
+                        <TRANSACTION_ID>
+                            <xsl:value-of select="pfx:TRANSACTION_ID"/>
+                        </TRANSACTION_ID>
+                        <TRANSACTION_TYPE>
+                            <xsl:value-of select="pfx:TRANSACTION_TYPE"/>
+                        </TRANSACTION_TYPE>
+                        <TIME_STAMP>
+                            <xsl:value-of select="pfx:TIME_STAMP"/>
+                        </TIME_STAMP>
+                        <TIME_DURATION>
+                            <xsl:value-of select="pfx:TIME_DURATION"/>
+                        </TIME_DURATION>
+                        <CATEGORY>
+                            <xsl:value-of select="pfx:CATEGORY"/>
+                        </CATEGORY>
+                        <MESSAGE>
+                            <xsl:value-of select="pfx:MESSAGE"/>
+                        </MESSAGE>
+                        <STATUS>
+                            <xsl:value-of select="pfx:STATUS"/>
+                        </STATUS>
+                        <TRANSACTION_DATA>
+                            <xsl:value-of select="pfx:TRANSACTION_DATA"/>
+                        </TRANSACTION_DATA>
+                        <FILE_NAME>
+                            <xsl:value-of select="pfx:FILE_NAME"/>
+                        </FILE_NAME>
+                        <LOG_AUDIT>
+                            <xsl:value-of select="pfx:LOG_AUDIT"/>
+                        </LOG_AUDIT>
+                        <INTERFACE_ID>
+                            <xsl:value-of select="pfx:INTERFACE_ID"/>
+                        </INTERFACE_ID>
+                        <TRANSACTION_SIZE>
+                            <xsl:value-of select="pfx:TRANSACTION_SIZE"/>
+                        </TRANSACTION_SIZE>
+                        <DATA_ENCODING>
+                            <xsl:value-of select="pfx:DATA_ENCODING"/>
+                        </DATA_ENCODING>
+                        <CORRELATION_ID>
+                            <xsl:value-of select="pfx:CORRELATION_ID"/>
+                        </CORRELATION_ID>
+                        <RENDER_ID>
+                            <xsl:value-of select="pfx:RENDER_ID"/>
+                        </RENDER_ID>
+                    </jdbcUpdateActivityInput>
+                </xsl:for-each>
+            </pd:inputBindings>
+        </pd:activity>
+        <pd:activity name="Sleep">
+            <pd:type>com.tibco.plugin.timer.SleepActivity</pd:type>
+            <pd:resourceType>ae.activities.sleep</pd:resourceType>
+            <pd:x>356</pd:x>
+            <pd:y>211</pd:y>
+            <config/>
+            <pd:inputBindings>
+                <ns0:SleepInputSchema>
+                    <IntervalInMillisec>
+                        <xsl:value-of select="3000"/>
+                    </IntervalInMillisec>
+                </ns0:SleepInputSchema>
+            </pd:inputBindings>
+        </pd:activity>
+    </pd:group>
+    <pd:transition>
+        <pd:from>JMS Queue Receiver</pd:from>
+        <pd:to>Group</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Group</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

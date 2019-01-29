@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BWSharedResource xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <name>LargeFileProcessing(Retail)</name>
+    <resourceType>ae.shared.ParseSharedResource</resourceType>
+    <config xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <FormatType>Delimiter separated</FormatType>
+        <ColumnSeparator>~</ColumnSeparator>
+        <ColSeparatorRule>Treat all characters as entered as a single column separator string</ColSeparatorRule>
+        <LineSeparator>
+</LineSeparator>
+        <FillCharacter>Space</FillCharacter>
+        <LineLength>1</LineLength>
+        <DataFormat>
+            <xsd:element name="root">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="RANK" type="xsd:int"/>
+                        <xsd:element name="COMPANY" type="xsd:string"/>
+                        <xsd:element name="SALES_2017" type="xsd:string"/>
+                        <xsd:element name="HQ_CITY" type="xsd:string"/>
+                        <xsd:element name="HQ_STATE" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="STORE" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </DataFormat>
+    </config>
+</BWSharedResource>
