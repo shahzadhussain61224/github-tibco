@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns="http://www.tibco.com/schemas/Service/Schema.xsd" xmlns:wsdlPfx="http://xmlns.example.com/1548904825342">
+    <wsdl:import namespace="http://xmlns.example.com/1548904825342" location="/WSDL.wsdl"/>
+    <pd:name>PortTypeOperation.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType wsMsgRef="wsdlPfx:Input"/>
+    <pd:startX>150</pd:startX>
+    <pd:startY>65</pd:startY>
+    <pd:returnBindings>
+        <wsdlPfx:Output>
+            <response>
+                <ns:ouput>
+                    <ns:field>
+                        <xsl:value-of select="$Start/wsdlPfx:Input/request/ns:fields/ns:field1 + $Start/wsdlPfx:Input/request/ns:fields/ns:field2"/>
+                    </ns:field>
+                </ns:ouput>
+            </response>
+        </wsdlPfx:Output>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType wsMsgRef="wsdlPfx:Output"/>
+    <pd:endX>450</pd:endX>
+    <pd:endY>65</pd:endY>
+    <pd:errorSchemas>
+        <Schema1 wsMsgRef="wsdlPfx:Error"/>
+    </pd:errorSchemas>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1548911820749</pd:targetNamespace>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

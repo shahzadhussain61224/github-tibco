@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BWSharedResource>
+    <name>JMS Application Properties</name>
+    <resourceType>ae.shared.JMSAppPropResource</resourceType>
+    <config>
+        <Properties>
+            <row>
+                <PropertyName>ADB__SUBJECT</PropertyName>
+                <Type>string</Type>
+                <Cardinality>optional</Cardinality>
+            </row>
+            <row>
+                <PropertyName>ADB__SEQUENCE</PropertyName>
+                <Type>int</Type>
+                <Cardinality>optional</Cardinality>
+            </row>
+            <row>
+                <PropertyName>ADB__TIMESTAMP</PropertyName>
+                <Type>string</Type>
+                <Cardinality>optional</Cardinality>
+            </row>
+            <row>
+                <PropertyName>ADB__OPCODE</PropertyName>
+                <Type>int</Type>
+                <Cardinality>optional</Cardinality>
+            </row>
+            <row>
+                <PropertyName>ADB__REF__OBJECT</PropertyName>
+                <Type>string</Type>
+                <Cardinality>optional</Cardinality>
+            </row>
+            <row>
+                <PropertyName>ADB__AGENT__ID</PropertyName>
+                <Type>string</Type>
+                <Cardinality>optional</Cardinality>
+            </row>
+        </Properties>
+    </config>
+</BWSharedResource>

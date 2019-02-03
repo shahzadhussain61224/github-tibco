@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx2="http://www.tibco.com/schemas/BOS/Schemas/Schema.xsd" xmlns:wsdlPfx="http://xmlns.example.com/1548880405752" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.tibco.com/namespaces/tnt/plugins/file">
+    <xsd:import namespace="http://www.tibco.com/schemas/BOS/Schemas/Schema.xsd" schemaLocation="/Service_Pallete/BOS_SCHEMA.xsd"/>
+    <wsdl:import namespace="http://xmlns.example.com/1548880405752" location="/Service_Pallete/WSDL.wsdl"/>
+    <pd:name>Service_Pallete/BOS.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType wsMsgRef="wsdlPfx:Request"/>
+    <pd:startX>150</pd:startX>
+    <pd:startY>65</pd:startY>
+    <pd:returnBindings>
+        <wsdlPfx:Response>
+            <response>
+                <xsl:for-each select="$JDBC-Query/resultSet/Record[1]">
+                    <pfx2:response>
+                        <pfx2:SL_NO>
+                            <xsl:value-of select="SL_NO"/>
+                        </pfx2:SL_NO>
+                        <pfx2:FIRST_NAME>
+                            <xsl:value-of select="FIRST_NAME"/>
+                        </pfx2:FIRST_NAME>
+                        <xsl:if test="MIDDLE_NAME">
+                            <pfx2:MIDDLE_NAME>
+                                <xsl:value-of select="MIDDLE_NAME"/>
+                            </pfx2:MIDDLE_NAME>
+                        </xsl:if>
+                        <pfx2:LAST_NAME>
+                            <xsl:value-of select="LAST_NAME"/>
+                        </pfx2:LAST_NAME>
+                        <pfx2:ACCOUNT_NO>
+                            <xsl:value-of select="ACCOUNT_NO"/>
+                        </pfx2:ACCOUNT_NO>
+                        <pfx2:ACCOUNT_TYPE>
+                            <xsl:value-of select="ACCOUNT_TYPE"/>
+                        </pfx2:ACCOUNT_TYPE>
+                        <pfx2:CREDIT_AMOUNT>
+                            <xsl:value-of select="CREDIT_AMOUNT"/>
+                        </pfx2:CREDIT_AMOUNT>
+                        <pfx2:DEBIT_AMOUNT>
+                            <xsl:value-of select="DEBIT_AMOUNT"/>
+                        </pfx2:DEBIT_AMOUNT>
+                        <pfx2:TOTAL_BALANCE>
+                            <xsl:value-of select="TOTAL_BALANCE"/>
+                        </pfx2:TOTAL_BALANCE>
+                        <pfx2:STREET>
+                            <xsl:value-of select="STREET"/>
+                        </pfx2:STREET>
+                        <pfx2:CITY>
+                            <xsl:value-of select="CITY"/>
+                        </pfx2:CITY>
+                        <pfx2:STATE>
+                            <xsl:value-of select="STATE"/>
+                        </pfx2:STATE>
+                        <pfx2:COUNTRY>
+                            <xsl:value-of select="COUNTRY"/>
+                        </pfx2:COUNTRY>
+                        <pfx2:POSTAL_CODE>
+                            <xsl:value-of select="POSTAL_CODE"/>
+                        </pfx2:POSTAL_CODE>
+                        <pfx2:SSN_NO>
+                            <xsl:value-of select="SSN_NO"/>
+                        </pfx2:SSN_NO>
+                        <pfx2:AADHAR_NO>
+                            <xsl:value-of select="AADHAR_NO"/>
+                        </pfx2:AADHAR_NO>
+                        <pfx2:PAN_NO>
+                            <xsl:value-of select="PAN_NO"/>
+                        </pfx2:PAN_NO>
+                    </pfx2:response>
+                </xsl:for-each>
+            </response>
+        </wsdlPfx:Response>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType wsMsgRef="wsdlPfx:Response"/>
+    <pd:endX>712</pd:endX>
+    <pd:endY>63</pd:endY>
+    <pd:errorSchemas>
+        <Schema1 wsMsgRef="wsdlPfx:Fault"/>
+    </pd:errorSchemas>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1548911959176</pd:targetNamespace>
+    <pd:activity name="JDBC Query">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>271</pd:x>
+        <pd:y>65</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>true</emptyStrAsNil>
+            <jdbcSharedConfig>/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>select * from BOS where FIRST_NAME=? AND LAST_NAME=? AND ACCOUNT_TYPE=?</statement>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>FIRST_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>LAST_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+                <parameter>
+                    <parameterName>ACCOUNT_TYPE</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+            <oraObjects/>
+            <oraTables/>
+            <QueryOutputCachedSchemaColumns>SL_NO</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>2</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>NUMBER</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>FIRST_NAME</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>MIDDLE_NAME</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>LAST_NAME</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>ACCOUNT_NO</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>2</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>NUMBER</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>ACCOUNT_TYPE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CREDIT_AMOUNT</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>2</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>NUMBER</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>DEBIT_AMOUNT</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>2</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>NUMBER</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>TOTAL_BALANCE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>2</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>NUMBER</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>STREET</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CITY</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>STATE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>COUNTRY</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>SSN_NO</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>2</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>NUMBER</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>AADHAR_NO</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>2</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>NUMBER</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>PAN_NO</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>2</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>NUMBER</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>POSTAL_CODE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>2</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>NUMBER</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>RequiredElement</QueryOutputCachedSchemaStatus>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput>
+                <FIRST_NAME>
+                    <xsl:value-of select="$Start/wsdlPfx:Request/request/pfx2:request/pfx2:FIRST_NAME"/>
+                </FIRST_NAME>
+                <LAST_NAME>
+                    <xsl:value-of select="$Start/wsdlPfx:Request/request/pfx2:request/pfx2:LAST_NAME"/>
+                </LAST_NAME>
+                <ACCOUNT_TYPE>
+                    <xsl:value-of select="$Start/wsdlPfx:Request/request/pfx2:request/pfx2:ACCOUNT_TYPE"/>
+                </ACCOUNT_TYPE>
+            </jdbcQueryActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Render XML">
+        <pd:type>com.tibco.plugin.xml.XMLRendererActivity</pd:type>
+        <pd:resourceType>ae.activities.XMLRendererActivity</pd:resourceType>
+        <pd:x>403</pd:x>
+        <pd:y>64</pd:y>
+        <config>
+            <renderAsText>text</renderAsText>
+            <validateInput>false</validateInput>
+            <textEncoding>UTF-8</textEncoding>
+            <term ref="pfx2:response"/>
+        </config>
+        <pd:inputBindings>
+            <xsl:for-each select="$JDBC-Query/resultSet/Record[1]">
+                <pfx2:response>
+                    <pfx2:SL_NO>
+                        <xsl:value-of select="SL_NO"/>
+                    </pfx2:SL_NO>
+                    <pfx2:FIRST_NAME>
+                        <xsl:value-of select="FIRST_NAME"/>
+                    </pfx2:FIRST_NAME>
+                    <xsl:if test="MIDDLE_NAME">
+                        <pfx2:MIDDLE_NAME>
+                            <xsl:value-of select="MIDDLE_NAME"/>
+                        </pfx2:MIDDLE_NAME>
+                    </xsl:if>
+                    <pfx2:LAST_NAME>
+                        <xsl:value-of select="LAST_NAME"/>
+                    </pfx2:LAST_NAME>
+                    <pfx2:ACCOUNT_NO>
+                        <xsl:value-of select="ACCOUNT_NO"/>
+                    </pfx2:ACCOUNT_NO>
+                    <pfx2:ACCOUNT_TYPE>
+                        <xsl:value-of select="ACCOUNT_TYPE"/>
+                    </pfx2:ACCOUNT_TYPE>
+                    <pfx2:CREDIT_AMOUNT>
+                        <xsl:value-of select="CREDIT_AMOUNT"/>
+                    </pfx2:CREDIT_AMOUNT>
+                    <pfx2:DEBIT_AMOUNT>
+                        <xsl:value-of select="DEBIT_AMOUNT"/>
+                    </pfx2:DEBIT_AMOUNT>
+                    <pfx2:TOTAL_BALANCE>
+                        <xsl:value-of select="TOTAL_BALANCE"/>
+                    </pfx2:TOTAL_BALANCE>
+                    <pfx2:STREET>
+                        <xsl:value-of select="STREET"/>
+                    </pfx2:STREET>
+                    <pfx2:CITY>
+                        <xsl:value-of select="CITY"/>
+                    </pfx2:CITY>
+                    <pfx2:STATE>
+                        <xsl:value-of select="STATE"/>
+                    </pfx2:STATE>
+                    <pfx2:COUNTRY>
+                        <xsl:value-of select="COUNTRY"/>
+                    </pfx2:COUNTRY>
+                    <pfx2:POSTAL_CODE>
+                        <xsl:value-of select="POSTAL_CODE"/>
+                    </pfx2:POSTAL_CODE>
+                    <pfx2:SSN_NO>
+                        <xsl:value-of select="SSN_NO"/>
+                    </pfx2:SSN_NO>
+                    <pfx2:AADHAR_NO>
+                        <xsl:value-of select="AADHAR_NO"/>
+                    </pfx2:AADHAR_NO>
+                    <pfx2:PAN_NO>
+                        <xsl:value-of select="PAN_NO"/>
+                    </pfx2:PAN_NO>
+                </pfx2:response>
+            </xsl:for-each>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Write File">
+        <pd:type>com.tibco.plugin.file.FileWriteActivity</pd:type>
+        <pd:resourceType>ae.activities.FileWriteActivity</pd:resourceType>
+        <pd:x>546</pd:x>
+        <pd:y>62</pd:y>
+        <config>
+            <encoding>text</encoding>
+            <compressFile>None</compressFile>
+        </config>
+        <pd:inputBindings>
+            <ns1:WriteActivityInputTextClass>
+                <fileName>
+                    <xsl:value-of select="&quot;C:\Users\shahz\Desktop\Sadia\WSDL_BOS.txt&quot;"/>
+                </fileName>
+                <textContent>
+                    <xsl:value-of select="$Render-XML/xmlString"/>
+                </textContent>
+            </ns1:WriteActivityInputTextClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>JDBC Query</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JDBC Query</pd:from>
+        <pd:to>Render XML</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Render XML</pd:from>
+        <pd:to>Write File</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Write File</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

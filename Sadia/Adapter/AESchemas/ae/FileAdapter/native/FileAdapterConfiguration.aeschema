@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Repository:repository xmlns="http://www.tibco.com/xmlns/aemeta/types/2002" xmlns:Repository="http://www.tibco.com/xmlns/repo/types/2002" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <class name="DelimitedFileRecord">
+        <extendedProperties>
+            <positionFromHeader>begin</positionFromHeader>
+            <type>delimited</type>
+            <strip>true</strip>
+            <delimiter>,</delimiter>
+            <repeatingDelimiter>false</repeatingDelimiter>
+            <identifier>const</identifier>
+        </extendedProperties>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>firstName</name>
+            <extendedProperties>
+                <position>0</position>
+            </extendedProperties>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>middleName</name>
+            <extendedProperties>
+                <position>1</position>
+            </extendedProperties>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>lastName</name>
+            <extendedProperties>
+                <position>2</position>
+            </extendedProperties>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+        </attribute>
+    </class>
+    <designer>
+        <lockedProperties>
+            <locked>
+                <properties>name</properties>
+            </locked>
+            <locked>
+                <resource>/Classes/DelimitedFileRecord</resource>
+                <properties>name</properties>
+            </locked>
+        </lockedProperties>
+        <fixedChildren>
+            <fixed>
+                <resource>/Classes</resource>
+                <children>DelimitedFileRecord</children>
+            </fixed>
+            <fixed>
+                <resource>/Classes/DelimitedFileRecord</resource>
+                <children>firstName,middleName,lastName</children>
+            </fixed>
+        </fixedChildren>
+    </designer>
+</Repository:repository>

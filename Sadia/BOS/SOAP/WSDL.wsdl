@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://www.tibco.com/schemas/BOS/Schemas/Schema.xsd" xmlns:tns="http://xmlns.example.com/1541298402201" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xmlns.example.com/1541298402201">
-    <import namespace="http://www.tibco.com/schemas/BOS/Schemas/Schema.xsd" location="../Schemas/Schema.xsd"/>
+    <import namespace="http://www.tibco.com/schemas/BOS/Schemas/Schema.xsd" location="../Schemas/BOS_SCHEMA.xsd"/>
     <message name="Input">
         <part name="Account_No" type="xsd:string"/>
     </message>

@@ -28,6 +28,8 @@
             <soapVersion>SOAP 1.2</soapVersion>
             <httpURI>/test</httpURI>
             <soapAttachmentStyle>SwA</soapAttachmentStyle>
+            <useBasicAuthentication>true</useBasicAuthentication>
+            <exposeSecurityContext>true</exposeSecurityContext>
         </config>
         <pd:inputBindings/>
     </pd:starter>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://www.tibco.com/schemas/BOS/Schemas/Schema1.xsd" xmlns:tns="http://xmlns.example.com/1548880415600" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd2" targetNamespace="http://xmlns.example.com/1548880415600">
+    <import namespace="http://www.tibco.com/schemas/BOS/Schemas/Schema1.xsd" location="COUNTRY.xsd"/>
+    <import namespace="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd2" location="../SCHEMAS/COUNTRY_TABLE.xsd"/>
+    <message name="Input">
+        <part name="COUNTRY" type="xsd:string"/>
+    </message>
+    <message name="Output">
+        <part name="Root" element="ns2:root"/>
+    </message>
+    <portType name="PortType">
+        <operation name="Operation">
+            <input message="tns:Input"/>
+            <output message="tns:Output"/>
+        </operation>
+    </portType>
+</definitions>

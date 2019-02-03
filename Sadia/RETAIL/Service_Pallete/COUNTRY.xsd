@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/BOS/Schemas/Schema1.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/BOS/Schemas/Schema1.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="root">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="SL_NO"/>
+				<xs:element ref="COUNTRY"/>
+				<xs:element ref="REGION"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SL_NO" type="xs:string"/>
+	<xs:element name="COUNTRY" type="xs:string"/>
+	<xs:element name="REGION" type="xs:string"/>
+	<xs:element name="Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="root" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

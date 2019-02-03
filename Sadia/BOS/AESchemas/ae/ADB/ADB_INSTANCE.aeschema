@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Repository:repository xmlns="http://www.tibco.com/xmlns/aemeta/types/2002" xmlns:Repository="http://www.tibco.com/xmlns/repo/types/2002" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <designer>
-        <lockedProperties/>
+        <lockedProperties>
+            <locked>
+                <resource>/Classes/%ADB_OPAQUE_EXCP</resource>
+                <properties>name,superClassReference</properties>
+            </locked>
+        </lockedProperties>
         <fixedChildren/>
         <resourceDescriptions/>
     </designer>
@@ -293,6 +298,157 @@
             <isWriteable>true</isWriteable>
             <name>ADB_TRACKINGID</name>
             <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+    </class>
+    <class name="RETAIL">
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>RANK</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>COMPANY</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>SALES_2017</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>HQ_CITY</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>HQ_STATE</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>STORE</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>ADB_SUBJECT</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>ADB_SEQUENCE</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>ADB_SET_SEQUENCE</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.i4</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>ADB_TIMESTAMP</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>ADB_OPCODE</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.i4</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>ADB_UPDATE_ALL</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.i4</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>ADB_REF_OBJECT</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>ADB_AGENT_ID</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>ADB_TRACKINGID</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+    </class>
+    <class name="%ADB_OPAQUE_EXCP">
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>ADB_SUBTAB</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>ADB_TRACKINGID</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>ADB_ERROR_TEXT</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>ADB_SUBJECT</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.string</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>ADB_TRANSPORT</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.i4</attributeType>
+            <isKey>false</isKey>
+        </attribute>
+        <attribute>
+            <isReadable>true</isReadable>
+            <isWriteable>true</isWriteable>
+            <name>ADB_MSG</name>
+            <attributeType isRef="true">/AESchemas/ae.aeschema#scalar.binary</attributeType>
             <isKey>false</isKey>
         </attribute>
     </class>

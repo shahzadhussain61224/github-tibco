@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BWSharedResource xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <name>Context Resource</name>
+    <resourceType>service.context.definition</resourceType>
+    <config xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <xsdString>
+            <xsd:element name="root">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Username" type="xsd:string" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsdString>
+    </config>
+</BWSharedResource>

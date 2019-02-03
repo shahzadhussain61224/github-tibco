@@ -23,7 +23,7 @@
             <serverhost>auth.reltio.com</serverhost>
             <serverport>443</serverport>
             <requireBasicAuth>false</requireBasicAuth>
-            <useSsl>true</useSsl>
+            <useSsl>false</useSsl>
             <ns0:ssl xmlns:ns0="http://www.tibco.com/xmlns/aemeta/services/2002">
                 <ns0:strongCipherSuitesOnly>true</ns0:strongCipherSuitesOnly>
                 <ns0:cert isRef="true">%%BW_GLOBAL_TRUSTED_CA_STORE%%</ns0:cert>

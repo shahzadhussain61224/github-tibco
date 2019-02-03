@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Repository:repository xmlns:Repository="http://www.tibco.com/xmlns/repo/types/2002">
+    <name name="LibraryBuilder">
+        <version>2</version>
+        <author>shahz</author>
+        <fileLocation>C:\Users\shahz\Desktop\HTTP.projlib</fileLocation>
+        <resources>/HTTP PROCESS.process</resources>
+    </name>
+</Repository:repository>

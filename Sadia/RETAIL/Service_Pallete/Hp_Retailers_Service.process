@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://xmlns.example.com/1548990787522" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd">
+    <wsdl:import namespace="http://xmlns.example.com/1548990787522" location="/Service_Pallete/HP_Retailers_WSDL.wsdl"/>
+    <pd:name>Service_Pallete/Hp_Retailers_Service.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType wsMsgRef="pfx:Input"/>
+    <pd:startX>92</pd:startX>
+    <pd:startY>77</pd:startY>
+    <pd:returnBindings>
+        <pfx:Output>
+            <Output>
+                <xsl:for-each select="$JDBC-Query/resultSet/Record[1]">
+                    <ns:Retail>
+                        <xsl:if test="STORE_NAME">
+                            <ns:STORE_NAME>
+                                <xsl:value-of select="STORE_NAME"/>
+                            </ns:STORE_NAME>
+                        </xsl:if>
+                        <xsl:if test="STORE_LOCATION">
+                            <ns:STORE_LOCATION>
+                                <xsl:value-of select="STORE_LOCATION"/>
+                            </ns:STORE_LOCATION>
+                        </xsl:if>
+                        <xsl:if test="STORE_CODE">
+                            <ns:STORE_CODE>
+                                <xsl:value-of select="STORE_CODE"/>
+                            </ns:STORE_CODE>
+                        </xsl:if>
+                        <xsl:if test="CATEGORY">
+                            <ns:CATEGORY>
+                                <xsl:value-of select="CATEGORY"/>
+                            </ns:CATEGORY>
+                        </xsl:if>
+                        <xsl:if test="ITEM">
+                            <ns:ITEM>
+                                <xsl:value-of select="ITEM"/>
+                            </ns:ITEM>
+                        </xsl:if>
+                        <xsl:if test="QUANTITY">
+                            <ns:QUANTITY>
+                                <xsl:value-of select="QUANTITY"/>
+                            </ns:QUANTITY>
+                        </xsl:if>
+                        <xsl:if test="SALES_PERSON">
+                            <ns:SALES_PERSON>
+                                <xsl:value-of select="SALES_PERSON"/>
+                            </ns:SALES_PERSON>
+                        </xsl:if>
+                        <xsl:if test="SALES_PERSON_ID">
+                            <ns:SALES_PERSON_ID>
+                                <xsl:value-of select="SALES_PERSON_ID"/>
+                            </ns:SALES_PERSON_ID>
+                        </xsl:if>
+                        <xsl:if test="CUSTOMER_NAME">
+                            <ns:CUSTOMER_NAME>
+                                <xsl:value-of select="CUSTOMER_NAME"/>
+                            </ns:CUSTOMER_NAME>
+                        </xsl:if>
+                        <xsl:if test="PAYMENT_TYPE">
+                            <ns:PAYMENT_TYPE>
+                                <xsl:value-of select="PAYMENT_TYPE"/>
+                            </ns:PAYMENT_TYPE>
+                        </xsl:if>
+                        <xsl:if test="PAYMENT_METHOD">
+                            <ns:PAYMENT_METHOD>
+                                <xsl:value-of select="PAYMENT_METHOD"/>
+                            </ns:PAYMENT_METHOD>
+                        </xsl:if>
+                        <xsl:if test="CUSTOMER_CARD_NO">
+                            <ns:CUSTOMER_CARD_NO>
+                                <xsl:value-of select="CUSTOMER_CARD_NO"/>
+                            </ns:CUSTOMER_CARD_NO>
+                        </xsl:if>
+                        <xsl:if test="CUSTOMER_SSN">
+                            <ns:CUSTOMER_SSN>
+                                <xsl:value-of select="CUSTOMER_SSN"/>
+                            </ns:CUSTOMER_SSN>
+                        </xsl:if>
+                        <xsl:if test="CUSTOMER_ADDRESS">
+                            <ns:CUSTOMER_ADDRESS>
+                                <xsl:value-of select="CUSTOMER_ADDRESS"/>
+                            </ns:CUSTOMER_ADDRESS>
+                        </xsl:if>
+                        <xsl:if test="CUSTOMER_POSTAL_CODE">
+                            <ns:CUSTOMER_POSTAL_CODE>
+                                <xsl:value-of select="CUSTOMER_POSTAL_CODE"/>
+                            </ns:CUSTOMER_POSTAL_CODE>
+                        </xsl:if>
+                        <xsl:if test="CUSTOMER_EMAIL">
+                            <ns:CUSTOMER_EMAIL>
+                                <xsl:value-of select="CUSTOMER_EMAIL"/>
+                            </ns:CUSTOMER_EMAIL>
+                        </xsl:if>
+                        <xsl:if test="CUSTOMER_PHONE">
+                            <ns:CUSTOMER_PHONE>
+                                <xsl:value-of select="CUSTOMER_PHONE"/>
+                            </ns:CUSTOMER_PHONE>
+                        </xsl:if>
+                    </ns:Retail>
+                </xsl:for-each>
+            </Output>
+        </pfx:Output>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType wsMsgRef="pfx:Output"/>
+    <pd:endX>496</pd:endX>
+    <pd:endY>80</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1548991520868</pd:targetNamespace>
+    <pd:activity name="JDBC Query">
+        <pd:type>com.tibco.plugin.jdbc.JDBCQueryActivity</pd:type>
+        <pd:resourceType>ae.activities.JDBCQueryActivity</pd:resourceType>
+        <pd:x>286</pd:x>
+        <pd:y>75</pd:y>
+        <config>
+            <timeout>10</timeout>
+            <commit>false</commit>
+            <maxRows>100</maxRows>
+            <emptyStrAsNil>true</emptyStrAsNil>
+            <jdbcSharedConfig>/JDBC Connection.sharedjdbc</jdbcSharedConfig>
+            <statement>select * from HP_RETAILERS where STORE_NAME=?</statement>
+            <optionalOrNillable>false</optionalOrNillable>
+            <Prepared_Param_DataType>
+                <parameter>
+                    <parameterName>STORE_NAME</parameterName>
+                    <dataType>VARCHAR</dataType>
+                </parameter>
+            </Prepared_Param_DataType>
+            <oraObjects/>
+            <oraTables/>
+            <QueryOutputCachedSchemaColumns>STORE_NAME</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>STORE_LOCATION</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>STORE_CODE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CATEGORY</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>ITEM</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>QUANTITY</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>SALES_PERSON</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>SALES_PERSON_ID</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CUSTOMER_NAME</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>PAYMENT_TYPE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>PAYMENT_METHOD</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CUSTOMER_CARD_NO</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CUSTOMER_SSN</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CUSTOMER_ADDRESS</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CUSTOMER_POSTAL_CODE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CUSTOMER_EMAIL</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+            <QueryOutputCachedSchemaColumns>CUSTOMER_PHONE</QueryOutputCachedSchemaColumns>
+            <QueryOutputCachedSchemaDataTypes>12</QueryOutputCachedSchemaDataTypes>
+            <QueryOutputCachedSchemaDataTypesName>VARCHAR2</QueryOutputCachedSchemaDataTypesName>
+            <QueryOutputCachedSchemaStatus>OptionalElement</QueryOutputCachedSchemaStatus>
+        </config>
+        <pd:inputBindings>
+            <jdbcQueryActivityInput>
+                <STORE_NAME>
+                    <xsl:value-of select="$Start/pfx:Input/STORE_NAME/ns:Input/ns:STORE_NAME"/>
+                </STORE_NAME>
+            </jdbcQueryActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>JDBC Query</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JDBC Query</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

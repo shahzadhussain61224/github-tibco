@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://xmlns.example.com/1541446260400/OperationImpl/SOAP" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx2="http://xmlns.example.com/1543713627892/OperationImpl/HP_sp_Retailers_sp_SOAP_sp_Service">
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://xmlns.example.com/1541446260400/OperationImpl/SOAP" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx2="http://xmlns.example.com/1543713627892/OperationImpl/HP_sp_Retailers_sp_SOAP_sp_Service" xmlns:pfx3="http://xmlns.example.com/1543713627892" xmlns:ns="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd" xmlns:pfx4="http://xmlns.example.com/1541446260400" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.tibco.com/schemas/RETAIL/Schema.xsd">
     <wsdl:import namespace="http://xmlns.example.com/1543713627892/OperationImpl/HP_sp_Retailers_sp_SOAP_sp_Service" location="/HP Retailers SOAP Service/Concrete WSDL.wsdl"/>
+    <wsdl:import namespace="http://xmlns.example.com/1541446260400" location="/Retail SOAP Service/WSDL.wsdl"/>
+    <wsdl:import namespace="http://xmlns.example.com/1543713627892" location="/HP Retailers SOAP Service/WSDL.wsdl"/>
     <pd:name>HP Retailers SOAP Service/Request.process</pd:name>
     <pd:startName>Start</pd:startName>
+    <pd:startType wsMsgRef="pfx3:INPUT"/>
     <pd:startX>150</pd:startX>
     <pd:startY>64</pd:startY>
-    <pd:returnBindings/>
+    <pd:returnBindings>
+        <pfx4:OUTPUT>
+            <OUTPUT>
+                <xsl:for-each select="$SOAPRequestReply/OperationResponse/OUTPUT/ns:Retail[1]">
+                    <ns2:RETAIL/>
+                </xsl:for-each>
+            </OUTPUT>
+        </pfx4:OUTPUT>
+    </pd:returnBindings>
     <pd:endName>End</pd:endName>
+    <pd:endType/>
     <pd:endX>450</pd:endX>
     <pd:endY>64</pd:endY>
     <pd:errorSchemas/>
@@ -28,7 +40,13 @@
             <endpointURL>http://localhost:2020/test1</endpointURL>
             <authScheme>NONE</authScheme>
         </config>
-        <pd:inputBindings/>
+        <pd:inputBindings>
+            <Operation>
+                <STORE_NAME>
+                    <xsl:value-of select="$Start/pfx3:INPUT/STORE_NAME"/>
+                </STORE_NAME>
+            </Operation>
+        </pd:inputBindings>
     </pd:activity>
     <pd:transition>
         <pd:from>Start</pd:from>

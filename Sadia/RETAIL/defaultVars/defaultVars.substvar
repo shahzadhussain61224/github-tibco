@@ -2,14 +2,6 @@
 <repository xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://www.tibco.com/xmlns/repo/types/2002">
 	<globalVariables>
 		<globalVariable>
-			<name>BW_GLOBAL_TRUSTED_CA_STORE</name>
-			<value>file:////Users/shahz/Documents/ReltioCertificates/ReltioCertificates</value>
-			<deploymentSettable>true</deploymentSettable>
-			<serviceSettable>false</serviceSettable>
-			<type>String</type>
-			<modTime>1547828400899</modTime>
-		</globalVariable>
-		<globalVariable>
 			<name>Deployment</name>
 			<value>RETAIL</value>
 			<deploymentSettable>true</deploymentSettable>

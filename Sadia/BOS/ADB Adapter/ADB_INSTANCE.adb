@@ -41,6 +41,7 @@
             <AESDK:producers>
                 <AESDK:jmsPublisher isRef="true">#jmsProducer.ADBPublisher</AESDK:jmsPublisher>
             </AESDK:producers>
+            <AESDK:consumers xsi:nil="true"/>
         </AESDK:deployment>
         <AESDK:timers xsi:nil="true"/>
         <AESDK:txControls xsi:nil="true"/>
@@ -445,11 +446,11 @@
                     <AESDK:properties>defaultSession,defaultStartup,searchUrl,defaultMicroAgentSession</AESDK:properties>
                 </AESDK:locked>
                 <AESDK:locked>
-                    <AESDK:resource>/Advanced/Metadata URLs/Load URL Instance</AESDK:resource>
+                    <AESDK:resource>/Advanced/Metadata URLs/LoadURL1</AESDK:resource>
                     <AESDK:properties>name,loadURL</AESDK:properties>
                 </AESDK:locked>
                 <AESDK:locked>
-                    <AESDK:resource>/Advanced/Metadata URLs/ADBMetadataRef</AESDK:resource>
+                    <AESDK:resource>/Advanced/Metadata URLs/LoadURL</AESDK:resource>
                     <AESDK:properties>name,loadURL</AESDK:properties>
                 </AESDK:locked>
                 <AESDK:locked>
@@ -476,7 +477,7 @@
             <AESDK:fixedChildren>
                 <AESDK:fixed>
                     <AESDK:resource>/Advanced/Metadata URLs</AESDK:resource>
-                    <AESDK:children>ADBMetadataRef,Load URL Instance</AESDK:children>
+                    <AESDK:children>LoadURL,LoadURL1</AESDK:children>
                 </AESDK:fixed>
                 <AESDK:fixed>
                     <AESDK:resource>/Advanced/Sessions</AESDK:resource>
@@ -513,7 +514,7 @@
                 <ADB:isAdorapps>false</ADB:isAdorapps>
                 <ADB:allowKeys>true</ADB:allowKeys>
                 <ADB:useSeperateThread>false</ADB:useSeperateThread>
-                <ADB:storageMode>VALUE</ADB:storageMode>
+                <ADB:storageMode>REF</ADB:storageMode>
                 <ADB:updateMode>UPSERT</ADB:updateMode>
                 <ADB:deliveryMode>2</ADB:deliveryMode>
                 <ADB:orderBy>ORDER BY ADB_SEQUENCE</ADB:orderBy>
@@ -557,6 +558,7 @@
                 <ADB:endpointReference isRef="true">#jmsProducer.ADBPublisher</ADB:endpointReference>
                 <ADB:repoEndpointType>endpoint.JMSPublisher</ADB:repoEndpointType>
                 <ADB:sessionReference>/ADB Adapter/ADB_INSTANCE.adb#jmsSession.JMSQueue</ADB:sessionReference>
+                <ADB:referredObject>RETAIL</ADB:referredObject>
             </ADB:publisher>
         </ADB:operations>
         <ADB:activedb xmlns:ADB="http://www.tibco.com/xmlns/adapter/ADB/2002">
@@ -569,8 +571,8 @@
                 <ADB:runtimeUrl>jdbc:oracle:thin:@localhost:1521:ORCL</ADB:runtimeUrl>
                 <ADB:runtimeDriver>oracle.jdbc.driver.OracleDriver</ADB:runtimeDriver>
                 <ADB:dbmsType>ORACLE</ADB:dbmsType>
-                <ADB:password>#!gc6JH0oVhOr4sub0BQkOOV59uOYMriIL</ADB:password>
-                <ADB:runtimePassword>#!TbyL6+W/6X6aOzm5Po+j7yTCJnowPcC/</ADB:runtimePassword>
+                <ADB:password>#!spCGQT4gdw6Cj1LPzezWFR2a3mSp1vJ4</ADB:password>
+                <ADB:runtimePassword>#!7J4kb+WbNGRWviC0t7b9/bJ2ywUkF0Hy</ADB:runtimePassword>
             </ADB:defaultDataSource>
             <ADB:threadCount xmlns:ADB="http://www.tibco.com/xmlns/adapter/ADB/2002">
                 <ADB:commInterfaces>1</ADB:commInterfaces>
@@ -613,6 +615,7 @@
                 <ADB:asCredentials>USERPWD</ADB:asCredentials>
             </ADB:activeSpaces>
         </ADB:activedb>
+        <ADB:operations xmlns:ADB="http://www.tibco.com/xmlns/adapter/ADB/2002"/>
     </ADB:adapter>
     <AEService:rvSession xmlns:AEService="http://www.tibco.com/xmlns/aemeta/services/2002" objectType="session.RV" name="ADBHawkDefault">
         <AEService:daemon>%%TIBHawkDaemon%%</AEService:daemon>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://www.tibco.com/schemas/Service/Schema.xsd" xmlns:tns="http://xmlns.example.com/1549063770246" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xmlns.example.com/1548904825342" targetNamespace="http://xmlns.example.com/1549063770246">
+    <import namespace="http://xmlns.example.com/1548904825342" location="../WSDL.wsdl"/>
+    <import namespace="http://www.tibco.com/schemas/Service/Schema.xsd" location="../Schema.xsd"/>
+    <message name="Request">
+        <part name="Request" element="ns:fields"/>
+    </message>
+    <message name="Response">
+        <part name="Response" element="ns:ouput"/>
+    </message>
+    <message name="Fault">
+        <part name="Error" element="ns:fault"/>
+    </message>
+    <portType name="PortType">
+        <operation name="Operation_Add">
+            <input message="tns:Request"/>
+            <output message="tns:Response"/>
+            <fault name="fault1" message="tns:Fault"/>
+        </operation>
+        <operation name="Operation_Sub">
+            <input message="tns:Request"/>
+            <output message="tns:Response"/>
+            <fault name="fault1" message="tns:Fault"/>
+        </operation>
+    </portType>
+</definitions>

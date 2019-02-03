@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://www.tibco.com/ns/no_namespace_schema_location/Hp Retailers Format.sharedparse" xmlns:tns="http://xmlns.example.com/1548990787522" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd" targetNamespace="http://xmlns.example.com/1548990787522">
+    <import namespace="http://www.tibco.com/ns/no_namespace_schema_location/Hp Retailers Format.sharedparse" location="../Hp Retailers Format.sharedparse"/>
+    <import namespace="http://www.tibco.com/schemas/RETAIL/SCHEMAS/Schema1.xsd" location="../SCHEMAS/HP Retailers.xsd"/>
+    <message name="Input">
+        <part name="STORE_NAME" element="ns2:Input"/>
+    </message>
+    <message name="Output">
+        <part name="Output" element="ns2:Retail"/>
+    </message>
+    <portType name="PortType">
+        <operation name="Operation">
+            <input message="tns:Input"/>
+            <output message="tns:Output"/>
+        </operation>
+    </portType>
+</definitions>

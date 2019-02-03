@@ -28,4 +28,11 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="Input">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="STORE_NAME" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 </xs:schema>
