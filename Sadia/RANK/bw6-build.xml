@@ -166,7 +166,7 @@
 		<echo message="${buildEarResult}"/>
 	</target> -->
 	
-	<target name="uploadArchive" depends="buildEar">
+	<target name="uploadArchive" depends="startAppNode">
 		<echo message="${EAR}"/>
 		<exec outputproperty="uploadArchiveResult" executable="${tibco.bw.bin}/bwadmin.exe">
 			<env path="${tibco.bw.bin}" key="PATH"/>
