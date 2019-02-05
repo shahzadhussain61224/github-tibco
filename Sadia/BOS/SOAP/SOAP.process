@@ -2,13 +2,39 @@
 <pd:ProcessDefinition xmlns:pfx="http://xmlns.example.com/1541298402201" xmlns:pfx2="http://www.tibco.com/schemas/BOS/Schemas/Schema1.xsd" xmlns:ns="http://www.tibco.com/schemas/BOS/Schemas/Schema.xsd" xmlns:pfx3="http://www.tibco.com/schemas/File/Schema.xsd" xmlns:pfx4="http://www.tibco.com/schemas/File/Schemas/Schema.xsd" xmlns:pfx5="http://xmlns.example.com/1547969443094" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:ns2="http://www.tibco.com/pe/EngineTypes" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns3="http://www.tibco.com/namespaces/tnt/plugins/jms" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:BW="java://com.tibco.pe.core.JavaCustomXPATHFunctions">
     <xsd:import namespace="http://www.tibco.com/schemas/File/Schema.xsd" schemaLocation="/Schemas/LOG_SCHEMA.xsd"/>
     <xsd:import namespace="http://www.tibco.com/schemas/File/Schemas/Schema.xsd" schemaLocation="/Schemas/EXCEPTION_SCHEMA.xsd"/>
-    <wsdl:import namespace="http://xmlns.example.com/1541298402201" location="/SOAP/WSDL.wsdl"/>
     <wsdl:import namespace="http://xmlns.example.com/1547969443094" location="/SOAP/WSDL_Country.wsdl"/>
+    <wsdl:import namespace="http://xmlns.example.com/1541298402201" location="/SOAP/WSDL.wsdl"/>
     <pd:name>SOAP/SOAP.process</pd:name>
-    <pd:startName>Start</pd:startName>
-    <pd:startX>73</pd:startX>
-    <pd:startY>68</pd:startY>
+    <pd:startName>SOAPEventSource</pd:startName>
+    <pd:startX>0</pd:startX>
+    <pd:startY>0</pd:startY>
     <pd:returnBindings/>
+    <pd:starter name="SOAPEventSource">
+        <pd:type>com.tibco.plugin.soap.SOAPEventSource</pd:type>
+        <pd:resourceType>ae.activities.SOAPEventSourceUI</pd:resourceType>
+        <pd:x>64</pd:x>
+        <pd:y>70</pd:y>
+        <config>
+            <service>pfx:PortType</service>
+            <wsdlNamespaceRoot>http://xmlns.example.com/1541298402201/OperationImpl</wsdlNamespaceRoot>
+            <operation>Operation</operation>
+            <portAddressPrefix/>
+            <operationStyle>rpc</operationStyle>
+            <soapUse>literal</soapUse>
+            <inputNamespace>http://InputMessageNamespace</inputNamespace>
+            <outputNamespace>http://OutputMessageNamespace</outputNamespace>
+            <faultNamespace>http://FaultMessageNamespace</faultNamespace>
+            <embedWsdlComponents>true</embedWsdlComponents>
+            <embedSchemaComponents>true</embedSchemaComponents>
+            <soapAction>/SOAP/SOAP</soapAction>
+            <soapAttachmentStyle>SwA</soapAttachmentStyle>
+            <sharedChannel>/HTTP Connection.sharedhttp</sharedChannel>
+            <soapVersion>SOAP 1.1</soapVersion>
+            <inputAttachmentBindings/>
+            <outputAttachmentBindings/>
+        </config>
+        <pd:inputBindings/>
+    </pd:starter>
     <pd:endName>End</pd:endName>
     <pd:endX>803</pd:endX>
     <pd:endY>70</pd:endY>
@@ -202,7 +228,7 @@ WHERE ACCOUNT_NO=?</statement>
         <pd:x>1030</pd:x>
         <pd:y>72</pd:y>
         <config>
-            <faultMessage>&lt;Default&gt;</faultMessage>
+            <faultMessage>Error</faultMessage>
             <eventSource>SOAPEventSource</eventSource>
             <sharedChannels>
                 <jmsChannel>
@@ -219,9 +245,6 @@ WHERE ACCOUNT_NO=?</statement>
                     <xsl:value-of select="&quot;Error Received&quot;"/>
                 </faultstring>
             </FaultMessage>
-            <error>
-                <xsl:value-of select="$_error/ns2:ErrorReport/Msg"/>
-            </error>
         </pd:inputBindings>
     </pd:activity>
     <pd:activity name="Catch">
@@ -636,7 +659,7 @@ WHERE ACCOUNT_NO=?</statement>
         <pd:conditionType>always</pd:conditionType>
     </pd:transition>
     <pd:transition>
-        <pd:from>Start</pd:from>
+        <pd:from>SOAPEventSource</pd:from>
         <pd:to>Assign</pd:to>
         <pd:lineType>Default</pd:lineType>
         <pd:lineColor>-16777216</pd:lineColor>

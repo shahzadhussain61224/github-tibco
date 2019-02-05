@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="deployArchive" name="Project">
+	
+	<property file="${basedir}/build.properties"/>
+	<property name="project.dir" value="${basedir}/${project}"/>
+	<property name="location.ear" value="${basedir}/EAR"/>
+	<property name="location.xml" value="${basedir}/Profiles"/>
+	<!--
+	<taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"/>
+	
+	<path id="jsch.path">
+		<pathelement location="${ant.library.dir}/jsch-0.1.50.jar"/>
+		<pathelement location="${ant.library.dir}/ant-jsch.jar"/>
+	</path>
+	<taskdef name="sshexec" classname="org.apache.tools.ant.taskdefs.optional.ssh.SSHExec" classpathref="jsch.path"/>
+	<taskdef name="scp" classname="org.apache.tools.ant.taskdefs.optional.ssh.Scp" classpathref="jsch.path"/>
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+			<pathelement location="${ant.library.dir}/ant-contrib-1.0b3_custom.jar"/>
+		</classpath>
+	</taskdef>
+	-->
+	<target name="validate">
+		<echo message = "${basedir}"/>
+		<echo message = "${tibco.bw.bin}"/>
+		<exec outputproperty="validationResult" failonerror="true" executable="${tibco.bw.bin}/bwdesign.exe">
+			<env path="${tibco.bw.bin}" key="PATH"/>
+			<arg value="-data"/>
+			<arg value="${project.dir}"/>
+			<arg value="validate"/>
+		</exec>
+		<echo message="${validationResult}"/>
+	</target>
+	
+	<target name="setLocalMode" depends="validate">
+		<exec outputproperty="setLocalModeResult" failonerror="true" executable="${tibco.bw.bin}/bwadmin.exe">
+			<env path="${tibco.bw.bin}" key="PATH"/>
+			<arg value="mode"/>
+			<arg value="enterprise"/>
+		</exec>
+		<echo message="${setLocalModeResult}"/>
+	</target>
+	
+	<target name="showDomain" depends="setLocalMode">
+		<exec outputproperty="showDomainResult" failonerror="true" executable="${tibco.bw.bin}/bwadmin.exe">
+			<env path="${tibco.bw.bin}" key="PATH"/>
+			<arg value="show"/>
+			<arg value="domain"/>
+			<arg value="${domainName}"/>
+		</exec>
+		<echo message="${showDomainResult}"/>
+	</target>
+	
+	<target name="createDomain" depends="showDomain">
+		<!--
+		<if>
+			<equals arg1="${initialSetupYN}" arg2="Y" />
+			<then>
+					<echo message="${createDomainResult}"/>
+			</then>	
+		</if>
+		-->
+		<exec outputproperty="createDomainResult" executable="${tibco.bw.bin}/bwadmin.exe">
+			<env path="${tibco.bw.bin}" key="PATH"/>
+			<arg value="create"/>
+			<arg value="domain"/>
+			<arg value="${domainName}"/>
+		</exec>
+		<echo message="${createDomainResult}"/>
+	</target>
+	
+	<target name="showAppSpace" depends="createDomain">
+		<exec outputproperty="showAppSpaceResult" failonerror="true" executable="${tibco.bw.bin}/bwadmin.exe">
+			<env path="${tibco.bw.bin}" key="PATH"/>
+			<arg value="show"/>
+			<arg value="-d"/>
+			<arg value="${domainName}"/>
+			<arg value="appspace"/>
+			<arg value="${appSpaceName}"/>
+		</exec>
+		<echo message="${showAppSpaceResult}"/>
+	</target>
+	
+	<target name="createAppSpace" depends="showAppSpace">
+		<exec outputproperty="createAppSpaceResult" executable="${tibco.bw.bin}/bwadmin.exe">
+			<env path="${tibco.bw.bin}" key="PATH"/>
+			<arg value="create"/>
+			<arg value="-d"/>
+			<arg value="${domainName}"/>
+			<arg value="-r"/>
+			<arg value="-mn"/>
+			<arg value="${minNodes}"/>
+			<arg value="appspace"/>
+			<arg value="${appSpaceName}"/>
+		</exec>
+		<echo message="${createAppSpaceResult}"/>
+	</target>
+	
+	<target name="showAppNode" depends="createAppSpace">
+		<exec outputproperty="showAppNodeResult" failonerror="true" executable="${tibco.bw.bin}/bwadmin.exe">
+			<env path="${tibco.bw.bin}" key="PATH"/>
+			<arg value="show"/>
+			<arg value="-d"/>
+			<arg value="${domainName}"/>
+			<arg value="-a"/>
+			<arg value="${appSpaceName}"/>
+			<arg value="appnode"/>
+			<arg value="${appNodeName}"/>
+		</exec>
+		<echo message="${showAppNodeResult}"/>
+	</target>
+	
+	<target name="createAppNode" depends="showAppNode">
+		<exec outputproperty="createAppNodeResult" executable="${tibco.bw.bin}/bwadmin.exe">
+			<env path="${tibco.bw.bin}" key="PATH"/>
+			<arg value="create"/>
+			<arg value="-d"/>
+			<arg value="${domainName}"/>
+			<arg value="-a"/>
+			<arg value="${appSpaceName}"/>
+			<arg value="-r"/>
+			<arg value="-httpPort"/>
+			<arg value="${httpPort}"/>
+			<arg value="appnode"/>
+			<arg value="${appNodeName}"/>
+		</exec>
+		<echo message="${createAppNodeResult}"/>
+	</target>
+	
+	<target name="startAppSpace" depends="createAppNode">
+		<exec outputproperty="startAppSpaceResult" executable="${tibco.bw.bin}/bwadmin.exe">
+			<env path="${tibco.bw.bin}" key="PATH"/>
+			<arg value="start"/>
+			<arg value="-d"/>
+			<arg value="${domainName}"/>
+			<arg value="appspace"/>
+			<arg value="${appSpaceName}"/>
+		</exec>
+		<echo message="${startAppSpaceResult}"/>
+	</target>
+
+	<target name="startAppNode" depends="startAppSpace">
+		<exec outputproperty="startAppNodeResult" executable="${tibco.bw.bin}/bwadmin.exe">
+			<env path="${tibco.bw.bin}" key="PATH"/>
+			<arg value="start"/>
+			<arg value="-d"/>
+			<arg value="${domainName}"/>
+			<arg value="-a"/>
+			<arg value="${appSpaceName}"/>
+			<arg value="appnode"/>
+			<arg value="${appNodeName}"/>
+		</exec>
+		<echo message="${startAppNodeResult}"/>
+	</target>
+	
+	<!-- <target name="buildEar" depends="startAppNode">
+		<exec outputproperty="buildEarResult" executable="${tibco.bw.bin}/bwdesign.exe">
+			<env path="${tibco.bw.bin}" key="PATH"/>
+			<arg value="-data"/>
+			<arg value="${project.dir}"/>
+			<arg value="export"/>
+			<arg value="-ear"/>
+			<arg value="${code}"/>
+			<arg value="${location.ear}"/>
+		</exec>
+		<echo message="${buildEarResult}"/>
+	</target> -->
+	
+	<target name="uploadArchive" depends="buildEar">
+		<echo message="${EAR}"/>
+		<exec outputproperty="uploadArchiveResult" executable="${tibco.bw.bin}/bwadmin.exe">
+			<env path="${tibco.bw.bin}" key="PATH"/>
+			<arg value="upload"/>
+			<arg value="-d"/>
+			<arg value="${domainName}"/>
+			<arg value="-replace"/>
+			<arg value="-path"/>
+			<arg value="${archiveUploadDir}"/>
+			<arg value="${location.ear}/sample_1.0.0.ear"/>
+		</exec>
+		<echo message="${uploadArchiveResult}"/>
+	</target>
+	
+	<!--
+	<target name="undeployArchive" depends="uploadArchive">
+		<exec outputproperty="undeployArchiveResult" executable="${tibco.bw.bin}/bwadmin.exe">
+			<env path="${tibco.bw.bin}" key="PATH"/>
+			<arg value="undeploy"/>
+			<arg value="-d"/>
+			<arg value="${domainName}"/>
+			<arg value="-a"/>
+			<arg value="${appSpaceName}"/>
+			<arg value="application"/>
+			<arg value="${code}"/>
+			<arg value="${codeVersion}"/>
+		</exec>
+		<echo message="${undeployArchiveResult}"/>
+	</target>
+	-->
+	
+	<target name="deployArchive" depends="uploadArchive">
+		<exec outputproperty="deployArchiveResult" executable="${tibco.bw.bin}/bwadmin.exe">
+			<env path="${tibco.bw.bin}" key="PATH"/>
+			<arg value="deploy"/>
+			<arg value="-d"/>
+			<arg value="${domainName}"/>
+			<arg value="-a"/>
+			<arg value="${appSpaceName}"/>
+			<arg value="-r"/>
+			<arg value="-as"/>
+			<arg value="-pf"/>
+			<arg value="${basedir}/sample_default.substvar"/>
+			<arg value="${archiveUploadDir}/RANK_TABLE_1.0.0.ear"/>
+		</exec>
+		<echo message="${deployArchiveResult}"/>
+	</target>
+	
+	<target name="exportConfig" depends="deployArchive">
+		<exec outputproperty="exportConfigResult" executable="${tibco.bw.bin}/bwadmin.exe">
+			<env path="${tibco.bw.bin}" key="PATH"/>
+			<arg value="export"/>
+			<arg value="-d"/>
+			<arg value="${domainName}"/>
+			<arg value="-a"/>
+			<arg value="${appSpaceName}"/>
+			<arg value="-dir"/>
+			<arg value="${location.xml}"/>
+			<arg value="application"/>
+			<arg value="${code}"/>
+			<arg value="${codeVersion}"/>			
+		</exec>
+		<echo message="${exportConfigResult}"/>
+	</target>
+	
+</project>

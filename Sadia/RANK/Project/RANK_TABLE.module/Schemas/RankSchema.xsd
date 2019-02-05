@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/schema/1549340414918" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://www.example.org/schema/1549340414918">
+  <element name="Request_Operation">
+    <complexType>
+      <sequence>
+        <element name="RANK" type="int"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="Response_Operation">
+    <complexType>
+      <sequence>
+      	<element name="SL_NO" type="int" />
+      	<element name="FIRST_NAME" type="string"></element>
+      	<element name="MIDDLE_NAME" type="string"></element>
+      	<element name="LAST_NAME" type="string"></element>
+      	<element name="AGE" type="int"></element>
+      	<element name="FAV_SUB" type="string"></element>
+      	<element name="RANK" type="int"></element>
+      	<element name="HIGH_MARKS" type="int"></element>
+      	<element name="SUB_HIGH_MARKS" type="string"></element>
+      	<element name="LOW_MARKS" type="string"></element>
+      	<element name="SUB_LOW_MARKS" type="string"></element>
+      	<element name="ATTENDENCE" type="string"></element>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="Fault_Operation">
+    <complexType>
+      <sequence>
+        <element name="ERROR" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+</schema>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:axis2="http://xsd.tns.tibco.com/bw/models/binding/soap/axis2" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:filepersistence="http://xsd.tns.tibco.com/bw/models/binding/soap/filepersistence" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:schema_1549340414918="http://www.example.org/schema/1549340414918" xmlns:wsdl_1549340414560="http://www.example.org/wsdl/1549340414560" xmi:id="_-HYUECj0EemOoJBamWBZlg" targetNamespace="http://tns.tibco.com/bw/composite/RANK_TABLE.module" name="RANK_TABLE.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_3eWbgCj9EemOoJBamWBZlg" name="Rank" promote="ComponentProcess/Rank">
+    <sca:interface.wsdl xmi:id="_3eYQsCj9EemOoJBamWBZlg" interface="http://www.example.org/wsdl/1549340414560#wsdl.interface(Rank)" scaext:wsdlLocation="../Service%20Descriptors/Rank.wsdl"/>
+    <scaext:binding xsi:type="axis2:SOAPServiceBinding" xmi:id="_QEMBcCkBEemOoJBamWBZlg" name="SOAPServiceBinding" targetNamespace="http://www.tibco.com/365fdf69a4064d58b858a15673f6e351/SOAPServiceBinding" soapVersion="1.2" portTypeQName="wsdl_1549340414560:Rank" transportBindingType="HTTP" attachmentStyle="SwA" modelVersion="1.2.0" portTypeWSDLLocation="platform:/resource/RANK_TABLE.module/Service%20Descriptors/Rank.wsdl">
+      <bindingType xmi:id="_QEe8YCkBEemOoJBamWBZlg"/>
+      <inboundConfiguration xsi:type="axis2:HttpTransportConfiguration" xmi:id="_WuTJACkBEemOoJBamWBZlg" endpointURI="/SOAPServiceBinding/rank/" httpConnector="rank_table.module.HTTPConnectorResource"/>
+      <operationConfiguration xmi:id="_QEimwCkBEemOoJBamWBZlg" operationName="operation" action="operation" actionNeeded="true">
+        <bindingType xmi:id="_QEimwSkBEemOoJBamWBZlg"/>
+        <messageConfiguration xmi:id="_QEimwikBEemOoJBamWBZlg" messageQName="wsdl_1549340414560:operationRequest" wsdlLocation="platform:/resource/RANK_TABLE.module/Service%20Descriptors/Rank.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_QEimwykBEemOoJBamWBZlg" partName="parameters" partElementName="schema_1549340414918:operationRequest"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_QEimxCkBEemOoJBamWBZlg" messageQName="wsdl_1549340414560:operationResponse" messageDirection="OUTPUT" wsdlLocation="platform:/resource/RANK_TABLE.module/Service%20Descriptors/Rank.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_QEimxSkBEemOoJBamWBZlg" partName="parameters" partElementName="schema_1549340414918:operationResponse"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_QEimxikBEemOoJBamWBZlg" messageQName="wsdl_1549340414560:operationFault" messageDirection="FAULT" action="Fault" wsdlLocation="platform:/resource/RANK_TABLE.module/Service%20Descriptors/Rank.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_QEimxykBEemOoJBamWBZlg" partName="parameters" partElementName="schema_1549340414918:operationFault"/>
+        </messageConfiguration>
+        <context xmi:id="_QEj04CkBEemOoJBamWBZlg">
+          <inputMapping xmi:id="_QElqECkBEemOoJBamWBZlg"/>
+          <outputMapping xmi:id="_QEm4MCkBEemOoJBamWBZlg" direction="OUTPUT"/>
+          <faultMappings xmi:id="_QEnfQCkBEemOoJBamWBZlg" direction="FAULT" faultName="Fault"/>
+        </context>
+      </operationConfiguration>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_QEoGUCkBEemOoJBamWBZlg" bindingName="SOAPServiceBinding">
+      <sca:property xmi:id="_zSIV4CkBEemOoJBamWBZlg" name="directory" scaext:simpleValue="Property"/>
+    </scact:bindingAdjunct>
+  </sca:service>
+  <sca:property xmi:id="_-jEKgCj0EemOoJBamWBZlg" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-jmWACj0EemOoJBamWBZlg" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-kDpACj0EemOoJBamWBZlg" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-kd4sCj0EemOoJBamWBZlg" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-k4vcCj0EemOoJBamWBZlg" name="BW.DOMAIN.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-lvEACj0EemOoJBamWBZlg" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-mDNECj0EemOoJBamWBZlg" name="BW.APPSPACE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-mX9MCj0EemOoJBamWBZlg" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-mstUCj0EemOoJBamWBZlg" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_zMscQCkBEemOoJBamWBZlg" name="Property" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_-SDTACj0EemOoJBamWBZlg" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_-SDTASj0EemOoJBamWBZlg" processName="rank_table.module.Process"/>
+    <sca:service xmi:id="_3dp38Cj9EemOoJBamWBZlg" name="Rank">
+      <sca:interface.wsdl xmi:id="_3dqfACj9EemOoJBamWBZlg" interface="http://www.example.org/wsdl/1549340414560#wsdl.interface(Rank)" scaext:wsdlLocation="../Service%20Descriptors/Rank.wsdl"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>
