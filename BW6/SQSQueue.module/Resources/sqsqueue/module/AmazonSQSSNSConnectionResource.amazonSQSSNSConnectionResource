@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:sqsclient="http://ns.tibco.com/tci/sharedresource/sqsclient" xmi:id="_fBmSwV9OEeqjAODS2nHPPg" name="sqsqueue.module.AmazonSQSSNSConnectionResource" type="sqsclient:SQSClientConfiguration">
+  <jndi:configuration xsi:type="sqsclient:SqsClient" xmi:id="_fBoH8F9OEeqjAODS2nHPPg" KeyId="AKIAXAGJVHZQ3J6EFGXS" KeySecret="#!vWsz3IEJ9m/4odBdNWOMBLofJlTU0AcWd7mCR0pqTDawTlpeu7hDLwIlMF1fMdedP/yDTvgwRunlkNW/O8niuEL1MIThzBoZkFIwCgOkRfBVQYEiAwt+Ic9BjITYXd0t" Region="us-east-1" AuthType="AWS Credentials" TokenExpirationDuration="60"/>
+</jndi:namedResource>

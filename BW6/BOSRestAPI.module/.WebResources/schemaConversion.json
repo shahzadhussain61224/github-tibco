@@ -1,0 +1,5 @@
+{"records": [{
+    "jsonSchemaLocation": "/BOSRestAPI.module/Service Descriptors/bosrestapi.module.BOSAPI-BOSAPI.json",
+    "conversionType": "linked",
+    "xsdSchemaTargetNamespace": "http://www.tibco.com/schemas/CLE/BOSSOAPService/Schemas/Schema.xsd"
+}]}

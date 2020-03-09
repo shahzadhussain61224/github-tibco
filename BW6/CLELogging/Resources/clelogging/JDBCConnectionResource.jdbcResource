@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://xsd.tns.tibco.com/amf/models/sharedresource/jdbc" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:subject="http://xsd.tns.tibco.com/trinity/models/identity/subject" xmi:id="_FfiYoVt7Eeqf2ssMX5FyoQ" name="clelogging.JDBCConnectionResource" type="jdbc:JdbcDataSource">
+  <jndi:reference xmi:id="_FgkTYFt7Eeqf2ssMX5FyoQ" key="subjectJndiName" type="subject:SubjectConfiguration" value=""/>
+  <jndi:configuration xsi:type="jdbc:JdbcDataSource" xmi:id="_FgkTYVt7Eeqf2ssMX5FyoQ" username="c##admin" password="#!Bu5XCT7S3Swb/67vLYeZQYKN+rQl3nt8">
+    <connectionConfig xsi:type="jdbc:NonXaConnection" xmi:id="_FgkTYlt7Eeqf2ssMX5FyoQ" jdbcDriver="oracle.jdbc.OracleDriver" dbURL="jdbc:oracle:thin:@localhost:1521:ORCL"/>
+    <connectionProperties xmi:id="_VLO1cFt7Eeqf2ssMX5FyoQ" key="jarFile" value="ojdbc"/>
+  </jndi:configuration>
+</jndi:namedResource>

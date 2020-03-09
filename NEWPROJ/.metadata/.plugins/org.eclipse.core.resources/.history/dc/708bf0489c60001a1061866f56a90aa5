@@ -1,7 +1,0 @@
-{
-    "records": [],
-    "resources": [{
-        "location": "Service Descriptors/bosrestapi.module.BOSAPI-BOSAPI.json",
-        "type": "generated"
-    }]
-}

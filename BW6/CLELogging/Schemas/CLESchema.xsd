@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/CLE/Schema.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/CLE/Schema.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="LOG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ApplicationID" type="xs:string"/>
+				<xs:element name="LOGID" type="xs:int"/>
+				<xs:element name="ComponentName" type="xs:string"/>
+				<xs:element name="HostName" type="xs:string"/>
+				<xs:element name="Transaction">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TransactionDomain" type="xs:string"/>
+							<xs:element name="TransactionType" type="xs:string"/>
+							<xs:element name="TransactionID" type="xs:string"/>
+							<xs:element name="TransactionData" type="xs:string"/>
+							<xs:element name="TransactionDataAfter" type="xs:string"/>
+							<xs:element name="TransactionSize" type="xs:int"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TimeStamp" type="xs:dateTime"/>
+				<xs:element name="TimeDuration" type="xs:int"/>
+				<xs:element name="Category" type="xs:string"/>
+				<xs:element name="Message" type="xs:string"/>
+				<xs:element name="Status" type="xs:string"/>
+				<xs:element name="FileName" type="xs:string"/>
+				<xs:element name="LogAudit" type="xs:int"/>
+				<xs:element name="InterfaceID" type="xs:string"/>
+				<xs:element name="DataEncoding" type="xs:string"/>
+				<xs:element name="CorrelationID" type="xs:string"/>
+				<xs:element name="RenderID" type="xs:string"/>
+				<xs:element name="ExceptionID" type="xs:int"/>
+				<xs:element name="ExceptionCode" type="xs:string"/>
+				<xs:element name="NotificationCHNL" type="xs:string"/>
+				<xs:element name="ReplyDestination" type="xs:string"/>
+				<xs:element name="StackTrace" type="xs:string"/>
+				<xs:element name="ResolutionDescription" type="xs:string"/>
+				<xs:element name="ResolveDelayTime" type="xs:dateTime"/>
+				<xs:element name="EventType" type="xs:string"/>
+				<xs:element name="JMSProperties" type="xs:string"/>
+				<xs:element name="Custom" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

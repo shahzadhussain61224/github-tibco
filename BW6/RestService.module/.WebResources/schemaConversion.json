@@ -1,0 +1,12 @@
+{"records": [
+    {
+        "jsonSchemaLocation": "/RestService.module/Service Descriptors/restservice.module.Resource-Resource.json",
+        "conversionType": "linked",
+        "xsdSchemaTargetNamespace": "http://www.tibco.com/schemas/CLE/BOSSOAPService/Schemas/Schema.xsd"
+    },
+    {
+        "jsonSchemaLocation": "/RestService.module/Service Descriptors/restservice.module.Resource-Resource.json",
+        "conversionType": "linked",
+        "xsdSchemaTargetNamespace": "http://www.example.com/namespaces/tns/1583391759072"
+    }
+]}

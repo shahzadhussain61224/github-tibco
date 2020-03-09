@@ -571,8 +571,8 @@
                 <ADB:runtimeUrl>jdbc:oracle:thin:@localhost:1521:ORCL</ADB:runtimeUrl>
                 <ADB:runtimeDriver>oracle.jdbc.driver.OracleDriver</ADB:runtimeDriver>
                 <ADB:dbmsType>ORACLE</ADB:dbmsType>
-                <ADB:password>#!spCGQT4gdw6Cj1LPzezWFR2a3mSp1vJ4</ADB:password>
-                <ADB:runtimePassword>#!7J4kb+WbNGRWviC0t7b9/bJ2ywUkF0Hy</ADB:runtimePassword>
+                <ADB:password>#!LN6bNPzYFlZasKORUnvaKBONaat9MfiU</ADB:password>
+                <ADB:runtimePassword>#!QmVQG0PNTKpct82TgnbfMHBR4jH3L8F6</ADB:runtimePassword>
             </ADB:defaultDataSource>
             <ADB:threadCount xmlns:ADB="http://www.tibco.com/xmlns/adapter/ADB/2002">
                 <ADB:commInterfaces>1</ADB:commInterfaces>
@@ -615,6 +615,7 @@
                 <ADB:asCredentials>USERPWD</ADB:asCredentials>
             </ADB:activeSpaces>
         </ADB:activedb>
+        <ADB:operations xmlns:ADB="http://www.tibco.com/xmlns/adapter/ADB/2002"/>
         <ADB:operations xmlns:ADB="http://www.tibco.com/xmlns/adapter/ADB/2002"/>
     </ADB:adapter>
     <AEService:rvSession xmlns:AEService="http://www.tibco.com/xmlns/aemeta/services/2002" objectType="session.RV" name="ADBHawkDefault">

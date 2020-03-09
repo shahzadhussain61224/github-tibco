@@ -1,5 +1,0 @@
-{"records": [{
-    "jsonSchemaLocation": "/RestService.module/Service Descriptors/restservice.module.Resource-Resource.json",
-    "conversionType": "linked",
-    "xsdSchemaTargetNamespace": "http://www.tibco.com/schemas/CLE/BOSSOAPService/Schemas/Schema.xsd"
-}]}

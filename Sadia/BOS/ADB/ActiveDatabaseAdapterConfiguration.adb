@@ -445,11 +445,11 @@
                     <AESDK:properties>defaultSession,defaultStartup,searchUrl,defaultMicroAgentSession</AESDK:properties>
                 </AESDK:locked>
                 <AESDK:locked>
-                    <AESDK:resource>/Advanced/Metadata URLs/Load URL Instance</AESDK:resource>
+                    <AESDK:resource>/Advanced/Metadata URLs/LoadURL1</AESDK:resource>
                     <AESDK:properties>name,loadURL</AESDK:properties>
                 </AESDK:locked>
                 <AESDK:locked>
-                    <AESDK:resource>/Advanced/Metadata URLs/ADBMetadataRef</AESDK:resource>
+                    <AESDK:resource>/Advanced/Metadata URLs/LoadURL</AESDK:resource>
                     <AESDK:properties>name,loadURL</AESDK:properties>
                 </AESDK:locked>
                 <AESDK:locked>
@@ -476,7 +476,7 @@
             <AESDK:fixedChildren>
                 <AESDK:fixed>
                     <AESDK:resource>/Advanced/Metadata URLs</AESDK:resource>
-                    <AESDK:children>ADBMetadataRef,Load URL Instance</AESDK:children>
+                    <AESDK:children>LoadURL,LoadURL1</AESDK:children>
                 </AESDK:fixed>
                 <AESDK:fixed>
                     <AESDK:resource>/Advanced/Sessions</AESDK:resource>
@@ -578,8 +578,8 @@
                 <ADB:runtimeUrl>jdbc:oracle:thin:@localhost:1521:ORCL</ADB:runtimeUrl>
                 <ADB:runtimeDriver>oracle.jdbc.driver.OracleDriver</ADB:runtimeDriver>
                 <ADB:dbmsType>ORACLE</ADB:dbmsType>
-                <ADB:password>#!8iS1BxfuPZk9qTONtvNT1YE2DkiHYJAN</ADB:password>
-                <ADB:runtimePassword>#!PqzherfACbI0bcrbIB1Ejbkj+igKdFi7</ADB:runtimePassword>
+                <ADB:password>#!qRNpmzVDAKP+xuqHPxTDtiY5S1d0QCmA</ADB:password>
+                <ADB:runtimePassword>#!p1F6tv8cR757y5Bfml17NToRrkbrcdQs</ADB:runtimePassword>
             </ADB:defaultDataSource>
             <ADB:threadCount xmlns:ADB="http://www.tibco.com/xmlns/adapter/ADB/2002">
                 <ADB:commInterfaces>1</ADB:commInterfaces>
@@ -622,6 +622,7 @@
                 <ADB:asCredentials>USERPWD</ADB:asCredentials>
             </ADB:activeSpaces>
         </ADB:activedb>
+        <ADB:operations xmlns:ADB="http://www.tibco.com/xmlns/adapter/ADB/2002"/>
     </ADB:adapter>
     <AEService:rvSession xmlns:AEService="http://www.tibco.com/xmlns/aemeta/services/2002" objectType="session.RV" name="ADBHawkDefault">
         <AEService:daemon>%%TIBHawkDaemon%%</AEService:daemon>
