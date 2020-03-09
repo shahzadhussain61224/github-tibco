@@ -1,0 +1,157 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/resource" : {
+      "post" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "post-resource",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/BOS"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a Element to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/Element"
+            }
+          }
+        }
+      },
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-resource",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "a BOS to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/BOS"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "RESIDENCE" : {
+      "type" : "object",
+      "required" : [ "CITY", "COUNTRY", "POSTAL_CODE", "STATE", "STREET" ],
+      "properties" : {
+        "STREET" : {
+          "type" : "string"
+        },
+        "CITY" : {
+          "type" : "string"
+        },
+        "STATE" : {
+          "type" : "string"
+        },
+        "COUNTRY" : {
+          "type" : "string"
+        },
+        "POSTAL_CODE" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "ACCOUNTInfo" : {
+      "type" : "object",
+      "required" : [ "ACCOUNT_TYPE", "ACCOUNT_NO" ],
+      "properties" : {
+        "ACCOUNT_NO" : {
+          "type" : "integer"
+        },
+        "ACCOUNT_TYPE" : {
+          "type" : "string"
+        }
+      }
+    },
+    "BOS" : {
+      "type" : "object",
+      "required" : [ "AADHAR_NO", "SL_NO", "RESIDENCE", "ACCOUNTInfo", "BALANCEInfo", "SSN_NO", "NAME", "PAN_NO" ],
+      "properties" : {
+        "SL_NO" : {
+          "type" : "integer"
+        },
+        "NAME" : {
+          "$ref" : "#/definitions/NAME"
+        },
+        "ACCOUNTInfo" : {
+          "$ref" : "#/definitions/ACCOUNTInfo"
+        },
+        "BALANCEInfo" : {
+          "$ref" : "#/definitions/BALANCEInfo"
+        },
+        "RESIDENCE" : {
+          "$ref" : "#/definitions/RESIDENCE"
+        },
+        "SSN_NO" : {
+          "type" : "integer"
+        },
+        "AADHAR_NO" : {
+          "type" : "integer"
+        },
+        "PAN_NO" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "Element" : {
+      "type" : "object",
+      "properties" : {
+        "response" : {
+          "type" : "string"
+        }
+      }
+    },
+    "BALANCEInfo" : {
+      "type" : "object",
+      "properties" : {
+        "CREDIT_AMOUNT" : {
+          "type" : "integer"
+        },
+        "DEBIT_AMOUNT" : {
+          "type" : "integer"
+        },
+        "TOTAL_BALANCE" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "NAME" : {
+      "type" : "object",
+      "required" : [ "LAST_NAME", "FIRST_NAME" ],
+      "properties" : {
+        "FIRST_NAME" : {
+          "type" : "string"
+        },
+        "MIDDLE_NAME" : {
+          "type" : "string"
+        },
+        "LAST_NAME" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Summary about the new REST service.",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:5000",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/bosapi" : {
+      "post" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "post-bosapi",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/BOS"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a BOS to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/BOS"
+            },
+            "headers" : { }
+          },
+          "304" : {
+            "description" : "Not Modified",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "307" : {
+            "description" : "Temporary Redirect",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "201" : {
+            "description" : "Created",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "202" : {
+            "description" : "Accepted",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "204" : {
+            "description" : "No Content",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "301" : {
+            "description" : "Moved Permanently",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "303" : {
+            "description" : "See Other",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-bosapi",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "ACCOUNT_NO",
+          "in" : "query",
+          "description" : "",
+          "type" : "integer",
+          "format" : "int32",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "put" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "put-bosapi",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/BOS"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a BOS to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/BOS"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "delete-bosapi",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "ACCOUNT_NO",
+          "in" : "query",
+          "description" : "",
+          "type" : "integer",
+          "format" : "int32",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "RESIDENCE" : {
+      "type" : "object",
+      "properties" : {
+        "STREET" : {
+          "type" : "string"
+        },
+        "CITY" : {
+          "type" : "string"
+        },
+        "STATE" : {
+          "type" : "string"
+        },
+        "COUNTRY" : {
+          "type" : "string"
+        },
+        "POSTAL_CODE" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "ACCOUNTInfo" : {
+      "type" : "object",
+      "properties" : {
+        "ACCOUNT_NO" : {
+          "type" : "integer"
+        },
+        "ACCOUNT_TYPE" : {
+          "type" : "string"
+        }
+      }
+    },
+    "BOS" : {
+      "type" : "object",
+      "properties" : {
+        "SL_NO" : {
+          "type" : "integer"
+        },
+        "NAME" : {
+          "$ref" : "#/definitions/NAME"
+        },
+        "ACCOUNTInfo" : {
+          "$ref" : "#/definitions/ACCOUNTInfo"
+        },
+        "BALANCEInfo" : {
+          "$ref" : "#/definitions/BALANCEInfo"
+        },
+        "RESIDENCE" : {
+          "$ref" : "#/definitions/RESIDENCE"
+        },
+        "SSN_NO" : {
+          "type" : "integer"
+        },
+        "AADHAR_NO" : {
+          "type" : "integer"
+        },
+        "PAN_NO" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "BALANCEInfo" : {
+      "type" : "object",
+      "properties" : {
+        "CREDIT_AMOUNT" : {
+          "type" : "integer"
+        },
+        "DEBIT_AMOUNT" : {
+          "type" : "integer"
+        },
+        "TOTAL_BALANCE" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "NAME" : {
+      "type" : "object",
+      "properties" : {
+        "FIRST_NAME" : {
+          "type" : "string"
+        },
+        "MIDDLE_NAME" : {
+          "type" : "string"
+        },
+        "LAST_NAME" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

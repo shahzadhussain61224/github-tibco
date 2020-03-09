@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:axis2="http://xsd.tns.tibco.com/bw/models/binding/soap/axis2" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmlns:wsdl_1583035969148="http://www.example.org/wsdl/1583035969148" xmi:id="_-qVKcFtxEeqf2ssMX5FyoQ" targetNamespace="http://tns.tibco.com/bw/composite/BOS.module" name="BOS.module" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_cC3VQFtzEeqf2ssMX5FyoQ" name="BOS" promote="ComponentProcess/BOS">
+    <sca:interface.wsdl xmi:id="_cDfAUFtzEeqf2ssMX5FyoQ" interface="http://www.example.org/wsdl/1583035969148#wsdl.interface(BOS)" scaext:wsdlLocation="../Service%20Descriptors/BOS.wsdl"/>
+    <scaext:binding xsi:type="axis2:SOAPServiceBinding" xmi:id="_f1OzoFtzEeqf2ssMX5FyoQ" name="SOAPServiceBinding" targetNamespace="http://www.tibco.com/d2554befa7884e51aa1ebdf1802c7e03/SOAPServiceBinding" portTypeQName="wsdl_1583035969148:BOS" transportBindingType="HTTP" attachmentStyle="SwA" modelVersion="1.2.0" portTypeWSDLLocation="platform:/resource/BOS.module/Service%20Descriptors/BOS.wsdl">
+      <bindingType xmi:id="_f1stsFtzEeqf2ssMX5FyoQ"/>
+      <inboundConfiguration xsi:type="axis2:HttpTransportConfiguration" xmi:id="_-P9QsFtzEeqf2ssMX5FyoQ" endpointURI="/SOAPServiceBinding/bOS/" httpConnector="bos.module.HTTPConnectorResource"/>
+      <operationConfiguration xmi:id="_f1stsVtzEeqf2ssMX5FyoQ" description="" operationName="CreateOperation" action="CreateOperation" actionNeeded="true">
+        <bindingType xmi:id="_f1stsltzEeqf2ssMX5FyoQ"/>
+        <messageConfiguration xmi:id="_f1sts1tzEeqf2ssMX5FyoQ" messageQName="wsdl_1583035969148:CreateOperationRequest" wsdlLocation="platform:/resource/BOS.module/Service%20Descriptors/BOS.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_f1sttFtzEeqf2ssMX5FyoQ" partName="parameters" partElementName="wsdl_1583035969148:CreateOperationRequest"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_f1sttVtzEeqf2ssMX5FyoQ" messageQName="wsdl_1583035969148:CreateOperationResponse" messageDirection="OUTPUT" wsdlLocation="platform:/resource/BOS.module/Service%20Descriptors/BOS.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_f1sttltzEeqf2ssMX5FyoQ" partName="parameters" partElementName="wsdl_1583035969148:CreateOperationResponse"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_f1stt1tzEeqf2ssMX5FyoQ" messageQName="wsdl_1583035969148:CreateOperationFault" messageDirection="FAULT" action="Fault" wsdlLocation="platform:/resource/BOS.module/Service%20Descriptors/BOS.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_f1stuFtzEeqf2ssMX5FyoQ" partName="parameters" partElementName="wsdl_1583035969148:CreateOperationFault"/>
+        </messageConfiguration>
+        <context xmi:id="_f1vxAFtzEeqf2ssMX5FyoQ">
+          <inputMapping xmi:id="_f1wYEFtzEeqf2ssMX5FyoQ"/>
+          <outputMapping xmi:id="_f1wYEVtzEeqf2ssMX5FyoQ" direction="OUTPUT"/>
+          <faultMappings xmi:id="_f1w_IFtzEeqf2ssMX5FyoQ" direction="FAULT" faultName="Fault"/>
+        </context>
+      </operationConfiguration>
+      <operationConfiguration xmi:id="_xO2TYFuKEeqf2ssMX5FyoQ" operationName="DeleteOperation" action="operation" actionNeeded="true">
+        <bindingType xmi:id="_xO2TYVuKEeqf2ssMX5FyoQ"/>
+        <messageConfiguration xmi:id="_xO2TYluKEeqf2ssMX5FyoQ" messageQName="wsdl_1583035969148:operationRequest" wsdlLocation="platform:/resource/BOS.module/Service%20Descriptors/BOS.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_xO2TY1uKEeqf2ssMX5FyoQ" partName="parameters" partElementName="wsdl_1583035969148:operationRequest"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_xO2TZFuKEeqf2ssMX5FyoQ" messageQName="wsdl_1583035969148:operationResponse" messageDirection="OUTPUT" wsdlLocation="platform:/resource/BOS.module/Service%20Descriptors/BOS.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_xO2TZVuKEeqf2ssMX5FyoQ" partName="parameters" partElementName="wsdl_1583035969148:operationResponse"/>
+        </messageConfiguration>
+        <context xmi:id="_xO26cFuKEeqf2ssMX5FyoQ">
+          <inputMapping xmi:id="_xO26cVuKEeqf2ssMX5FyoQ"/>
+          <outputMapping xmi:id="_xO26cluKEeqf2ssMX5FyoQ" direction="OUTPUT"/>
+        </context>
+      </operationConfiguration>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_f1w_IVtzEeqf2ssMX5FyoQ" bindingName="SOAPServiceBinding"/>
+  </sca:service>
+  <sca:property xmi:id="_-0kEgFtxEeqf2ssMX5FyoQ" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-0nu4FtxEeqf2ssMX5FyoQ" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-0pkEFtxEeqf2ssMX5FyoQ" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-0qLIFtxEeqf2ssMX5FyoQ" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-0rZQFtxEeqf2ssMX5FyoQ" name="BW.DOMAIN.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-0tOcFtxEeqf2ssMX5FyoQ" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-0t1gFtxEeqf2ssMX5FyoQ" name="BW.APPSPACE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-0vDoFtxEeqf2ssMX5FyoQ" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_-0xf4FtxEeqf2ssMX5FyoQ" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:component xmi:id="_-vnTEFtxEeqf2ssMX5FyoQ" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_-vnTEVtxEeqf2ssMX5FyoQ" processName="bos.module.Process"/>
+    <sca:service xmi:id="_cBhRcFtzEeqf2ssMX5FyoQ" name="BOS">
+      <sca:interface.wsdl xmi:id="_cBpNQFtzEeqf2ssMX5FyoQ" interface="http://www.example.org/wsdl/1583035969148#wsdl.interface(BOS)" scaext:wsdlLocation="../Service%20Descriptors/BOS.wsdl"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>
